@@ -5,12 +5,14 @@
 import { dimensionBox, dimensionEndPoint, dimensionGeometry, offsetDirection, textBox } from '../geom/annotation';
 import { boxCentre, normAngle, shapeBox, unionBox, type Box } from '../geom/shapes';
 import { findPart } from '../catalogue';
-import { descendants, projectGeometry } from '../model/resolve';
+import { descendants, projectGeometry, resolveTemplate } from '../model/resolve';
 import type { Dimension, KeepOut, PartRef, PlacedPart, Project, Shape, TextLabel, Vec2 } from '../model/schema';
 import { docs } from '../store/app';
 import { newId, ops, type Op } from '../store/doc';
 import { ui } from '../store/ui';
 import { removeRoutesOps, removeWiresOps, wiresOfParts } from '../wiring/ops';
+import { formatLength } from '../util/units';
+import { arrangeRows, equalGaps, faceSpanY, groupRows } from './arrange';
 
 const KEEPOUT_PREFIX = 'ko';
 
@@ -330,6 +332,75 @@ export function distribute(axis: 'x' | 'y') {
       return axis === 'x' ? [it, d, 0] : [it, 0, d];
     }),
   );
+}
+
+/** Distribute so the gaps between parts' edges are equal, keeping the outermost two. */
+export function distributeGaps(axis: 'x' | 'y') {
+  const items = movableItems();
+  if (items.length < 3) return msg('Select three or more unlocked parts to distribute');
+  const shifts = equalGaps(items.map((it) => ({ id: it.pp.id, box: it.box })), axis);
+  moveItems(
+    `Distribute ${axis}, equal gaps`,
+    items.map((it): [Item, number, number] => {
+      const d = shifts.get(it.pp.id)!;
+      return axis === 'x' ? [it, d, 0] : [it, 0, d];
+    }),
+  );
+}
+
+/**
+ * Centre the selection on the panel, moving it as one: across, on the centreline (x = 0);
+ * up and down, in the stretch of panel face it sits in, between the outline and any bend
+ * line. One part centres by its own centre, several by their bounds.
+ */
+export function centreOnPanel(axis: 'x' | 'y' | 'both') {
+  const doc = docs.doc;
+  if (!ui.state.selection.length) return msg('Select something to centre');
+  if (selectedParts(doc).some((p) => p.locked)) return msg('Selection is locked');
+  const parts = selectedParts(doc);
+  const g = parts.length === 1 && ui.state.selection.length === 1 ? projectGeometry(doc).get(parts[0]!.id) : undefined;
+  const box = selectionBox();
+  if (!box) return;
+  const c = g ? { x: g.transform.x, y: g.transform.y } : boxCentre(box);
+  const dx = axis === 'y' ? 0 : -c.x;
+  let dy = 0;
+  if (axis !== 'x') {
+    const t = resolveTemplate(doc);
+    if (!t) return msg('Centring up and down needs a panel template');
+    const span = faceSpanY(t, c.x + dx, c.y);
+    if (!span) return msg('The selection is not on the panel face');
+    dy = (span[0] + span[1]) / 2 - c.y;
+  }
+  const label = axis === 'x' ? 'Centre on centreline' : axis === 'y' ? 'Centre vertically' : 'Centre on panel';
+  if (Math.abs(dx) < 1e-9 && Math.abs(dy) < 1e-9) return msg('Already centred');
+  moveSelection(q(dx), q(dy), label);
+}
+
+/**
+ * Auto-arrange the selected parts in tidy rows `gap` apart, each row centred on the panel
+ * centreline (see `arrangeRows`). Parts mounted to others ride along with their parent.
+ * Each part is spaced by everything it takes up, front and behind the panel, so a wide
+ * unit mounted behind an instrument keeps its neighbours clear too.
+ */
+export function autoArrange(gap: number) {
+  const doc = docs.doc;
+  const items = movableItems().filter((it) => !it.pp.mountedTo && !findPart(it.pp.part, doc.customParts)?.offPanel);
+  if (items.length < 2) return msg('Select two or more unlocked parts on the panel to arrange');
+  const geom = projectGeometry(doc);
+  const layout = items.map((it) => {
+    const ids = [it.pp.id, ...descendants(doc.parts, [it.pp.id])];
+    return { id: it.pp.id, box: unionBox([it.box, ...ids.flatMap((id) => geom.get(id)?.rearBox ?? [])])! };
+  });
+  const moves = arrangeRows(layout, gap);
+  const rows = groupRows(layout).length;
+  moveItems(
+    'Auto-arrange',
+    items.map((it): [Item, number, number] => {
+      const m = moves.get(it.pp.id)!;
+      return [it, m.x, m.y];
+    }),
+  );
+  msg(`Arranged ${items.length} parts in ${rows} row${rows === 1 ? '' : 's'}, ${formatLength(gap, doc.settings.units)} apart. See Checks for anything now near an edge or keep-out.`);
 }
 
 /** Copy the selection mirrored about the panel centreline (x = 0). */

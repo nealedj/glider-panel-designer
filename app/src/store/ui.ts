@@ -12,6 +12,8 @@ export interface SnapSettings {
   grid: boolean;
   objects: boolean;
   guides: boolean;
+  /** Equal gaps between parts. */
+  gaps: boolean;
 }
 
 export interface UiState {
@@ -61,7 +63,7 @@ export const initialUi: UiState = {
   centre: { x: 0, y: 0 },
   cursor: null,
   layers: { template: true, cutouts: true, bezels: true, holes: true, keepouts: true, labels: true, dimensions: true, grid: true, guides: true },
-  snap: { grid: true, objects: true, guides: true },
+  snap: { grid: true, objects: true, guides: true, gaps: true },
   message: '',
   paletteOpen: false,
   shortcutsOpen: false,

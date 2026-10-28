@@ -23,8 +23,10 @@ function putOnRoute() {
 import { ui, type Tool, type ViewName } from '../store/ui';
 import {
   align,
+  centreOnPanel,
   deleteSelection,
   distribute,
+  distributeGaps,
   duplicateSelection,
   mirrorCopy,
   moveSelection,
@@ -49,6 +51,7 @@ export interface CommandDef {
 
 export const dialogs = {
   openArray: (_kind: 'linear' | 'circular') => {},
+  openArrange: () => {},
 };
 
 /** Switch view. The rear view mirrors x about the same centre, so the panel stays put on screen. */
@@ -237,6 +240,12 @@ export const COMMANDS: CommandDef[] = [
   { id: 'arrange.align-bottom', label: 'Align bottom edges', group: 'Arrange', run: () => align('bottom') },
   { id: 'arrange.distribute-x', label: 'Distribute horizontally', group: 'Arrange', run: () => distribute('x') },
   { id: 'arrange.distribute-y', label: 'Distribute vertically', group: 'Arrange', run: () => distribute('y') },
+  { id: 'arrange.distribute-gaps-x', label: 'Distribute horizontally, equal gaps', group: 'Arrange', run: () => distributeGaps('x') },
+  { id: 'arrange.distribute-gaps-y', label: 'Distribute vertically, equal gaps', group: 'Arrange', run: () => distributeGaps('y') },
+  { id: 'arrange.centre', label: 'Centre on panel', group: 'Arrange', run: () => centreOnPanel('both'), enabled: hasSelection },
+  { id: 'arrange.centre-x', label: 'Centre across, on the centreline', group: 'Arrange', run: () => centreOnPanel('x'), enabled: hasSelection },
+  { id: 'arrange.centre-y', label: 'Centre up and down, on the panel face', group: 'Arrange', run: () => centreOnPanel('y'), enabled: hasSelection },
+  { id: 'arrange.auto', label: 'Auto-arrange in rows…', group: 'Arrange', run: () => dialogs.openArrange(), enabled: hasSelection },
   { id: 'arrange.mirror', label: 'Mirror copy about centreline', group: 'Arrange', run: mirrorCopy, enabled: hasSelection },
   { id: 'arrange.detach', label: 'Detach from parent part', group: 'Arrange', run: detachSelection, enabled: () => docs.doc.parts.some((p) => p.mountedTo && ui.state.selection.includes(p.id)) },
   { id: 'arrange.linear-array', label: 'Linear array…', group: 'Arrange', run: () => dialogs.openArray('linear'), enabled: hasSelection },
