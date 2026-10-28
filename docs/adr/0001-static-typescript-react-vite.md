@@ -1,4 +1,4 @@
-# 0001. Static TypeScript app with React and Vite
+# 0001. Static TypeScript app with React and Vite, hosted on GitHub Pages
 
 - Status: accepted
 - Date: 2026-10-11
@@ -11,10 +11,10 @@ an open-source repo. Users are on desktop browsers; the editor needs a rich, sta
 ## Decision
 
 - TypeScript (strict), React 19, Vite 8. Build is a static bundle with a relative base path,
-  so it can be served from any static host or sub-path.
+  so it works from any GitHub Pages sub-path.
 - Vitest for unit tests, Playwright (Chromium) for flows.
-- GitHub Actions runs typecheck, unit tests, e2e and build on every push and PR. CI does not
-  deploy anywhere; there is no hosted copy (amended 2026-10-28, GitHub Pages dropped).
+- GitHub Actions runs typecheck, unit tests, e2e and build on every push and PR, and deploys
+  `app/dist` to GitHub Pages on pushes to `main`.
 - No UI component suite. A small hand-written set of panels and fields keeps the bundle lean
   and lets the drafting style of DESIGN.md come through.
 - No external fonts or CDNs at runtime: the font stack falls back to system fonts, so the app
