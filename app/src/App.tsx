@@ -8,7 +8,7 @@ import { loadAutosave, saveBeforeLink } from './store/persist';
 import { prefs, resolveTheme } from './store/prefs';
 import { replaceWork, startRecovery } from './store/recovery';
 import { ui, useUi } from './store/ui';
-import { ArrayDialog, CommandPalette, ShortcutMap, StatusBar, TopBar } from './ui/Chrome';
+import { ArrangeDialog, ArrayDialog, CommandPalette, ShortcutMap, StatusBar, TopBar } from './ui/Chrome';
 import { Library, ObjectsTree } from './ui/LeftPanel';
 import { ChecksPanel, Inspector } from './ui/RightPanel';
 import { ExportDialog, ShareDialog } from './ui/ExportShare';
@@ -157,6 +157,7 @@ export function App() {
       <CommandPalette />
       <ShortcutMap />
       <ArrayDialog />
+      <ArrangeDialog />
       <ExportDialog />
       <ShareDialog />
       <NewProjectDialog />

@@ -278,6 +278,8 @@ select { border: 1px solid var(--line); border-radius: 6px; background: var(--bg
 .sel-box { fill: none; stroke: var(--accent-strong); stroke-width: 1; stroke-dasharray: 4 3; pointer-events: none; }
 .snap-line { stroke: #e0409b; stroke-width: 0.8; stroke-dasharray: 3 3; }
 .snap-marker { fill: none; stroke: #e0409b; stroke-width: 1.5; }
+.snap-gap line { stroke: #e0409b; stroke-width: 1; }
+.snap-gap text { font: 500 11px var(--mono); fill: #e0409b; paint-order: stroke; stroke: var(--canvas); stroke-width: 3px; stroke-linejoin: round; }
 .part-label { font: 500 11px var(--font); fill: var(--text); paint-order: stroke; stroke: var(--canvas); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
 .window-select { fill: rgba(74, 144, 226, 0.08); stroke: var(--accent-strong); stroke-width: 1; }
 .window-select.is-crossing { fill: rgba(63, 143, 90, 0.08); stroke: var(--ok); stroke-dasharray: 5 3; }

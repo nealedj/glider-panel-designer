@@ -36,3 +36,6 @@ Ideas that came up while building and are out of the current milestone's scope.
 - 3D view: fold the flange at its bend lines, once templates carry a bend angle.
 - 3D view: the rear view's depth clip, to hide bodies outside a band.
 - 3D view: draw bracket parts (`mountedTo.bracket`) once they are modelled in 2D.
+- Auto-arrange: pack into the panel outline, avoiding keep-outs, fixings and folds, rather than only tidying rows (ADR 0015).
+- Equal-gap snapping while placing a new part from the library, not only while moving one.
+- Equal-gap snapping by exact cut-to-cut separation rather than boxes, for tighter rows of round instruments.

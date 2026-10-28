@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { bindShortcut, COMMANDS, COMMAND_BY_ID, DEFAULT_SHORTCUT, dialogs, eventShortcut, setView, shortcutConflicts, type CommandDef } from '../editor/commands';
 import { prefs, usePrefs } from '../store/prefs';
-import { circularArray, linearArray, selectionCentre } from '../editor/actions';
+import { autoArrange, circularArray, linearArray, selectionCentre } from '../editor/actions';
 import { docs, useDoc, useHistory } from '../store/app';
 import { ops } from '../store/doc';
 import { ui, useUi, type Tool, type ViewName } from '../store/ui';
@@ -27,6 +27,13 @@ const MENUS: { name: CommandDef['group']; ids: string[] }[] = [
       '-',
       'arrange.distribute-x',
       'arrange.distribute-y',
+      'arrange.distribute-gaps-x',
+      'arrange.distribute-gaps-y',
+      '-',
+      'arrange.centre',
+      'arrange.centre-x',
+      'arrange.centre-y',
+      'arrange.auto',
       '-',
       'arrange.mirror',
       'arrange.linear-array',
@@ -226,7 +233,7 @@ export function StatusBar() {
       </button>
       <span className="snaps">
         Snap
-        {(['grid', 'objects', 'guides'] as const).map((k) => (
+        {(['grid', 'objects', 'gaps', 'guides'] as const).map((k) => (
           <button key={k} className={`chip${snap[k] ? ' is-on' : ''}`} onClick={() => ui.set({ snap: { ...snap, [k]: !snap[k] } })}>
             {k}
           </button>
@@ -535,6 +542,57 @@ export function ArrayDialog() {
             </button>
             <button className="btn primary" onClick={apply}>
               Make array
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ArrangeDialog() {
+  const [open, setOpen] = useState(false);
+  const doc = useDoc();
+  const units = doc.settings.units;
+  const [gap, setGap] = useState<number | null>(null);
+  useEffect(() => {
+    dialogs.openArrange = () => setOpen(true);
+  }, []);
+  if (!open) return null;
+  // Starts at the project's minimum material between cuts: boxes that far apart keep at least that between their cuts.
+  const g = gap ?? doc.settings.minLigamentMm ?? 5;
+  const apply = () => {
+    autoArrange(g);
+    setOpen(false);
+  };
+  return (
+    <div className="overlay" onMouseDown={() => setOpen(false)}>
+      <div
+        className="dialog"
+        onMouseDown={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') setOpen(false);
+          e.stopPropagation();
+        }}
+        role="dialog"
+        aria-label="Auto-arrange"
+      >
+        <header className="panel-head">
+          <h2>Auto-arrange</h2>
+        </header>
+        <div className="pad">
+          <LengthField label="Gap between parts" mm={g} units={units} onCommit={(v) => setGap(Math.max(0, v))} />
+          <p className="muted small">
+            Sorts the selected parts into rows by height, lines up each row&apos;s centres, spaces them {formatLength(g, units)} apart and centres each row on the panel centreline.
+            Parts are spaced by their bezels and by anything behind the panel, including units mounted to them. Rows stay at their heights unless they would come closer than the
+            gap.
+          </p>
+          <div className="dialog-actions">
+            <button className="btn ghost" onClick={() => setOpen(false)}>
+              Cancel
+            </button>
+            <button className="btn primary" onClick={apply}>
+              Arrange
             </button>
           </div>
         </div>

@@ -80,7 +80,7 @@ describe('actions', () => {
 });
 
 describe('snapping', () => {
-  const snap = { grid: true, objects: true, guides: true };
+  const snap = { grid: true, objects: true, guides: true, gaps: false };
   it('snaps a point to a part centre, then to alignment, then to the grid', () => {
     const t = collectTargets(projectGeometry(docs.doc), new Set(), resolveTemplate(docs.doc), [], [], snap);
     expect(snapPoint({ x: -94, y: 41 }, t, snap, 5, 2).point).toEqual({ x: -95, y: 40 });

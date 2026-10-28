@@ -16,7 +16,7 @@ import { dimensionLabel } from '../export/drawing';
 import { PartView, RearPartView } from './PartView';
 import { DepthPanel, StackPanel } from './RearOverlays';
 import { runChecks } from '../checks/checks';
-import { collectTargets, snapMove, snapPoint, type SnapLine, type SnapTargets } from './snap';
+import { collectTargets, snapMove, snapPoint, type SnapGap, type SnapLine, type SnapTargets } from './snap';
 import { canvasSize, toScreen, toWorld, worldMatrix, zoomAt, type Viewport } from './viewport';
 import { resolvePart } from '../model/resolve';
 import { analyse } from '../wiring/circuit';
@@ -30,7 +30,7 @@ const DRAG_PX = 3;
 type Drag =
   | { mode: 'pan'; start: Vec2; centre: Vec2 }
   | { mode: 'press'; start: Vec2; world: Vec2; hit: string }
-  | { mode: 'move'; start: Vec2; world: Vec2; ids: Set<string>; box: Box; anchor: Vec2; targets: SnapTargets; delta: Vec2; lines: SnapLine[] }
+  | { mode: 'move'; start: Vec2; world: Vec2; ids: Set<string>; box: Box; anchor: Vec2; targets: SnapTargets; delta: Vec2; lines: SnapLine[]; gaps: SnapGap[] }
   | { mode: 'window'; start: Vec2; end: Vec2; additive: boolean }
   | { mode: 'keepout'; a: Vec2; b: Vec2 }
   | { mode: 'guide'; axis: 'x' | 'y'; value: number | null };
@@ -393,8 +393,9 @@ export function Canvas() {
     const box = unionBox(boxes)!;
     const hitGeom = geometry.get(d.hit);
     const anchor = hitGeom ? { x: hitGeom.transform.x, y: hitGeom.transform.y } : { x: (box.minX + box.maxX) / 2, y: (box.minY + box.maxY) / 2 };
-    const targets = collectTargets(geometry, ids, template, docs.doc.guides, docs.doc.keepOuts.filter((k) => !ids.has(k.id)), ui.state.snap);
-    return { mode: 'move', start: d.start, world: d.world, ids, box, anchor, targets, delta: { x: 0, y: 0 }, lines: [] };
+    // Equal gaps are kept on the panel face; behind it, bodies stack in depth instead.
+    const targets = collectTargets(geometry, ids, template, docs.doc.guides, docs.doc.keepOuts.filter((k) => !ids.has(k.id)), ui.state.snap, rear ? () => null : undefined);
+    return { mode: 'move', start: d.start, world: d.world, ids, box, anchor, targets, delta: { x: 0, y: 0 }, lines: [], gaps: [] };
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
@@ -423,8 +424,8 @@ export function Canvas() {
       }
       case 'move': {
         const raw = { x: w.x - d.world.x, y: w.y - d.world.y };
-        const res = e.altKey ? { delta: raw, lines: [] } : snapMove(raw, d.box, d.anchor, d.targets, ui.state.snap, grid, tolMm);
-        updateDrag({ ...d, delta: res.delta, lines: res.lines });
+        const res = e.altKey ? { delta: raw, lines: [], gaps: [] } : snapMove(raw, d.box, d.anchor, d.targets, ui.state.snap, grid, tolMm);
+        updateDrag({ ...d, delta: res.delta, lines: res.lines, gaps: res.gaps });
         break;
       }
       case 'window':
@@ -728,6 +729,7 @@ export function Canvas() {
         )}
         {dimStart && tool === 'dimension' && <MeasureOverlay vp={vp} a={dimStart.p} b={snapped?.point ?? dimStart.p} units={units} />}
         {snapped?.marker && tool !== 'select' && <SnapMarker p={toScreen(vp, snapped.marker)} />}
+        {moving?.gaps.map((g, i) => <GapMark key={i} vp={vp} g={g} units={units} />)}
         {measure && tool === 'move' && (
           <MoveOverlay vp={vp} a={measure.a} b={snapped?.point ?? measure.a} units={units} />
         )}
@@ -880,6 +882,25 @@ function OriginMarker({ p }: { p: Vec2 }) {
       <line x1={-10} x2={10} y1={0} y2={0} />
       <line x1={0} x2={0} y1={-10} y2={10} />
       <circle r={4} />
+    </g>
+  );
+}
+
+/** An equal gap while dragging: a span with end ticks and its length. */
+function GapMark({ vp, g, units }: { vp: Viewport; g: SnapGap; units: 'metric' | 'imperial' }) {
+  const pt = (v: number) => toScreen(vp, g.axis === 'x' ? { x: v, y: g.at } : { x: g.at, y: v });
+  const a = pt(g.a);
+  const b = pt(g.b);
+  const t = 5;
+  const tick = (p: Vec2) => (g.axis === 'x' ? { x1: p.x, x2: p.x, y1: p.y - t, y2: p.y + t } : { x1: p.x - t, x2: p.x + t, y1: p.y, y2: p.y });
+  return (
+    <g className="snap-gap" data-testid="snap-gap">
+      <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} />
+      <line {...tick(a)} />
+      <line {...tick(b)} />
+      <text x={(a.x + b.x) / 2 + (g.axis === 'y' ? 8 : 0)} y={(a.y + b.y) / 2 - (g.axis === 'x' ? 8 : 0)} textAnchor={g.axis === 'x' ? 'middle' : 'start'}>
+        {formatLength(g.b - g.a, units)}
+      </text>
     </g>
   );
 }
