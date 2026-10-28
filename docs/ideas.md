@@ -31,3 +31,8 @@ Ideas that came up while building and are out of the current milestone's scope.
 - Schematic: wire numbers on short lines between neighbouring columns can overlap at a busy pin (as at the PIK-20D example's master switch); stagger or drop them where they collide.
 - Objects tree: list wires and routes too, so they can be found and selected without the schematic.
 - Front view: labels for small parts behind the panel (tees) on hover only; they are hidden on the front for now.
+- 3D view: export the assembly as glTF or STL, for CAD or for sharing (ADR 0014).
+- 3D view: a still image among the renders in the export dialog.
+- 3D view: fold the flange at its bend lines, once templates carry a bend angle.
+- 3D view: the rear view's depth clip, to hide bodies outside a band.
+- 3D view: draw bracket parts (`mountedTo.bracket`) once they are modelled in 2D.

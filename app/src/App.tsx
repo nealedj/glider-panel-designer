@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import type { Project } from './model/schema';
 import { Canvas } from './editor/Canvas';
 import { fitAll, handleKey, openProjectFile } from './editor/commands';
@@ -19,6 +19,9 @@ import { ReviewCentre, ReviewLeft, ReviewRight } from './review/ReviewView';
 import { SchematicView } from './wiring/ui/SchematicView';
 import { NewProjectDialog, Walkthrough, Welcome } from './ui/Onboarding';
 import { ErrorBoundary, RecoverDialog } from './ui/Recovery';
+
+// three.js is large, so the 3D view loads only when it is first opened.
+const View3D = lazy(() => import('./view3d/View3D'));
 
 export function App() {
   const theme = useUi((s) => s.theme);
@@ -139,7 +142,7 @@ export function App() {
             </ErrorBoundary>
           </aside>
           <main className="centre">
-            <ErrorBoundary area="centre">{ready && (view === 'schematic' ? <SchematicView /> : <Canvas />)}</ErrorBoundary>
+            <ErrorBoundary area="centre">{ready && (view === 'schematic' ? <SchematicView /> : view === '3d' ? <Suspense fallback={<div className="view3d-loading muted">Loading the 3D view…</div>}><View3D /></Suspense> : <Canvas />)}</ErrorBoundary>
             <Walkthrough />
           </main>
           <aside className="right">

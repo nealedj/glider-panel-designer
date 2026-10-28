@@ -627,3 +627,17 @@ li.is-done .walk-num { border-color: var(--ok); color: var(--ok); }
 .crash pre { white-space: pre-wrap; font: 11px var(--mono); color: var(--muted); }
 .snapshot-list li .export-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .snapshot-list .btn.small { margin: 0; }
+
+/* ---------------------------------------------------------------- 3D view */
+.view3d { position: absolute; inset: 0; overflow: hidden; background: var(--canvas); user-select: none; }
+.view3d-canvas { position: absolute; inset: 0; touch-action: none; }
+.view3d-canvas canvas { display: block; }
+.view3d-canvas.is-hot { cursor: pointer; }
+.view3d-bar .sep { width: 1px; align-self: stretch; background: var(--line); }
+.view3d-tip { position: absolute; z-index: 3; pointer-events: none; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; font-size: 12px; box-shadow: var(--shadow); white-space: nowrap; }
+.view3d-notes { position: absolute; left: 8px; bottom: 8px; z-index: 2; max-width: min(560px, calc(100% - 16px)); display: flex; flex-direction: column; gap: 4px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; box-shadow: var(--shadow); }
+.view3d-notes ul { margin: 0; padding-left: 18px; color: var(--text); }
+.view3d-legend { display: flex; gap: 4px; align-items: center; color: var(--muted); flex-wrap: wrap; }
+.view3d-legend .swatch { width: 10px; height: 10px; border-radius: 2px; border: 1px solid var(--line-strong); margin-left: 6px; }
+.view3d-legend .swatch:first-child { margin-left: 0; }
+.view3d-failed, .view3d-loading { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; }

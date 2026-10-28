@@ -106,6 +106,7 @@ const VIEWS: { view: ViewName; label: string; ready: boolean; note?: string }[] 
   { view: 'front', label: 'Front', ready: true, note: 'Front view, as the pilot sees it (V)' },
   { view: 'rear', label: 'Rear', ready: true, note: 'Rear view, as the fitter sees it from behind (V)' },
   { view: 'schematic', label: 'Schematic', ready: true, note: 'Wiring as a block diagram, laid out automatically' },
+  { view: '3d', label: '3D', ready: true, note: 'The panel, parts and wiring in 3D, to look at the fit from any side' },
   { view: 'template', label: 'Template', ready: true, note: 'Make a panel template from a scan or photo' },
   { view: 'review', label: 'Review', ready: true, note: 'Review catalogue values found by the discovery tools' },
 ];
@@ -139,6 +140,10 @@ export function TopBar() {
         {view === 'review' ? (
           <div className="toolbar tpl-toolbar-hint" role="toolbar" aria-label="Tools">
             <span className="muted small">Review · accept each value only if its source says so · values only the shop gives stay out of the catalogue</span>
+          </div>
+        ) : view === '3d' ? (
+          <div className="toolbar tpl-toolbar-hint" role="toolbar" aria-label="Tools">
+            <span className="muted small">3D view · look only: edit in the inspector or the front, rear and schematic views · 1 front, 2 rear, 3 above and behind, F fit</span>
           </div>
         ) : view === 'template' ? (
           <div className="toolbar tpl-toolbar-hint" role="toolbar" aria-label="Tools">
@@ -179,6 +184,8 @@ export function TopBar() {
   );
 }
 
+const HINT_3D = 'Drag to orbit · right-drag to pan · wheel to zoom · click a part, wire or loom to select it';
+
 const HINTS: Record<Tool, string> = {
   select: 'Click to select · drag to move · drag empty space to window-select · Space+drag or middle-drag to pan',
   place: 'Click to place · Esc to finish',
@@ -199,6 +206,7 @@ export function StatusBar() {
   const tool = useUi((s) => s.tool);
   const selection = useUi((s) => s.selection);
   const message = useUi((s) => s.message);
+  const view = useUi((s) => s.view);
   const units = doc.settings.units;
   const [gridText, setGridText] = useState(String(toDisplay(doc.settings.gridMm, units)));
   useEffect(() => setGridText(String(toDisplay(doc.settings.gridMm, units))), [doc.settings.gridMm, units]);
@@ -231,7 +239,7 @@ export function StatusBar() {
       </label>
       <span className="mono">{Math.round(zoom * 100) / 100} px/mm</span>
       <span>{selection.length} selected</span>
-      <span className="hint">{message || HINTS[tool]}</span>
+      <span className="hint">{message || (view === '3d' ? HINT_3D : HINTS[tool])}</span>
     </footer>
   );
 }
