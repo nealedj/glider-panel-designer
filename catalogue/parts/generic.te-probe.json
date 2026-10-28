@@ -1,0 +1,80 @@
+{
+  "id": "generic.te-probe",
+  "version": 1,
+  "maker": "Generic",
+  "model": "TE probe",
+  "category": "pneumatic",
+  "description": "Total-energy probe, off the panel.",
+  "generator": "generic.te-probe",
+  "params": {},
+  "connectors": [],
+  "ports": [
+    {
+      "id": "TE",
+      "kind": "te",
+      "fitting": null,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": true,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "ports": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

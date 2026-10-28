@@ -1,0 +1,150 @@
+{
+  "id": "generic.breaker",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Push-pull circuit breaker",
+  "category": "breaker",
+  "description": "Bushing-mounted push-pull circuit breaker. Set the rating per placed part.",
+  "generator": "generic.breaker",
+  "params": {
+    "holeD": {
+      "label": "Hole diameter",
+      "value": 9.6,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "nutD": {
+      "label": "Nut / bezel diameter",
+      "value": 16,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyD": {
+      "label": "Body diameter",
+      "value": 18,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 50,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Button protrusion",
+      "value": 15,
+      "unit": "mm",
+      "min": 0
+    },
+    "ratingA": {
+      "label": "Rating",
+      "value": 5,
+      "unit": "A",
+      "min": 0.1
+    }
+  },
+  "connectors": [
+    {
+      "id": "T",
+      "type": "screw terminal",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "LINE",
+          "function": "line",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "LOAD",
+          "function": "load",
+          "signal": "power",
+          "direction": "out"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 9.6
+      }
+    ],
+    "bezel": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 16
+    },
+    "screwHoles": [],
+    "protrusion": 15
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 18
+    },
+    "depth": 50,
+    "bracketPoints": []
+  },
+  "ratingA": 5,
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

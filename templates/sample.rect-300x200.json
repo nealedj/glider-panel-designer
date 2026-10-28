@@ -1,0 +1,65 @@
+{
+  "id": "sample.rect-300x200",
+  "version": 1,
+  "name": "Sample rectangular panel, 300 x 200 mm",
+  "outline": {
+    "kind": "poly",
+    "closed": true,
+    "points": [
+      {
+        "x": -150,
+        "y": -100
+      },
+      {
+        "x": 150,
+        "y": -100
+      },
+      {
+        "x": 150,
+        "y": 100
+      },
+      {
+        "x": -150,
+        "y": 100
+      }
+    ]
+  },
+  "bendLines": [],
+  "thickness": 2,
+  "material": "Glass fibre (GRP)",
+  "keepOuts": [],
+  "canopyClearance": null,
+  "availableDepth": {
+    "default": 180,
+    "regions": []
+  },
+  "fixings": [
+    {
+      "x": -140,
+      "y": -90,
+      "d": 4.2
+    },
+    {
+      "x": 140,
+      "y": -90,
+      "d": 4.2
+    },
+    {
+      "x": -140,
+      "y": 90,
+      "d": 4.2
+    },
+    {
+      "x": 140,
+      "y": 90,
+      "d": 4.2
+    }
+  ],
+  "gliderTypes": [],
+  "provenance": {
+    "inputType": "drawn",
+    "source": "Synthetic sample for tests and first-run; not a real glider panel.",
+    "accuracyMm": 0
+  },
+  "status": "draft"
+}

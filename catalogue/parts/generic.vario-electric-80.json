@@ -1,0 +1,280 @@
+{
+  "id": "generic.vario-electric-80",
+  "version": 1,
+  "maker": "Generic",
+  "model": "80 mm electric vario",
+  "category": "vario",
+  "description": "Electric variometer, 80 mm: power, two serial data ports, and pitot, static and TE ports.",
+  "generator": "generic.vario-electric-80",
+  "params": {
+    "currentA": {
+      "label": "Current draw (placeholder)",
+      "value": 0.15,
+      "unit": "A",
+      "min": 0
+    },
+    "cutoutD": {
+      "label": "Cutout diameter",
+      "value": 80,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezel": {
+      "label": "Bezel size",
+      "value": 81,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezelR": {
+      "label": "Bezel corner radius",
+      "value": 5,
+      "unit": "mm",
+      "min": 0
+    },
+    "screwSpacing": {
+      "label": "Screw spacing (square)",
+      "value": 66,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "screwD": {
+      "label": "Screw hole diameter",
+      "value": 4.2,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyD": {
+      "label": "Body diameter",
+      "value": 80,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 120,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Protrusion",
+      "value": 10,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "PWR",
+      "type": "power",
+      "x": -20,
+      "y": -25,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "supply +",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "S1",
+      "type": "data",
+      "x": 0,
+      "y": -25,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "TX",
+          "function": "serial TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "RX",
+          "function": "serial RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "signal ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "type": "data",
+      "x": 20,
+      "y": -25,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "TX",
+          "function": "serial TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "RX",
+          "function": "serial RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "signal ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "id": "P",
+      "kind": "pitot",
+      "fitting": null,
+      "x": -20,
+      "y": 20
+    },
+    {
+      "id": "S",
+      "kind": "static",
+      "fitting": null,
+      "x": 0,
+      "y": 20
+    },
+    {
+      "id": "TE",
+      "kind": "te",
+      "fitting": null,
+      "x": 20,
+      "y": 20
+    }
+  ],
+  "power": {
+    "currentA": 0.15,
+    "voltage": null
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 80
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 81,
+      "h": 81,
+      "r": 5
+    },
+    "screwHoles": [
+      {
+        "x": -33,
+        "y": 33,
+        "d": 4.2
+      },
+      {
+        "x": 33,
+        "y": 33,
+        "d": 4.2
+      },
+      {
+        "x": -33,
+        "y": -33,
+        "d": 4.2
+      },
+      {
+        "x": 33,
+        "y": -33,
+        "d": 4.2
+      }
+    ],
+    "protrusion": 10
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 80
+    },
+    "depth": 120,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Estimated from a photo of 57 and 80 mm panel-marking templates (no scale reference, about ±3 mm). Measure your instrument or template before drilling."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "ports": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "power.currentA": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

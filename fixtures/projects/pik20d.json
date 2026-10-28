@@ -1,0 +1,1827 @@
+{
+  "schemaVersion": 1,
+  "id": "pik20d",
+  "name": "PIK-20D T-panel",
+  "gliderType": "PIK-20D",
+  "registration": "",
+  "author": "",
+  "revision": 0,
+  "created": "2026-10-14T00:00:00.000Z",
+  "modified": "2026-10-14T00:00:00.000Z",
+  "template": {
+    "ref": {
+      "id": "pik20d.t-panel-mockup",
+      "version": 1
+    }
+  },
+  "parts": [
+    {
+      "id": "asi",
+      "part": {
+        "id": "generic.asi-80",
+        "version": 1
+      },
+      "x": -102.13,
+      "y": 276.63,
+      "rotation": 0,
+      "label": "ASI",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "xctn",
+      "part": {
+        "id": "generic.flight-computer",
+        "version": 1
+      },
+      "params": {
+        "cutoutW": 100,
+        "cutoutH": 156,
+        "cutoutR": 4
+      },
+      "x": -4.24,
+      "y": 240.71,
+      "rotation": 0,
+      "label": "XCTouchNav 5.7\"",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "xcv",
+      "part": {
+        "id": "generic.vario-electric-80",
+        "version": 1
+      },
+      "x": 100.69,
+      "y": 282.69,
+      "rotation": 0,
+      "label": "XCVario",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "fdisp",
+      "part": {
+        "id": "generic.flarm-display",
+        "version": 1
+      },
+      "params": {
+        "cutoutW": 47,
+        "cutoutH": 14
+      },
+      "x": -160,
+      "y": 211.63,
+      "rotation": 0,
+      "label": "FLARM display",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "compass",
+      "part": {
+        "id": "generic.round-57",
+        "version": 1
+      },
+      "x": -92.08,
+      "y": 193.85,
+      "rotation": 0,
+      "label": "Compass",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "radio",
+      "part": {
+        "id": "generic.radio-57",
+        "version": 1
+      },
+      "x": 92.99,
+      "y": 195.76,
+      "rotation": 0,
+      "label": "Radio",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "phone",
+      "part": {
+        "id": "generic.phone-mount-base",
+        "version": 1
+      },
+      "params": {
+        "plateW": 56,
+        "plateH": 49
+      },
+      "x": 161.94,
+      "y": 209.39,
+      "rotation": 0,
+      "label": "Phone mount",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "alt",
+      "part": {
+        "id": "generic.altimeter-80",
+        "version": 1
+      },
+      "x": 0.74,
+      "y": 100.51,
+      "rotation": 0,
+      "label": "Altimeter",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "ms",
+      "part": {
+        "id": "generic.toggle-switch",
+        "version": 1
+      },
+      "x": -53,
+      "y": 110,
+      "rotation": 0,
+      "label": "Master",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "f1",
+      "part": {
+        "id": "generic.fuse-holder",
+        "version": 1
+      },
+      "params": {
+        "ratingA": 2
+      },
+      "x": -53,
+      "y": 88,
+      "rotation": 0,
+      "label": "F1 XCVario",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "f2",
+      "part": {
+        "id": "generic.fuse-holder",
+        "version": 1
+      },
+      "params": {
+        "ratingA": 2
+      },
+      "x": -53,
+      "y": 66,
+      "rotation": 0,
+      "label": "F2 FLARM",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "f3",
+      "part": {
+        "id": "generic.fuse-holder",
+        "version": 1
+      },
+      "params": {
+        "ratingA": 3
+      },
+      "x": 54,
+      "y": 110,
+      "rotation": 0,
+      "label": "F3 XCTouchNav",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "f4",
+      "part": {
+        "id": "generic.fuse-holder",
+        "version": 1
+      },
+      "params": {
+        "ratingA": 5
+      },
+      "x": 54,
+      "y": 88,
+      "rotation": 0,
+      "label": "F4 Radio",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "flarm",
+      "part": {
+        "id": "generic.flarm-unit",
+        "version": 1
+      },
+      "x": -4.24,
+      "y": 240.71,
+      "rotation": 0,
+      "label": "FLARM unit",
+      "mountedTo": {
+        "parent": "xctn",
+        "dx": 0,
+        "dy": 0,
+        "dz": 45
+      },
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "tee1",
+      "part": {
+        "id": "generic.tee",
+        "version": 1
+      },
+      "x": -30,
+      "y": 150,
+      "rotation": 0,
+      "label": "Pitot tee",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "tee2",
+      "part": {
+        "id": "generic.tee",
+        "version": 1
+      },
+      "x": 0,
+      "y": 150,
+      "rotation": 0,
+      "label": "Static tee 1",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "tee3",
+      "part": {
+        "id": "generic.tee",
+        "version": 1
+      },
+      "x": 30,
+      "y": 150,
+      "rotation": 0,
+      "label": "Static tee 2",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "bat",
+      "part": {
+        "id": "generic.battery",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "Battery",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "f0",
+      "part": {
+        "id": "generic.inline-fuse",
+        "version": 1
+      },
+      "params": {
+        "ratingA": 5
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "F0 Main",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "ptt",
+      "part": {
+        "id": "generic.ptt",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "Stick PTT",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "vhf",
+      "part": {
+        "id": "generic.antenna",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "VHF antenna",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "fant",
+      "part": {
+        "id": "generic.antenna",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "FLARM antenna",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pitot",
+      "part": {
+        "id": "generic.pitot",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "Pitot",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "static",
+      "part": {
+        "id": "generic.static",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "Static",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "te",
+      "part": {
+        "id": "generic.te-probe",
+        "version": 1
+      },
+      "x": 0,
+      "y": 55,
+      "rotation": 0,
+      "label": "TE probe",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "spk",
+      "part": {
+        "id": "generic.speaker",
+        "version": 1
+      },
+      "x": 150,
+      "y": 250,
+      "rotation": 0,
+      "label": "Speaker",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    }
+  ],
+  "customParts": [],
+  "keepOuts": [],
+  "guides": [],
+  "texts": [],
+  "dimensions": [],
+  "nets": [
+    {
+      "id": "nmv8izji82w0",
+      "name": "PWR 1",
+      "type": "power",
+      "members": [
+        {
+          "part": "bat",
+          "connector": "T",
+          "pin": "+"
+        },
+        {
+          "part": "f0",
+          "connector": "T",
+          "pin": "LINE"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izji84xg",
+      "name": "PWR 2",
+      "type": "power",
+      "members": [
+        {
+          "part": "f0",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "ms",
+          "connector": "T",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izji96fz",
+      "name": "PWR 3",
+      "type": "power",
+      "members": [
+        {
+          "part": "ms",
+          "connector": "T",
+          "pin": "2"
+        },
+        {
+          "part": "f1",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "f2",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "f3",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "f4",
+          "connector": "T",
+          "pin": "LINE"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjiabuf",
+      "name": "PWR 4",
+      "type": "power",
+      "members": [
+        {
+          "part": "f1",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "xcv",
+          "connector": "PWR",
+          "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjiadzf",
+      "name": "PWR 5",
+      "type": "power",
+      "members": [
+        {
+          "part": "f2",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "flarm",
+          "connector": "PWR",
+          "pin": "+"
+        },
+        {
+          "part": "fdisp",
+          "connector": "PWR",
+          "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjibgnv",
+      "name": "PWR 6",
+      "type": "power",
+      "members": [
+        {
+          "part": "f3",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "xctn",
+          "connector": "PWR",
+          "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjibinf",
+      "name": "PWR 7",
+      "type": "power",
+      "members": [
+        {
+          "part": "f4",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "radio",
+          "connector": "PWR",
+          "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjickq0",
+      "name": "GND",
+      "type": "ground",
+      "members": [
+        {
+          "part": "xcv",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "bat",
+          "connector": "T",
+          "pin": "-"
+        },
+        {
+          "part": "flarm",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "fdisp",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "xctn",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "radio",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "ptt",
+          "connector": "T",
+          "pin": "2"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjieq8j",
+      "name": "DATA 1",
+      "type": "data",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "P1",
+          "pin": "TX"
+        },
+        {
+          "part": "fdisp",
+          "connector": "DATA",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjies7e",
+      "name": "DATA 2",
+      "type": "data",
+      "members": [
+        {
+          "part": "fdisp",
+          "connector": "DATA",
+          "pin": "TX"
+        },
+        {
+          "part": "flarm",
+          "connector": "P1",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjifu49",
+      "name": "GND 2",
+      "type": "ground",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "P1",
+          "pin": "GND"
+        },
+        {
+          "part": "fdisp",
+          "connector": "DATA",
+          "pin": "GND"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjifwr8",
+      "name": "DATA 3",
+      "type": "data",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "P2",
+          "pin": "TX"
+        },
+        {
+          "part": "xcv",
+          "connector": "S1",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjigy2l",
+      "name": "DATA 4",
+      "type": "data",
+      "members": [
+        {
+          "part": "xcv",
+          "connector": "S1",
+          "pin": "TX"
+        },
+        {
+          "part": "flarm",
+          "connector": "P2",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjig1071",
+      "name": "GND 3",
+      "type": "ground",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "P2",
+          "pin": "GND"
+        },
+        {
+          "part": "xcv",
+          "connector": "S1",
+          "pin": "GND"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjih123e",
+      "name": "DATA 5",
+      "type": "data",
+      "members": [
+        {
+          "part": "xcv",
+          "connector": "S2",
+          "pin": "TX"
+        },
+        {
+          "part": "xctn",
+          "connector": "DATA",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjih149v",
+      "name": "DATA 6",
+      "type": "data",
+      "members": [
+        {
+          "part": "xctn",
+          "connector": "DATA",
+          "pin": "TX"
+        },
+        {
+          "part": "xcv",
+          "connector": "S2",
+          "pin": "RX"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjii16nr",
+      "name": "GND 4",
+      "type": "ground",
+      "members": [
+        {
+          "part": "xcv",
+          "connector": "S2",
+          "pin": "GND"
+        },
+        {
+          "part": "xctn",
+          "connector": "DATA",
+          "pin": "GND"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjii18ge",
+      "name": "AUD 1",
+      "type": "audio",
+      "members": [
+        {
+          "part": "radio",
+          "connector": "AUD",
+          "pin": "SPK+"
+        },
+        {
+          "part": "spk",
+          "connector": "T",
+          "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjij1ayb",
+      "name": "AUD 2",
+      "type": "audio",
+      "members": [
+        {
+          "part": "radio",
+          "connector": "AUD",
+          "pin": "SPK-"
+        },
+        {
+          "part": "spk",
+          "connector": "T",
+          "pin": "-"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjij1cc6",
+      "name": "SW 1",
+      "type": "switch",
+      "members": [
+        {
+          "part": "radio",
+          "connector": "AUD",
+          "pin": "PTT"
+        },
+        {
+          "part": "ptt",
+          "connector": "T",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjil1fxr",
+      "name": "RF 1",
+      "type": "rf",
+      "members": [
+        {
+          "part": "radio",
+          "connector": "ANT",
+          "pin": "RF"
+        },
+        {
+          "part": "vhf",
+          "connector": "ANT",
+          "pin": "RF"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjil1hwg",
+      "name": "RF 2",
+      "type": "rf",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "ANT",
+          "pin": "RF"
+        },
+        {
+          "part": "fant",
+          "connector": "ANT",
+          "pin": "RF"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjim1jem",
+      "name": "PITOT",
+      "type": "pitot",
+      "members": [
+        {
+          "part": "pitot",
+          "port": "P"
+        },
+        {
+          "part": "tee1",
+          "port": "A"
+        },
+        {
+          "part": "tee1",
+          "port": "B"
+        },
+        {
+          "part": "asi",
+          "port": "P"
+        },
+        {
+          "part": "tee1",
+          "port": "C"
+        },
+        {
+          "part": "xcv",
+          "port": "P"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjip1nc5",
+      "name": "STATIC",
+      "type": "static",
+      "members": [
+        {
+          "part": "static",
+          "port": "S"
+        },
+        {
+          "part": "tee2",
+          "port": "A"
+        },
+        {
+          "part": "tee2",
+          "port": "B"
+        },
+        {
+          "part": "asi",
+          "port": "S"
+        },
+        {
+          "part": "tee2",
+          "port": "C"
+        },
+        {
+          "part": "tee3",
+          "port": "A"
+        },
+        {
+          "part": "tee3",
+          "port": "B"
+        },
+        {
+          "part": "alt",
+          "port": "S"
+        },
+        {
+          "part": "tee3",
+          "port": "C"
+        },
+        {
+          "part": "xcv",
+          "port": "S"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmv8izjiq1tex",
+      "name": "TE",
+      "type": "te",
+      "members": [
+        {
+          "part": "te",
+          "port": "TE"
+        },
+        {
+          "part": "xcv",
+          "port": "TE"
+        }
+      ],
+      "protection": null
+    }
+  ],
+  "wires": [
+    {
+      "id": "wmv8izji71cc",
+      "net": "nmv8izji82w0",
+      "from": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "+"
+      },
+      "to": {
+        "part": "f0",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W001",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izji83sx",
+      "net": "nmv8izji84xg",
+      "from": {
+        "part": "f0",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "ms",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W002",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izji95fi",
+      "net": "nmv8izji96fz",
+      "from": {
+        "part": "ms",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "f1",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W003",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izji97o5",
+      "net": "nmv8izji96fz",
+      "from": {
+        "part": "f1",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "f2",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W004",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izji98a2",
+      "net": "nmv8izji96fz",
+      "from": {
+        "part": "f2",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "f3",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W005",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjia962",
+      "net": "nmv8izji96fz",
+      "from": {
+        "part": "f3",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "f4",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W006",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjiaaih",
+      "net": "nmv8izjiabuf",
+      "from": {
+        "part": "f1",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "xcv",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W007",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjiacc8",
+      "net": "nmv8izjiadzf",
+      "from": {
+        "part": "f2",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "flarm",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W008",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjibev1",
+      "net": "nmv8izjiadzf",
+      "from": {
+        "part": "f2",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "fdisp",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W009",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjibf9i",
+      "net": "nmv8izjibgnv",
+      "from": {
+        "part": "f3",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "xctn",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W010",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjibhtx",
+      "net": "nmv8izjibinf",
+      "from": {
+        "part": "f4",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "radio",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W011",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjicj2i",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "xcv",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W012",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjicli6",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "flarm",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W013",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjicmp6",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "fdisp",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W014",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjidn3s",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "xctn",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W015",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjidocn",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "radio",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W016",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjiepce",
+      "net": "nmv8izjieq8j",
+      "from": {
+        "part": "flarm",
+        "connector": "P1",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "fdisp",
+        "connector": "DATA",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "blue",
+      "label": "W017",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjierig",
+      "net": "nmv8izjies7e",
+      "from": {
+        "part": "fdisp",
+        "connector": "DATA",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "flarm",
+        "connector": "P1",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "white",
+      "label": "W018",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjiet3m",
+      "net": "nmv8izjifu49",
+      "from": {
+        "part": "flarm",
+        "connector": "P1",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "fdisp",
+        "connector": "DATA",
+        "pin": "GND"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W019",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjifvw6",
+      "net": "nmv8izjifwr8",
+      "from": {
+        "part": "flarm",
+        "connector": "P2",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "xcv",
+        "connector": "S1",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "orange",
+      "label": "W020",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjifxzf",
+      "net": "nmv8izjigy2l",
+      "from": {
+        "part": "xcv",
+        "connector": "S1",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "flarm",
+        "connector": "P2",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "violet",
+      "label": "W021",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjigzty",
+      "net": "nmv8izjig1071",
+      "from": {
+        "part": "flarm",
+        "connector": "P2",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "xcv",
+        "connector": "S1",
+        "pin": "GND"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W022",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjig11pb",
+      "net": "nmv8izjih123e",
+      "from": {
+        "part": "xcv",
+        "connector": "S2",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "xctn",
+        "connector": "DATA",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "grey",
+      "label": "W023",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjih1350",
+      "net": "nmv8izjih149v",
+      "from": {
+        "part": "xctn",
+        "connector": "DATA",
+        "pin": "TX"
+      },
+      "to": {
+        "part": "xcv",
+        "connector": "S2",
+        "pin": "RX"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "yellow",
+      "label": "W024",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjih15gh",
+      "net": "nmv8izjii16nr",
+      "from": {
+        "part": "xcv",
+        "connector": "S2",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "xctn",
+        "connector": "DATA",
+        "pin": "GND"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W025",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjii17bd",
+      "net": "nmv8izjii18ge",
+      "from": {
+        "part": "radio",
+        "connector": "AUD",
+        "pin": "SPK+"
+      },
+      "to": {
+        "part": "spk",
+        "connector": "T",
+        "pin": "+"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "shielded pair",
+      "label": "W026",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjij197e",
+      "net": "nmv8izjij1ayb",
+      "from": {
+        "part": "radio",
+        "connector": "AUD",
+        "pin": "SPK-"
+      },
+      "to": {
+        "part": "spk",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "shielded pair",
+      "label": "W027",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjij1bki",
+      "net": "nmv8izjij1cc6",
+      "from": {
+        "part": "radio",
+        "connector": "AUD",
+        "pin": "PTT"
+      },
+      "to": {
+        "part": "ptt",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "white",
+      "label": "W028",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjik1dw9",
+      "net": "nmv8izjickq0",
+      "from": {
+        "part": "ptt",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W029",
+      "route": "rmv8izjiq1ur3",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjik1e6n",
+      "net": "nmv8izjil1fxr",
+      "from": {
+        "part": "radio",
+        "connector": "ANT",
+        "pin": "RF"
+      },
+      "to": {
+        "part": "vhf",
+        "connector": "ANT",
+        "pin": "RF"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "coax",
+      "label": "W030",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjil1gnn",
+      "net": "nmv8izjil1hwg",
+      "from": {
+        "part": "flarm",
+        "connector": "ANT",
+        "pin": "RF"
+      },
+      "to": {
+        "part": "fant",
+        "connector": "ANT",
+        "pin": "RF"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "coax",
+      "label": "W031",
+      "route": "rmv8izjiq1vno",
+      "sizeAuto": true
+    },
+    {
+      "id": "wmv8izjim1iap",
+      "net": "nmv8izjim1jem",
+      "from": {
+        "part": "pitot",
+        "port": "P"
+      },
+      "to": {
+        "part": "tee1",
+        "port": "A"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "green tube",
+      "label": "P01",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjim1kvv",
+      "net": "nmv8izjim1jem",
+      "from": {
+        "part": "tee1",
+        "port": "B"
+      },
+      "to": {
+        "part": "asi",
+        "port": "P"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "green tube",
+      "label": "P02",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjio1lqv",
+      "net": "nmv8izjim1jem",
+      "from": {
+        "part": "tee1",
+        "port": "C"
+      },
+      "to": {
+        "part": "xcv",
+        "port": "P"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "green tube",
+      "label": "P03",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjio1mgu",
+      "net": "nmv8izjip1nc5",
+      "from": {
+        "part": "static",
+        "port": "S"
+      },
+      "to": {
+        "part": "tee2",
+        "port": "A"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "clear tube",
+      "label": "S01",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjip1o2y",
+      "net": "nmv8izjip1nc5",
+      "from": {
+        "part": "tee2",
+        "port": "B"
+      },
+      "to": {
+        "part": "asi",
+        "port": "S"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "clear tube",
+      "label": "S02",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjip1pnm",
+      "net": "nmv8izjip1nc5",
+      "from": {
+        "part": "tee2",
+        "port": "C"
+      },
+      "to": {
+        "part": "tee3",
+        "port": "A"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "clear tube",
+      "label": "S03",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjip1qkr",
+      "net": "nmv8izjip1nc5",
+      "from": {
+        "part": "tee3",
+        "port": "B"
+      },
+      "to": {
+        "part": "alt",
+        "port": "S"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "clear tube",
+      "label": "S04",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjiq1rwz",
+      "net": "nmv8izjip1nc5",
+      "from": {
+        "part": "tee3",
+        "port": "C"
+      },
+      "to": {
+        "part": "xcv",
+        "port": "S"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "clear tube",
+      "label": "S05",
+      "route": null,
+      "sizeAuto": false
+    },
+    {
+      "id": "wmv8izjiq1ssa",
+      "net": "nmv8izjiq1tex",
+      "from": {
+        "part": "te",
+        "port": "TE"
+      },
+      "to": {
+        "part": "xcv",
+        "port": "TE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": 4,
+      "colour": "blue tube",
+      "label": "T01",
+      "route": null,
+      "sizeAuto": false
+    }
+  ],
+  "routes": [
+    {
+      "id": "rmv8izjiq1ur3",
+      "label": "Stem loom",
+      "points": [
+        {
+          "x": 0,
+          "y": 55,
+          "z": 130
+        },
+        {
+          "x": 0,
+          "y": 165,
+          "z": 130
+        }
+      ],
+      "ties": []
+    },
+    {
+      "id": "rmv8izjiq1vno",
+      "label": "Top loom",
+      "points": [
+        {
+          "x": -150,
+          "y": 205,
+          "z": 130
+        },
+        {
+          "x": 0,
+          "y": 165,
+          "z": 130
+        },
+        {
+          "x": 110,
+          "y": 245,
+          "z": 130
+        }
+      ],
+      "ties": []
+    }
+  ],
+  "settings": {
+    "units": "metric",
+    "gridMm": 5,
+    "endAllowanceMm": 50,
+    "minLigamentMm": 5,
+    "minEdgeDistanceMm": 8,
+    "minBendDistanceMm": 10,
+    "compassMinDistanceMm": null,
+    "systemVoltage": 12,
+    "voltageDropLimitV": 0.5,
+    "wireTempRatingC": 105,
+    "protectorDerating": 0.8,
+    "minWireAwg": 22,
+    "labelWidthMm": 40,
+    "labelHeightMm": 12
+  }
+}

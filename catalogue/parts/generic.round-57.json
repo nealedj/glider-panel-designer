@@ -1,0 +1,155 @@
+{
+  "id": "generic.round-57",
+  "version": 1,
+  "maker": "Generic",
+  "model": "57 mm round instrument",
+  "category": "instrument",
+  "description": "Standard 57 mm round instrument with a square bezel and four corner screws.",
+  "generator": "generic.round-57",
+  "params": {
+    "cutoutD": {
+      "label": "Cutout diameter",
+      "value": 57,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezel": {
+      "label": "Bezel size",
+      "value": 61,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezelR": {
+      "label": "Bezel corner radius",
+      "value": 5,
+      "unit": "mm",
+      "min": 0
+    },
+    "screwSpacing": {
+      "label": "Screw spacing (square)",
+      "value": 47,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "screwD": {
+      "label": "Screw hole diameter",
+      "value": 3.5,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyD": {
+      "label": "Body diameter",
+      "value": 57,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 100,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Protrusion",
+      "value": 10,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 61,
+      "h": 61,
+      "r": 5
+    },
+    "screwHoles": [
+      {
+        "x": -23.5,
+        "y": 23.5,
+        "d": 3.5
+      },
+      {
+        "x": 23.5,
+        "y": 23.5,
+        "d": 3.5
+      },
+      {
+        "x": -23.5,
+        "y": -23.5,
+        "d": 3.5
+      },
+      {
+        "x": 23.5,
+        "y": -23.5,
+        "d": 3.5
+      }
+    ],
+    "protrusion": 10
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 57
+    },
+    "depth": 100,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Estimated from a photo of 57 and 80 mm panel-marking templates (no scale reference, about ±3 mm). Measure your instrument or template before drilling."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

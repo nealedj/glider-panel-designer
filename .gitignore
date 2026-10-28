@@ -1,0 +1,18 @@
+PROJECT.md
+# The project brief and its source photos stay local; copies of the photos live in fixtures/pik20d/.
+/glider-panel-designer-brief.md
+/*.jpg
+
+# Crawler site config and caches: never committed (see CLAUDE.md rules 6 and 7).
+local/
+cache/
+
+node_modules/
+dist/
+app/test-results/
+app/playwright-report/
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
+*.egg-info/

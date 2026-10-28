@@ -1,0 +1,103 @@
+{
+  "id": "generic.inline-fuse",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Inline fuse",
+  "category": "fuse",
+  "description": "Inline fuse holder in the loom, e.g. the main fuse at the battery. Set the rating per placed part.",
+  "generator": "generic.inline-fuse",
+  "params": {
+    "ratingA": {
+      "label": "Fuse rating",
+      "value": 5,
+      "unit": "A",
+      "min": 0.1
+    }
+  },
+  "connectors": [
+    {
+      "id": "T",
+      "type": "inline",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "LINE",
+          "function": "line",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "LOAD",
+          "function": "load",
+          "signal": "power",
+          "direction": "out"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": true,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "ratingA": 5,
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

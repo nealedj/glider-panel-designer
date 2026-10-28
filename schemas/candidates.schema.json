@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "const": "gpd-candidates"
+    },
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "generated": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "retailer",
+              "manual",
+              "maker-page",
+              "user"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "fetchedAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "makerHosted": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "url"
+        ]
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "maker": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "instrument",
+                  "vario",
+                  "flight-computer",
+                  "display",
+                  "radio",
+                  "transponder",
+                  "flarm",
+                  "compass",
+                  "switch",
+                  "breaker",
+                  "fuse",
+                  "connector",
+                  "mount",
+                  "placard",
+                  "bracket",
+                  "pneumatic",
+                  "power",
+                  "antenna",
+                  "audio",
+                  "other"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "variant": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reference": {
+            "default": false,
+            "type": "boolean"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "value": {},
+                "snippet": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "method": {
+                  "type": "string"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "value",
+                "snippet",
+                "source",
+                "url",
+                "confidence",
+                "method"
+              ]
+            }
+          },
+          "drawings": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "source",
+                "page",
+                "kind",
+                "image"
+              ]
+            }
+          },
+          "manuals": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "pages": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "source",
+                "url",
+                "title",
+                "pages"
+              ]
+            }
+          },
+          "face": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "string"
+              },
+              "shape": {
+                "type": "string"
+              },
+              "pxPerMm": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "source": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "image",
+              "shape",
+              "pxPerMm",
+              "source"
+            ]
+          },
+          "retail": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "price": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "currency": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "image": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "url",
+              "price",
+              "currency",
+              "image"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "maker",
+          "model",
+          "name",
+          "category",
+          "candidates"
+        ]
+      }
+    }
+  },
+  "required": [
+    "kind",
+    "schemaVersion",
+    "generated",
+    "sources",
+    "products"
+  ]
+}

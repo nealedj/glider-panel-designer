@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "id": "export-golden",
+  "name": "Export golden panel",
+  "gliderType": "Synthetic",
+  "registration": "G-TEST",
+  "author": "Test fixture",
+  "revision": 3,
+  "created": "2026-10-11T00:00:00.000Z",
+  "modified": "2026-10-11T00:00:00.000Z",
+  "template": {
+    "embedded": {
+      "id": "test.flanged-400x240",
+      "version": 1,
+      "name": "Synthetic flanged panel, 400 x 240 mm",
+      "outline": {
+        "kind": "poly",
+        "closed": true,
+        "points": [
+          { "x": -200, "y": -120 },
+          { "x": 200, "y": -120 },
+          { "x": 200, "y": 100 },
+          { "x": 190, "y": 120, "bulge": 0.05 },
+          { "x": -190, "y": 120 },
+          { "x": -200, "y": 100 }
+        ]
+      },
+      "bendLines": [{ "a": { "x": -200, "y": 100 }, "b": { "x": 200, "y": 100 }, "label": "Flange" }],
+      "thickness": 2,
+      "material": "Glass fibre (GRP)",
+      "keepOuts": [{ "id": "tk1", "label": "Canopy frame", "shape": { "kind": "rect", "cx": 0, "cy": 50, "w": 30, "h": 30, "r": 0 } }],
+      "canopyClearance": null,
+      "availableDepth": { "default": 200, "regions": [] },
+      "fixings": [
+        { "x": -190, "y": -110, "d": 4.2 },
+        { "x": 190, "y": -110, "d": 4.2 }
+      ],
+      "provenance": { "inputType": "drawn", "source": "Synthetic fixture for export golden tests; not a real panel.", "accuracyMm": 0 },
+      "status": "draft"
+    }
+  },
+  "parts": [
+    { "id": "g1", "part": { "id": "generic.round-57", "version": 1 }, "x": -60, "y": 30, "rotation": 45, "label": "Vario" },
+    { "id": "g2", "part": { "id": "generic.round-80", "version": 1 }, "x": 60, "y": 20, "label": "ASI", "params": { "screwSpacing": 70 } },
+    { "id": "g3", "part": { "id": "generic.rect-display", "version": 1 }, "x": 0, "y": -55, "label": "Flight computer" },
+    {
+      "id": "g4",
+      "part": { "id": "generic.rect-display", "version": 1 },
+      "x": 130,
+      "y": -60,
+      "rotation": 30,
+      "label": "Tilted display",
+      "params": { "cutoutW": 60, "cutoutH": 40, "cutoutR": 3, "bodyW": 60, "bodyH": 40 }
+    },
+    { "id": "g5", "part": { "id": "generic.toggle-switch", "version": 1 }, "x": -150, "y": -80, "label": "Master, \"main\"" },
+    { "id": "g6", "part": { "id": "custom.test-box", "version": 1 }, "x": -150, "y": 40, "label": "Custom box" },
+    { "id": "g7", "part": { "id": "generic.remote-unit", "version": 1 }, "x": 60, "y": 20, "label": "Behind ASI", "mountedTo": { "parent": "g2", "dx": 0, "dy": 0, "dz": 120 } }
+  ],
+  "customParts": [
+    {
+      "id": "custom.test-box",
+      "version": 1,
+      "maker": "Test",
+      "model": "Box with D cutout",
+      "category": "other",
+      "front": {
+        "cutouts": [
+          {
+            "kind": "poly",
+            "closed": true,
+            "points": [
+              { "x": -15, "y": -10 },
+              { "x": 15, "y": -10, "bulge": 0.4142135623730951 },
+              { "x": 15, "y": 10 },
+              { "x": -15, "y": 10 }
+            ]
+          }
+        ],
+        "bezel": null,
+        "screwHoles": [{ "x": -10, "y": 0, "d": 3 }],
+        "protrusion": 0
+      },
+      "rear": { "body": { "kind": "rect", "cx": 0, "cy": 0, "w": 30, "h": 20, "r": 0 }, "depth": 25 },
+      "power": { "currentA": 0.12, "voltage": 12 },
+      "weightG": 85,
+      "datasheet": null,
+      "review": "unverified"
+    }
+  ],
+  "texts": [
+    { "id": "t1", "text": "MASTER", "x": -150, "y": -97, "size": 3.5, "layer": "engrave" },
+    { "id": "t2", "text": "Syndicate panel — 2026", "x": 0, "y": 85, "size": 4, "layer": "print" }
+  ],
+  "dimensions": [{ "id": "d1", "a": { "part": "g1" }, "b": { "part": "g2" }, "offset": 75, "kind": "horizontal" }],
+  "settings": { "minLigamentMm": 5, "minEdgeDistanceMm": 8, "minBendDistanceMm": 10 }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "generic.battery",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Battery",
+  "category": "power",
+  "description": "Main battery, off the panel.",
+  "generator": "generic.battery",
+  "params": {
+    "capacityAh": {
+      "label": "Capacity",
+      "value": 7.2,
+      "unit": "Ah",
+      "min": 0.1
+    },
+    "voltage": {
+      "label": "Nominal voltage",
+      "value": 12,
+      "unit": "V",
+      "min": 1
+    }
+  },
+  "connectors": [
+    {
+      "id": "T",
+      "type": "terminals",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "positive",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "-",
+          "function": "negative",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": null,
+    "voltage": 12
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": true,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "capacityAh": 7.2,
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "capacityAh": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

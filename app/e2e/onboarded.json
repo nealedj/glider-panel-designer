@@ -1,0 +1,4 @@
+{
+  "cookies": [],
+  "origins": [{ "origin": "http://localhost:5199", "localStorage": [{ "name": "gpd.prefs", "value": "{\"theme\":\"system\",\"onboarded\":true,\"keymap\":{}}" }] }]
+}

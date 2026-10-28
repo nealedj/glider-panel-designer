@@ -1,0 +1,86 @@
+{
+  "id": "generic.placard",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Placard",
+  "category": "placard",
+  "description": "Stuck-on placard, such as the registration. Nothing is cut.",
+  "generator": "generic.placard",
+  "params": {
+    "w": {
+      "label": "Width",
+      "value": 50,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "h": {
+      "label": "Height",
+      "value": 12,
+      "unit": "mm",
+      "min": 0.1
+    }
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 50,
+      "h": 12,
+      "r": 1
+    },
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": null,
+    "depth": 0,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

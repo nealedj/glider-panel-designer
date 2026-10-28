@@ -1,0 +1,24 @@
+[project]
+name = "gpd-discover"
+version = "0.1.0"
+description = "Glider Panel Designer catalogue discovery tools (maintainers only)"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+  "pdfplumber>=0.11",   # MIT: PDF text and tables
+  "pypdfium2>=4",       # Apache-2.0 / BSD-3: render manual pages for review
+  "pillow>=10",         # MIT-CMU: face images and thumbnails
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["discover", "discover.makers"]

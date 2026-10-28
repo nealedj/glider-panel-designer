@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "sample",
+  "name": "Sample panel",
+  "gliderType": "Sample",
+  "registration": "",
+  "author": "",
+  "revision": 0,
+  "created": "2026-10-11T00:00:00.000Z",
+  "modified": "2026-10-11T00:00:00.000Z",
+  "template": { "ref": { "id": "sample.rect-300x200", "version": 1 } },
+  "parts": [
+    { "id": "p1", "part": { "id": "generic.round-80", "version": 1 }, "x": -95, "y": 40, "label": "ASI" },
+    { "id": "p2", "part": { "id": "generic.round-57", "version": 1 }, "x": 0, "y": 50, "label": "Vario" },
+    { "id": "p3", "part": { "id": "generic.round-80", "version": 1 }, "x": 95, "y": 40, "label": "Altimeter" },
+    { "id": "p4", "part": { "id": "generic.toggle-switch", "version": 1 }, "x": -40, "y": -70, "label": "Master" },
+    { "id": "p5", "part": { "id": "generic.fuse-holder", "version": 1 }, "x": -10, "y": -70, "label": "F1", "params": { "ratingA": 3 } },
+    { "id": "p6", "part": { "id": "generic.placard", "version": 1 }, "x": 0, "y": 5, "label": "Registration" },
+    {
+      "id": "p7",
+      "part": { "id": "generic.remote-unit", "version": 1 },
+      "x": 0,
+      "y": 50,
+      "label": "Audio unit",
+      "mountedTo": { "parent": "p2", "dx": 0, "dy": 0, "dz": 100 }
+    }
+  ],
+  "settings": { "minLigamentMm": 5, "minEdgeDistanceMm": 8, "minBendDistanceMm": 10 }
+}

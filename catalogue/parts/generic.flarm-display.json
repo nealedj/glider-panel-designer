@@ -1,0 +1,196 @@
+{
+  "id": "generic.flarm-display",
+  "version": 1,
+  "maker": "Generic",
+  "model": "FLARM display",
+  "category": "flarm",
+  "description": "Small rectangular FLARM display: power and a serial port from the FLARM unit.",
+  "generator": "generic.flarm-display",
+  "params": {
+    "cutoutW": {
+      "label": "Cutout width",
+      "value": 45,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "cutoutH": {
+      "label": "Cutout height",
+      "value": 16,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "cutoutR": {
+      "label": "Cutout corner radius",
+      "value": 1,
+      "unit": "mm",
+      "min": 0
+    },
+    "bezelMargin": {
+      "label": "Bezel margin",
+      "value": 4,
+      "unit": "mm",
+      "min": 0
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 25,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Protrusion",
+      "value": 5,
+      "unit": "mm",
+      "min": 0
+    },
+    "currentA": {
+      "label": "Current draw (placeholder)",
+      "value": 0.05,
+      "unit": "A",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "PWR",
+      "type": "power",
+      "x": -12,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "supply +",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "DATA",
+      "type": "data",
+      "x": 12,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "TX",
+          "function": "serial TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "RX",
+          "function": "serial RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "signal ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.05,
+    "voltage": null
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "rect",
+        "cx": 0,
+        "cy": 0,
+        "w": 45,
+        "h": 16,
+        "r": 1
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 53,
+      "h": 24,
+      "r": 5
+    },
+    "screwHoles": [],
+    "protrusion": 5
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 45,
+      "h": 16,
+      "r": 0
+    },
+    "depth": 25,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "power.currentA": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

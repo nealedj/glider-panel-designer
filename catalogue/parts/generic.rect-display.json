@@ -1,0 +1,138 @@
+{
+  "id": "generic.rect-display",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Rectangular display",
+  "category": "display",
+  "description": "Rectangular display or flight computer with a rectangular cutout.",
+  "generator": "generic.rect-display",
+  "params": {
+    "cutoutW": {
+      "label": "Cutout width",
+      "value": 100,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "cutoutH": {
+      "label": "Cutout height",
+      "value": 70,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "cutoutR": {
+      "label": "Cutout corner radius",
+      "value": 2,
+      "unit": "mm",
+      "min": 0
+    },
+    "bezelMargin": {
+      "label": "Bezel margin",
+      "value": 5,
+      "unit": "mm",
+      "min": 0
+    },
+    "bodyW": {
+      "label": "Body width",
+      "value": 100,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyH": {
+      "label": "Body height",
+      "value": 70,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 40,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Protrusion",
+      "value": 8,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "rect",
+        "cx": 0,
+        "cy": 0,
+        "w": 100,
+        "h": 70,
+        "r": 2
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 110,
+      "h": 80,
+      "r": 7
+    },
+    "screwHoles": [],
+    "protrusion": 8
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 100,
+      "h": 70,
+      "r": 0
+    },
+    "depth": 40,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

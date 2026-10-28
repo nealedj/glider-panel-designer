@@ -1,0 +1,99 @@
+{
+  "id": "generic.tee",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Tube tee",
+  "category": "pneumatic",
+  "description": "A tee joining three tubes of the same line (pitot, static or TE).",
+  "generator": "generic.tee",
+  "params": {},
+  "connectors": [],
+  "ports": [
+    {
+      "id": "A",
+      "kind": "any",
+      "fitting": null,
+      "x": -5,
+      "y": 0
+    },
+    {
+      "id": "B",
+      "kind": "any",
+      "fitting": null,
+      "x": 5,
+      "y": 0
+    },
+    {
+      "id": "C",
+      "kind": "any",
+      "fitting": null,
+      "x": 0,
+      "y": 5
+    }
+  ],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 12
+    },
+    "depth": 10,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "ports": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

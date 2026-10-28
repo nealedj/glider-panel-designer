@@ -1,0 +1,151 @@
+{
+  "id": "generic.toggle-switch",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Toggle switch",
+  "category": "switch",
+  "description": "Bushing-mounted toggle switch.",
+  "generator": "generic.toggle-switch",
+  "params": {
+    "holeD": {
+      "label": "Hole diameter",
+      "value": 12.5,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "nutD": {
+      "label": "Nut / bezel diameter",
+      "value": 18,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyW": {
+      "label": "Body width",
+      "value": 15,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyH": {
+      "label": "Body height",
+      "value": 20,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 30,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Lever protrusion",
+      "value": 25,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "T",
+      "type": "solder tag",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "common",
+          "signal": "switch",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "on",
+          "signal": "switch",
+          "direction": "passive"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 12.5
+      }
+    ],
+    "bezel": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 18
+    },
+    "screwHoles": [],
+    "protrusion": 25
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 15,
+      "h": 20,
+      "r": 0
+    },
+    "depth": 30,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

@@ -1,0 +1,205 @@
+{
+  "id": "generic.flarm-unit",
+  "version": 1,
+  "maker": "Generic",
+  "model": "FLARM unit (behind panel)",
+  "category": "flarm",
+  "description": "Collision-warning unit mounted behind the panel: power, two serial ports and an antenna.",
+  "generator": "generic.flarm-unit",
+  "params": {
+    "w": {
+      "label": "Width",
+      "value": 85,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "h": {
+      "label": "Height",
+      "value": 60,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Depth",
+      "value": 30,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "currentA": {
+      "label": "Current draw (placeholder)",
+      "value": 0.15,
+      "unit": "A",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "PWR",
+      "type": "power",
+      "x": -25,
+      "y": -15,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "supply +",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "type": "data",
+      "x": 0,
+      "y": -15,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "TX",
+          "function": "serial TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "RX",
+          "function": "serial RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "signal ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "type": "data",
+      "x": 25,
+      "y": -15,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "TX",
+          "function": "serial TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "RX",
+          "function": "serial RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "signal ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "ANT",
+      "type": "SMA",
+      "x": 0,
+      "y": 15,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "RF",
+          "function": "FLARM antenna",
+          "signal": "rf",
+          "direction": "bidi"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.15,
+    "voltage": null
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 85,
+      "h": 60,
+      "r": 2
+    },
+    "depth": 30,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "power.currentA": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

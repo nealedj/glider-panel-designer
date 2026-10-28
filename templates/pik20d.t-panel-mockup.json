@@ -1,0 +1,179 @@
+{
+  "id": "pik20d.t-panel-mockup",
+  "version": 1,
+  "name": "PIK-20D T-panel (cardboard mock-up)",
+  "outline": {
+    "kind": "poly",
+    "points": [
+      {
+        "x": -152.11,
+        "y": 311.48,
+        "bulge": -0.070951
+      },
+      {
+        "x": -157.34,
+        "y": 305.67
+      },
+      {
+        "x": -158.68,
+        "y": 301.73
+      },
+      {
+        "x": -165.97,
+        "y": 292.31
+      },
+      {
+        "x": -168.69,
+        "y": 285.85
+      },
+      {
+        "x": -173.21,
+        "y": 280.76
+      },
+      {
+        "x": -181.49,
+        "y": 267.41,
+        "bulge": 0.038811
+      },
+      {
+        "x": -194.92,
+        "y": 244.69,
+        "bulge": 0.091629
+      },
+      {
+        "x": -196.22,
+        "y": 186.23,
+        "bulge": 0.176485
+      },
+      {
+        "x": -162.65,
+        "y": 165.19,
+        "bulge": 0.031132
+      },
+      {
+        "x": -147.94,
+        "y": 160.15
+      },
+      {
+        "x": -132.86,
+        "y": 154.4,
+        "bulge": -0.027875
+      },
+      {
+        "x": -112.75,
+        "y": 146.97,
+        "bulge": -0.426714
+      },
+      {
+        "x": -69.32,
+        "y": 96.56
+      },
+      {
+        "x": -69.48,
+        "y": 0.0
+      },
+      {
+        "x": 13.91,
+        "y": -0.78
+      },
+      {
+        "x": 69.48,
+        "y": 0.0
+      },
+      {
+        "x": 69.98,
+        "y": 96.92,
+        "bulge": -0.211579
+      },
+      {
+        "x": 86.6,
+        "y": 137.88,
+        "bulge": -0.035442
+      },
+      {
+        "x": 170.41,
+        "y": 168.81
+      },
+      {
+        "x": 187.35,
+        "y": 176.29,
+        "bulge": 0.340938
+      },
+      {
+        "x": 196.14,
+        "y": 199.63,
+        "bulge": 0.241721
+      },
+      {
+        "x": 185.64,
+        "y": 259.98
+      },
+      {
+        "x": 160.22,
+        "y": 300.79,
+        "bulge": 0.117722
+      },
+      {
+        "x": 128.14,
+        "y": 336.11,
+        "bulge": 0.033632
+      },
+      {
+        "x": 65.79,
+        "y": 335.9
+      },
+      {
+        "x": 52.24,
+        "y": 336.69
+      },
+      {
+        "x": -63.88,
+        "y": 335.03
+      },
+      {
+        "x": -97.39,
+        "y": 336.12
+      },
+      {
+        "x": -124.46,
+        "y": 335.56,
+        "bulge": 0.25547
+      }
+    ],
+    "closed": true
+  },
+  "bendLines": [
+    {
+      "a": {
+        "x": -68.52,
+        "y": 44.35
+      },
+      "b": {
+        "x": 68.74,
+        "y": 43.2
+      },
+      "label": "Fold"
+    }
+  ],
+  "thickness": 2,
+  "material": "Glass fibre (GRP)",
+  "keepOuts": [],
+  "canopyClearance": null,
+  "availableDepth": {
+    "default": null,
+    "regions": []
+  },
+  "fixings": [],
+  "gliderTypes": [
+    "PIK-20D"
+  ],
+  "provenance": {
+    "inputType": "gridded-mockup",
+    "source": "Owner's photo of the cardboard mock-up on an A3 imperial cutting mat (fixtures/pik20d/cardboard-mockup.jpg), traced in the template editor. The stem below the fold overhangs the desk edge in the photo and may not lie flat, so its length is the least certain part.",
+    "rights": "Owner's own photo",
+    "accuracyMm": 1.48,
+    "method": "cutting-mat grid (12.7 mm squares), 182 crossings, residual 0.12 mm, lens distortion k1 -0.032, corrected for a template 3.5 mm above the grid",
+    "checks": []
+  },
+  "status": "draft"
+}

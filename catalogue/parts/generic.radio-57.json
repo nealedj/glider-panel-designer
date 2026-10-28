@@ -1,0 +1,242 @@
+{
+  "id": "generic.radio-57",
+  "version": 1,
+  "maker": "Generic",
+  "model": "57 mm radio",
+  "category": "radio",
+  "description": "VHF radio in a 57 mm housing: power, speaker, PTT and antenna.",
+  "generator": "generic.radio-57",
+  "params": {
+    "currentA": {
+      "label": "Current draw (placeholder)",
+      "value": 0.25,
+      "unit": "A",
+      "min": 0
+    },
+    "cutoutD": {
+      "label": "Cutout diameter",
+      "value": 57,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezel": {
+      "label": "Bezel size",
+      "value": 61,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bezelR": {
+      "label": "Bezel corner radius",
+      "value": 5,
+      "unit": "mm",
+      "min": 0
+    },
+    "screwSpacing": {
+      "label": "Screw spacing (square)",
+      "value": 47,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "screwD": {
+      "label": "Screw hole diameter",
+      "value": 3.5,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyD": {
+      "label": "Body diameter",
+      "value": 57,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 100,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Protrusion",
+      "value": 10,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "PWR",
+      "type": "power",
+      "x": -12,
+      "y": -18,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "supply +",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        }
+      ]
+    },
+    {
+      "id": "AUD",
+      "type": "audio",
+      "x": 12,
+      "y": -18,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "SPK+",
+          "function": "speaker +",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "SPK-",
+          "function": "speaker -",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "PTT",
+          "function": "push to talk",
+          "signal": "switch",
+          "direction": "in"
+        }
+      ]
+    },
+    {
+      "id": "ANT",
+      "type": "BNC",
+      "x": 0,
+      "y": 18,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "RF",
+          "function": "antenna",
+          "signal": "rf",
+          "direction": "bidi"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.25,
+    "voltage": null
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 61,
+      "h": 61,
+      "r": 5
+    },
+    "screwHoles": [
+      {
+        "x": -23.5,
+        "y": 23.5,
+        "d": 3.5
+      },
+      {
+        "x": 23.5,
+        "y": 23.5,
+        "d": 3.5
+      },
+      {
+        "x": -23.5,
+        "y": -23.5,
+        "d": 3.5
+      },
+      {
+        "x": 23.5,
+        "y": -23.5,
+        "d": 3.5
+      }
+    ],
+    "protrusion": 10
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 57
+    },
+    "depth": 100,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Estimated from a photo of 57 and 80 mm panel-marking templates (no scale reference, about ±3 mm). Measure your instrument or template before drilling."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "power.currentA": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

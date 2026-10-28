@@ -1,0 +1,138 @@
+{
+  "id": "generic.phone-mount-base",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Phone mount base",
+  "category": "mount",
+  "description": "Screw-on base plate for a phone or tablet mount arm. The arm stands out in front of the panel.",
+  "generator": "generic.phone-mount-base",
+  "params": {
+    "plateW": {
+      "label": "Plate width",
+      "value": 50,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "plateH": {
+      "label": "Plate height",
+      "value": 50,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "screwSpacing": {
+      "label": "Screw spacing (square)",
+      "value": 38,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "screwD": {
+      "label": "Screw hole diameter",
+      "value": 4.2,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Arm protrusion",
+      "value": 150,
+      "unit": "mm",
+      "min": 0
+    },
+    "depth": {
+      "label": "Screw depth behind panel",
+      "value": 10,
+      "unit": "mm",
+      "min": 0
+    }
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 50,
+      "h": 50,
+      "r": 4
+    },
+    "screwHoles": [
+      {
+        "x": -19,
+        "y": 19,
+        "d": 4.2
+      },
+      {
+        "x": 19,
+        "y": 19,
+        "d": 4.2
+      },
+      {
+        "x": -19,
+        "y": -19,
+        "d": 4.2
+      },
+      {
+        "x": 19,
+        "y": -19,
+        "d": 4.2
+      }
+    ],
+    "protrusion": 150
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 48,
+      "h": 48,
+      "r": 0
+    },
+    "depth": 10,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

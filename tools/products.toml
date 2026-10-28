@@ -1,0 +1,110 @@
+# Products to research in makers' manuals, besides whatever the retailer crawl finds.
+# Names only: every value still comes from a source document and is reviewed in the app.
+# `reference = true` marks parts of the reference panel (M5 acceptance tracks their review).
+# Reference-panel parts whose exact model is not yet known are listed in docs/questions.md.
+
+[[product]]
+maker = "XCVario"
+model = "XCVario"
+category = "vario"
+reference = true
+
+[[product]]
+maker = "TQ"
+model = "KRT2"
+name = "TQ KRT2 VHF transceiver"
+category = "radio"
+reference = true
+
+# Common glider panel parts, so the catalogue grows past the reference panel's.
+[[product]]
+maker = "LXNAV"
+model = "S80"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "S100"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "FlarmView57"
+category = "display"
+
+[[product]]
+maker = "LXNAV"
+model = "FlarmView2"
+category = "display"
+
+[[product]]
+maker = "LXNAV"
+model = "LX9070"
+category = "flight-computer"
+
+[[product]]
+maker = "FLARM"
+model = "PowerFLARM Fusion"
+category = "flarm"
+
+[[product]]
+maker = "Air Avionics"
+model = "ATD-57"
+category = "display"
+
+[[product]]
+maker = "Air Avionics"
+model = "ATD-80"
+category = "display"
+
+[[product]]
+maker = "Trig"
+model = "TT21"
+category = "transponder"
+
+[[product]]
+maker = "Trig"
+model = "TT22"
+category = "transponder"
+
+[[product]]
+maker = "Trig"
+model = "TY91"
+category = "radio"
+
+[[product]]
+maker = "f.u.n.k.e."
+model = "ATR833-II"
+category = "radio"
+
+[[product]]
+maker = "Naviter"
+model = "Hyper"
+category = "flight-computer"
+
+[[product]]
+maker = "PilotAware"
+model = "Rosetta"
+category = "flarm"
+
+[[product]]
+maker = "Winter"
+model = "6 FMS"
+name = "Winter 6 FMS airspeed indicator 80 mm"
+category = "instrument"
+
+[[product]]
+maker = "Winter"
+model = "7 FMS"
+name = "Winter 7 FMS airspeed indicator 57 mm"
+category = "instrument"
+
+[[product]]
+maker = "LXNAV"
+model = "S8"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "S10"
+category = "vario"
