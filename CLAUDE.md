@@ -20,6 +20,7 @@ app/          TypeScript + React + Vite front end: the whole product
   src/share/    share links (project in the URL fragment)
   src/template/ template editor: photo calibration, straightening, tracing (ADR 0010)
   src/wiring/   nets, circuit analysis and sizing (AC 43.13-1B), lengths, schematic (ADR 0012)
+  src/view3d/   read-only 3D view: scene model, and a three.js view loaded lazily (ADR 0014)
   src/ui/       panels and chrome
   tests/        Vitest unit tests;  e2e/  Playwright flows
 tools/        Python discovery tools (maintainers only): see tools/README.md
@@ -62,6 +63,7 @@ local/ cache/ git-ignored crawler config and caches
 - Every user action is a command in `editor/commands.ts`, so menus, palette and shortcuts stay in step.
 - Every cut output (SVG, DXF, tiled PDF) is written from the one drawing in `export/drawing.ts`; drawing text sizes are cap heights (ADR 0008).
 - Exports and share links never leave the browser except as a download or a URL fragment (ADR 0009).
+- The 3D view only looks; edits go through the inspector and 2D views. It draws unknown thicknesses flat and lists them; it never guesses a depth (ADR 0014).
 - Nets are derived from wires after every wiring edit (`wiring/nets.ts`); never edit nets alone. Wire charts in `wiring/charts.ts` are transcribed with their source; do not add chart values without one.
 - Discovery candidates keep their verbatim snippet; only reviewed, maker-sourced values reach `catalogue/` (ADR 0011). `python -m pytest` in `tools/` runs the tool tests.
 - Work is autosaved and snapshotted in IndexedDB; preferences (theme, key bindings, welcome seen) are in `localStorage` via `store/prefs.ts`. Anything that replaces the working copy goes through `replaceWork` in `store/recovery.ts`, so it is kept as a snapshot first (ADR 0013).

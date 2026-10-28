@@ -33,6 +33,7 @@ import {
   selectionBox,
 } from './actions';
 import { zoomToFit } from './viewport';
+import { camera3d } from '../view3d/camera';
 
 export interface CommandDef {
   id: string;
@@ -272,6 +273,11 @@ export const COMMANDS: CommandDef[] = [
   { id: 'wiring.put-on-route', label: 'Put selected wires on selected route', group: 'Arrange', views: ['rear', 'schematic'], run: putOnRoute, enabled: () => selectedRoute() !== null && selectedWires().length > 0 },
   { id: 'wiring.take-off-route', label: 'Take selected wires off their route', group: 'Arrange', views: ['rear', 'schematic'], run: () => assignRoute(selectedWires(), null), enabled: () => selectedWires().some((id) => docs.doc.wires.find((w) => w.id === id)?.route) },
   { id: 'view.schematic', label: 'Schematic view', group: 'View', views: 'all', run: () => setView('schematic') },
+  { id: 'view.3d', label: '3D view', group: 'View', views: 'all', run: () => setView('3d') },
+  { id: 'view3d.front', label: '3D: look from the front', group: 'View', shortcut: '1', views: ['3d'], run: () => camera3d('front') },
+  { id: 'view3d.rear', label: '3D: look from the rear', group: 'View', shortcut: '2', views: ['3d'], run: () => camera3d('rear') },
+  { id: 'view3d.iso', label: '3D: look from above and behind', group: 'View', shortcut: '3', views: ['3d'], run: () => camera3d('iso') },
+  { id: 'view3d.fit', label: '3D: fit the panel in view', group: 'View', shortcut: 'F', views: ['3d'], run: () => camera3d('fit') },
   { id: 'schematic.reset', label: 'Reset schematic layout', group: 'View', views: ['schematic'], run: resetSchematic, enabled: () => docs.doc.parts.some((p) => p.schematic) },
   { id: 'tool.dimension', label: 'Dimension tool', group: 'Tools', shortcut: 'D', run: () => setTool('dimension') },
 
@@ -355,7 +361,7 @@ prefs.subscribe(() => {
   applyKeymap();
 });
 
-const ALL_VIEWS: ViewName[] = ['front', 'rear', 'schematic', 'template', 'review'];
+const ALL_VIEWS: ViewName[] = ['front', 'rear', 'schematic', '3d', 'template', 'review'];
 
 /** Commands that already answer to a shortcut in any view where `id` would. */
 export function shortcutConflicts(id: string, shortcut: string): CommandDef[] {
@@ -379,12 +385,13 @@ const SCHEMATIC_TOO = new Set(['edit.undo', 'edit.redo', 'edit.redo-y', 'edit.de
 function activeIn(c: CommandDef, view: ViewName): boolean {
   if (GLOBAL.has(c.id) || c.views === 'all') return true;
   if (c.views) return c.views.includes(view);
-  return view === 'front' || view === 'rear' || (view === 'schematic' && SCHEMATIC_TOO.has(c.id));
+  return view === 'front' || view === 'rear' || ((view === 'schematic' || view === '3d') && SCHEMATIC_TOO.has(c.id));
 }
 
 export function handleKey(e: KeyboardEvent): boolean {
   const target = e.target as HTMLElement | null;
-  const typing = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable);
+  // A focused checkbox or radio button takes no text, so shortcuts still apply.
+  const typing = target && ((target.tagName === 'INPUT' && !['checkbox', 'radio'].includes((target as HTMLInputElement).type)) || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable);
   const sc = eventShortcut(e).toUpperCase();
   if (typing && sc !== 'CTRL+K' && sc !== 'ESCAPE' && sc !== 'CTRL+S') return false;
   const view = ui.state.view;

@@ -5,7 +5,7 @@
 import { useSyncExternalStore } from 'react';
 
 export type Tool = 'select' | 'place' | 'move' | 'measure' | 'keepout' | 'text' | 'dimension' | 'wire' | 'route';
-export type ViewName = 'front' | 'rear' | 'schematic' | 'template' | 'review';
+export type ViewName = 'front' | 'rear' | 'schematic' | '3d' | 'template' | 'review';
 export type Layer = 'template' | 'cutouts' | 'bezels' | 'holes' | 'keepouts' | 'labels' | 'dimensions' | 'grid' | 'guides';
 
 export interface SnapSettings {
