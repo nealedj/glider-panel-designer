@@ -8,6 +8,7 @@ import { loadAutosave, saveBeforeLink } from './store/persist';
 import { prefs, resolveTheme } from './store/prefs';
 import { replaceWork, startRecovery } from './store/recovery';
 import { ui, useUi } from './store/ui';
+import { ContextMenu } from './ui/ContextMenu';
 import { ArrangeDialog, ArrayDialog, CommandPalette, ShortcutMap, StatusBar, TopBar } from './ui/Chrome';
 import { Library, ObjectsTree } from './ui/LeftPanel';
 import { ChecksPanel, Inspector } from './ui/RightPanel';
@@ -155,6 +156,7 @@ export function App() {
       )}
       <StatusBar />
       <CommandPalette />
+      <ContextMenu />
       <ShortcutMap />
       <ArrayDialog />
       <ArrangeDialog />

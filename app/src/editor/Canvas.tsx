@@ -376,6 +376,25 @@ export function Canvas() {
     }
   };
 
+  /** Right-click: select what is under the pointer (keeping a selection it is part of), then open the menu. */
+  const onContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (dragRef.current) return;
+    const s = localPoint(e);
+    const w = toWorld(vp, s);
+    let hit: string | null = null;
+    if (tool === 'select') {
+      if (rear) {
+        hit = hitWiring(vp, docs.doc, analyse(docs.doc), s, false)?.id ?? null;
+        const ids = hit ? [] : stackAt(w);
+        ui.set({ stack: ids.length ? { at: w, ids } : null });
+      }
+      hit ??= hitTest(w);
+      if (hit && !ui.state.selection.includes(hit)) ui.set({ selection: [hit] });
+    }
+    ui.set({ contextMenu: { x: e.clientX, y: e.clientY, onItem: !!hit } });
+  };
+
   const startMove = (d: Extract<Drag, { mode: 'press' }>): Drag | null => {
     const sel = ui.state.selection;
     // Parts mounted to moving parts move too, so exclude them from snap targets.
@@ -563,7 +582,7 @@ export function Canvas() {
         if (e.dataTransfer.types.includes('application/x-gpd-part')) e.preventDefault();
       }}
       onDrop={onDrop}
-      onContextMenu={(e) => e.preventDefault()}
+      onContextMenu={onContextMenu}
       data-testid="canvas"
     >
       <Rulers vp={vp} cursor={cursorScreen} />

@@ -32,6 +32,8 @@ export interface UiState {
   shortcutsOpen: boolean;
   exportOpen: boolean;
   shareOpen: boolean;
+  /** The canvas right-click menu: where it opens, in client px, and whether it was on an item. */
+  contextMenu: { x: number; y: number; onItem: boolean } | null;
   /** New project dialog, welcome, and the recover-earlier-work dialog. */
   newOpen: boolean;
   welcomeOpen: boolean;
@@ -69,6 +71,7 @@ export const initialUi: UiState = {
   shortcutsOpen: false,
   exportOpen: false,
   shareOpen: false,
+  contextMenu: null,
   newOpen: false,
   welcomeOpen: false,
   recoverOpen: false,

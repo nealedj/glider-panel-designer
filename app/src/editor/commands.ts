@@ -12,7 +12,7 @@ import { replaceWork } from '../store/recovery';
 import type { ExportKind } from '../export';
 import { createDraft, detectGrid, drafts, editTemplate, fitPhotoView, fitPlaneView, photo, tplUi, type TplTool } from '../template/session';
 import { deleteTplSelection, moveSelectedFeature } from '../template/edit';
-import { assignRoute, resetSchematic } from '../wiring/actions';
+import { assignRoute, finishRoute, resetSchematic } from '../wiring/actions';
 
 const selectedWires = () => ui.state.selection.filter((id) => docs.doc.wires.some((w) => w.id === id));
 const selectedRoute = () => ui.state.selection.find((id) => docs.doc.routes.some((r) => r.id === id)) ?? null;
@@ -33,6 +33,7 @@ import {
   detachSelection,
   rotateSelection,
   selectionBox,
+  toggleLock,
 } from './actions';
 import { zoomToFit } from './viewport';
 import { camera3d } from '../view3d/camera';
@@ -247,6 +248,7 @@ export const COMMANDS: CommandDef[] = [
   { id: 'arrange.centre-y', label: 'Centre up and down, on the panel face', group: 'Arrange', run: () => centreOnPanel('y'), enabled: hasSelection },
   { id: 'arrange.auto', label: 'Auto-arrange in rows…', group: 'Arrange', run: () => dialogs.openArrange(), enabled: hasSelection },
   { id: 'arrange.mirror', label: 'Mirror copy about centreline', group: 'Arrange', run: mirrorCopy, enabled: hasSelection },
+  { id: 'arrange.lock', label: 'Lock / unlock', group: 'Arrange', run: toggleLock, enabled: () => docs.doc.parts.some((p) => ui.state.selection.includes(p.id)) },
   { id: 'arrange.detach', label: 'Detach from parent part', group: 'Arrange', run: detachSelection, enabled: () => docs.doc.parts.some((p) => p.mountedTo && ui.state.selection.includes(p.id)) },
   { id: 'arrange.linear-array', label: 'Linear array…', group: 'Arrange', run: () => dialogs.openArray('linear'), enabled: hasSelection },
   { id: 'arrange.circular-array', label: 'Circular array…', group: 'Arrange', run: () => dialogs.openArray('circular'), enabled: hasSelection },
@@ -278,6 +280,14 @@ export const COMMANDS: CommandDef[] = [
       if (ui.state.view !== 'rear') setView('rear');
       ui.set({ tool: 'route', routeDraft: [], placing: null, message: `Click points along the loom at ${ui.state.routeDepth} mm deep; double-click or Enter to finish` });
     },
+  },
+  {
+    id: 'tool.finish-route',
+    label: 'Finish route',
+    group: 'Tools',
+    views: ['rear'],
+    run: () => void finishRoute(ui.state.routeDraft, ui.state.routeDepth),
+    enabled: () => ui.state.tool === 'route' && ui.state.routeDraft.length >= 2,
   },
   { id: 'wiring.put-on-route', label: 'Put selected wires on selected route', group: 'Arrange', views: ['rear', 'schematic'], run: putOnRoute, enabled: () => selectedRoute() !== null && selectedWires().length > 0 },
   { id: 'wiring.take-off-route', label: 'Take selected wires off their route', group: 'Arrange', views: ['rear', 'schematic'], run: () => assignRoute(selectedWires(), null), enabled: () => selectedWires().some((id) => docs.doc.wires.find((w) => w.id === id)?.route) },

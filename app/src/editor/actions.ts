@@ -112,6 +112,14 @@ export function setPartFields(id: string, patch: Partial<PlacedPart>, label = 'E
   docs.dispatch(label, [ops.replace('parts', { ...pp, ...patch })]);
 }
 
+/** Lock the selected parts, or unlock them when they are all locked already. */
+export function toggleLock() {
+  const parts = selectedParts(docs.doc);
+  if (!parts.length) return;
+  const locked = !parts.every((p) => p.locked);
+  docs.dispatch(locked ? 'Lock' : 'Unlock', parts.map((p) => ops.replace('parts', { ...p, locked })));
+}
+
 /** Set a part's world position, respecting mounting. */
 export function setPartPosition(id: string, x: number, y: number) {
   const doc = docs.doc;

@@ -39,6 +39,7 @@ const MENUS: { name: CommandDef['group']; ids: string[] }[] = [
       'arrange.linear-array',
       'arrange.circular-array',
       '-',
+      'arrange.lock',
       'arrange.detach',
       '-',
       'wiring.put-on-route',
