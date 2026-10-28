@@ -98,7 +98,20 @@ Nothing may count as verified until a person has checked it.
 - The acceptance numbers (every reference-panel part reviewed, 20 or more overall) need a live run
   with a contact address and a person reviewing. The tools are ready; see
   `docs/questions.md`.
-- Seven of the ten maker listings are still unverified. The first live run with
-  `check-adapters` will show which ones need their start pages adjusting.
+- The first live run (2026-10-28) showed which start pages needed adjusting. Naviter and
+  uAvionix refuse the crawler (403), and Air Avionics' robots.txt disallows its downloads,
+  so those parts are entered by hand from manuals the reviewer fetches.
 - Parked: an LLM fallback, a local catalogue overlay so reviewed parts can be used before
   they are merged, and a photo-face display mode.
+
+## Amendment (2026-10-28): size variants and failed requests
+
+- **Size variants are found in the manuals,** not only in `products.toml`. When one sentence
+  behind a cut-out or bezel value names two or more standard sizes ("requires a standard 57
+  or 80mm cut-out"), the product is split into one entry per size. Each entry keeps every
+  candidate and carries a note quoting that sentence; the reviewer accepts only that size's
+  values. Sizes in separate sentences do not count, since range manuals list other models'
+  sizes one per line. A sentence about a whole range can split a model that comes in one
+  size only; the reviewer leaves that entry unreviewed and it is not exported.
+- **A failed request skips the page** (timeout, dropped connection, unusable URL). It is
+  logged and not cached, so the next run retries it. URLs are percent-encoded before fetching.

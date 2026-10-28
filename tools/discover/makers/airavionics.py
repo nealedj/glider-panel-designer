@@ -1,10 +1,11 @@
-"""Air Avionics: customer support page and the known traffic display installation manual."""
+"""Air Avionics (Garrecht Avionik, whose site now forwards here): customer support page and
+the known traffic display installation manual."""
 
 from .base import MakerAdapter, ManualLink
 
 ADAPTER = MakerAdapter(
     id="airavionics",
-    names=["Air Avionics", "AIR Avionics"],
+    names=["Air Avionics", "AIR Avionics", "Garrecht"],
     start_pages=["https://www.air-avionics.com/customer-support/"],
     hosts=["www.air-avionics.com", "air-avionics.com"],
     seed_manuals=[
@@ -16,5 +17,5 @@ ADAPTER = MakerAdapter(
             "installation",
         ),
     ],
-    models=["ATD-57", "ATD-80", "ATD-11", "ACD-57", "AT-1", "XPDR", "TRX"],
+    models=["ATD-57", "ATD-80", "ATD-11", "ACD-57", "AT-1", "XPDR", "TRX", "VT-01", "VT-02", "VT-2000", "Volkslogger"],
 )

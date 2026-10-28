@@ -108,6 +108,9 @@
               "null"
             ]
           },
+          "variantNote": {
+            "type": "string"
+          },
           "reference": {
             "default": false,
             "type": "boolean"

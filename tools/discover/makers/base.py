@@ -25,13 +25,15 @@ class ManualLink:
     kind: str | None = None  # installation, user, quick, other
 
 
-TYPE_RANK = {"installation": 0, "user": 1, "other": 2, "quick": 3}
+TYPE_RANK = {"drawing": 0, "installation": 0, "user": 1, "other": 2, "quick": 3}
 NON_ENGLISH = re.compile(r"\b(german|deutsch|french|fran[cç]ais|polish|italian|dutch|spanish|czech|hungarian)\b|_(de|fr|it|pl|nl|es|cz)\b|-(de|fr|it|pl)\.pdf", re.I)
 
 
 def manual_kind(text: str) -> str:
     t = text.lower()
-    if "install" in t:
+    if re.search(r"ma(ß|ss)zeichnung|dimension|measurement", t):
+        return "drawing"
+    if "install" in t or "einbau" in t:
         return "installation"
     if "quick" in t or "reference card" in t:
         return "quick"
@@ -58,6 +60,8 @@ class MakerAdapter:
     #: Follow links whose URL or text matches this, when walking listing pages.
     follow: str = r"download|manual|document|support|product|instrument|avionic"
     depth: int = 2
+    #: Manuals read per product; more for makers whose listings cannot tell manuals apart.
+    max_manuals: int = 2
 
     def matches_maker(self, maker: str | None, name: str) -> bool:
         hay = f"{maker or ''} {name}"
@@ -118,12 +122,12 @@ class MakerAdapter:
 
 
 def _range_covers(product_cell: str, model: str) -> bool:
-    """'S8x' covers S80; 'S10x' covers S100; 'LX80xx' covers LX8080."""
+    """'S8x' covers S8 and S80; 'S10x' covers S10 and S100; 'LX80xx' covers LX8080."""
     for token in re.split(r"[,/;&]| and ", product_cell):
         t = token.strip()
         if "x" not in t.lower() or not re.search(r"\d", t):
             continue
-        rx = "^" + "".join(r"\d" if ch in "xX" and i > 0 and (t[i - 1].isdigit() or t[i - 1] in "xX") else re.escape(ch) for i, ch in enumerate(t)) + "$"
+        rx = "^" + "".join(r"\d?" if ch in "xX" and i > 0 and (t[i - 1].isdigit() or t[i - 1] in "xX") else re.escape(ch) for i, ch in enumerate(t)) + "$"
         if re.match(rx, model.replace(" ", ""), re.I):
             return True
     return False

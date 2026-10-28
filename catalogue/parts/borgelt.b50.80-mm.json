@@ -1,0 +1,54 @@
+{
+  "id": "borgelt.b50.80-mm",
+  "version": 1,
+  "maker": "Borgelt",
+  "model": "B50 80 mm",
+  "category": "vario",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 80
+      }
+    ],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": {
+    "currentA": 0.2,
+    "voltage": null
+  },
+  "weightG": null,
+  "datasheet": "http://www.borgeltinstruments.com/B50man.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "http://www.borgeltinstruments.com/B50man.pdf",
+      "snippet": "Install the ADU into the appropriate 57 or 80mm panel hole (dependent on size purchased)",
+      "status": "verified",
+      "note": "Page 1."
+    },
+    "power.currentA": {
+      "url": "http://www.borgeltinstruments.com/B50man.pdf",
+      "snippet": "200mA and a typical radio on TRANSMIT draws 2 AMPS.",
+      "status": "verified",
+      "note": "Page 3."
+    },
+    "datasheet": {
+      "url": "http://www.borgeltinstruments.com/B50man.pdf",
+      "snippet": "B50 manual",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

@@ -40,11 +40,21 @@ ADAPTER = LxnavAdapter(
     names=["LXNAV", "LX Navigation", "LX nav"],
     start_pages=["https://gliding.lxnav.com/lxdownloads/manuals/"],
     hosts=["gliding.lxnav.com"],
+    # The listing files the English V80 installation manual under V8 only.
+    seed_manuals=[
+        ManualLink(
+            "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV80InstallationManualEnglishVer0500rev2.pdf",
+            "V8 / V80 Installation Manual",
+            ["V8", "V80"],
+            "English",
+            "installation",
+        ),
+    ],
     verified_listing=True,
     depth=0,
     models=[
         "S7", "S8", "S80", "S10", "S100", "S8x", "S10x", "LX9000", "LX9050", "LX9070", "LX8000", "LX8080",
-        "LX90xx", "LX80xx", "FlarmView", "FlarmView2", "FlarmView57", "FlarmAce", "FlarmLED", "V8", "V80",
+        "LX90xx", "LX80xx", "FlarmView", "FlarmView2", "FlarmView57", "FlarmAce", "FlarmLED", "V5", "V8", "V9", "V80",
         "Nano", "Nano3", "Nano4", "ADI", "AHRS", "SxHAWK", "HAWK", "FlarmACL", "FlarmMouse",
     ],
 )

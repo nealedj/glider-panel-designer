@@ -1,4 +1,5 @@
-"""TQ (KRT2 radios): the known operation and installation manual."""
+"""TQ (KRT2 radios): the known operation and installation manual. The KTX2 product and
+download pages link no PDFs (checked 2026-10-28)."""
 
 from .base import MakerAdapter, ManualLink
 

@@ -42,6 +42,9 @@ CATEGORY_WORDS = [
 
 VARIANT = re.compile(r"\b(57|58|80|81)\s?mm\b", re.I)
 
+#: Standard instrument sizes named in a sentence: "57 mm", "(80 mm)", or "57 or 80mm".
+STANDARD_SIZE = re.compile(r"\b(57|80)(?=\s?mm\b|\s*(?:or|and|/)\s*(?:57|80)\s?mm\b)", re.I)
+
 
 def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
@@ -97,6 +100,8 @@ class ProductEntry:
     face: dict | None = None
     retail: dict | None = None
     manuals: list[dict] = field(default_factory=list)
+    #: Why this variant was made from the manuals, quoting the sentence that names the sizes.
+    variant_note: str | None = None
 
     def to_json(self) -> dict:
         d = {
@@ -111,6 +116,8 @@ class ProductEntry:
             "drawings": self.drawings,
             "manuals": self.manuals,
         }
+        if self.variant_note:
+            d["variantNote"] = self.variant_note
         if self.face:
             d["face"] = self.face
         if self.retail:
@@ -145,6 +152,42 @@ class Builder:
             d = c.to_json()
             d["source"] = source
             p.candidates.append(d)
+
+    def split_sizes(self) -> list[tuple[str, list[str]]]:
+        """Split each product without a variant into size variants when one sentence of a
+        cut-out or bezel value names two or more standard sizes ("requires a standard 57 or
+        80mm cut-out"). Each variant keeps every candidate; the reviewer accepts the ones for
+        its size. Sizes in separate sentences do not count: range manuals list other models'
+        sizes one per line. Returns (product key, variant keys) for each split."""
+        splits = []
+        for p in list(self.products.values()):
+            if p.variant:
+                continue
+            evidence = None
+            for c in sorted(p.candidates, key=lambda c: -c["confidence"]):
+                if c["path"] not in ("front.cutout", "front.bezel"):
+                    continue
+                sizes = sorted({int(m[1]) for m in STANDARD_SIZE.finditer(c.get("snippet") or "")})
+                if len(sizes) >= 2:
+                    evidence = (sizes, c)
+                    break
+            if evidence is None:
+                continue
+            sizes, c = evidence
+            title = self.sources.get(c["source"], {}).get("title") or c["url"]
+            where = f"{title}, page {c['page']}" if c.get("page") else title
+            del self.products[p.key]
+            keys = []
+            for n in sizes:
+                v = self.product(p.maker, f"{p.model} {n}mm", p.name, p.category, reference=p.reference)
+                v.candidates = [dict(x) for x in p.candidates]
+                v.drawings = list(p.drawings)
+                v.manuals = list(p.manuals)
+                v.face, v.retail = p.face, p.retail
+                v.variant_note = f"Made from the manuals, which name {' and '.join(f'{x} mm' for x in sizes)} sizes ({where}): “{c['snippet']}”. Accept only this size's values."
+                keys.append(v.key)
+            splits.append((p.key, keys))
+        return splits
 
     def to_json(self) -> dict[str, Any]:
         products = sorted(self.products.values(), key=lambda p: (not p.reference, p.maker.lower(), p.model.lower(), p.variant or ""))

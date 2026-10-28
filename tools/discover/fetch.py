@@ -5,6 +5,8 @@
 - Every response is cached on disk with its fetch date; a cached URL is not requested again
   unless it is older than `refresh_days`. A re-run therefore makes no repeat requests, and an
   interrupted run resumes by replaying the cache.
+- A request that fails (timeout, dropped connection, unusable URL) is logged in `failed` and
+  not cached, so one bad server does not stop a run and the next run retries it.
 - Live requests need a contact address in the config and an explicit `live=True`; tests pass
   a fake transport and never touch the network.
 """
@@ -12,6 +14,7 @@
 from __future__ import annotations
 
 import hashlib
+import http.client
 import json
 import time
 import urllib.error
@@ -21,7 +24,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Protocol
-from urllib.parse import urljoin, urlparse
+from urllib.parse import quote, urljoin, urlparse
 
 from .config import Config
 
@@ -92,6 +95,8 @@ class Fetcher:
         #: Requests actually sent this run (cache hits are not counted).
         self.requests = 0
         self.skipped_robots: list[str] = []
+        #: (url, reason) for live requests that failed this run.
+        self.failed: list[tuple[str, str]] = []
 
     # -------------------------------------------------------------- cache
 
@@ -166,21 +171,34 @@ class Fetcher:
     # -------------------------------------------------------------- public
 
     def get(self, url: str) -> Response | None:
-        """The page at `url`, from the cache when there; None if robots.txt forbids it."""
+        """The page at `url`, from the cache when there; None if robots.txt forbids it or the
+        request fails."""
         if urlparse(url).scheme not in ("http", "https"):
             raise ValueError(f"not an http(s) URL: {url}")
+        url = encode_url(url)
         hit = self.cached(url)
         if hit is not None:
             return hit
-        if not self.allowed(url):
-            self.skipped_robots.append(url)
+        try:
+            if not self.allowed(url):
+                self.skipped_robots.append(url)
+                return None
+            status, headers, body = self._send(url)
+        except (OSError, http.client.HTTPException, ValueError) as e:
+            # OSError covers timeouts and URLError; InvalidURL is a ValueError.
+            self.failed.append((url, f"{type(e).__name__}: {e}"))
             return None
-        status, headers, body = self._send(url)
         return self._store(url, status, headers.get("content-type", ""), body)
 
 
 def _offline(url: str, headers: dict[str, str]) -> tuple[int, dict[str, str], bytes]:
     raise NetworkRefused(f"Offline: {url} is not in the cache. Run with --live (and a contact address) to fetch it.")
+
+
+def encode_url(url: str) -> str:
+    """`url` with spaces and other unsafe characters percent-encoded; already-encoded URLs are
+    unchanged."""
+    return quote(url, safe=":/?#[]@!$&'()*+,;=%~")
 
 
 def absolute(base: str, href: str) -> str:

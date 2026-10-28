@@ -13,5 +13,5 @@ ADAPTER = MakerAdapter(
         ManualLink("https://xcvario.com/print/print-docs.php?category=vario", "XCVario manual (earlier models)", ["XCVario"], "English", "user"),
     ],
     verified_listing=True,
-    models=["XCVario", "XCVario Pur", "XCFlarmView"],
+    models=["XCVario", "XCVario Pur", "XCFlarmView", "XCTouchNav"],
 )

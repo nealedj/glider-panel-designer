@@ -204,6 +204,11 @@ export function ReviewCentre() {
         <IdentityEditor p={p} r={r} />
       </div>
       {message && <p className="note tpl-message">{message}</p>}
+      {p.variantNote && (
+        <p className="note" data-testid="review-variant-note">
+          {p.variantNote}
+        </p>
+      )}
       {paths.map((path) => (
         <FieldCard key={path} file={file} p={p} path={path} d={r.fields[path]} sources={sources} />
       ))}

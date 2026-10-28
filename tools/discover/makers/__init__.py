@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from . import airavionics, flarm, funke, krt, lxnav, naviter, pilotaware, trig, winter, xcvario
+from . import airavionics, becker, borgelt, flarm, funke, krt, lxnav, naviter, pilotaware, stefly, trig, uavionix, winter, xcvario
 from .base import MakerAdapter
 
-ALL: list[MakerAdapter] = [m.ADAPTER for m in (lxnav, flarm, trig, funke, airavionics, naviter, winter, pilotaware, xcvario, krt)]
+ALL: list[MakerAdapter] = [m.ADAPTER for m in (lxnav, flarm, trig, funke, airavionics, naviter, winter, pilotaware, xcvario, krt, borgelt, becker, stefly, uavionix)]
 BY_ID = {a.id: a for a in ALL}
 
 

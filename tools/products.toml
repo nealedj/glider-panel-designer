@@ -108,3 +108,168 @@ category = "vario"
 maker = "LXNAV"
 model = "S10"
 category = "vario"
+
+# Wider coverage: the common glider panel devices across makers.
+
+# Primary instruments
+[[product]]
+maker = "Winter"
+model = "4 FGH"
+name = "Winter 4 FGH altimeter"
+category = "instrument"
+
+[[product]]
+maker = "Air Avionics"
+model = "ACD-57"
+name = "Air Avionics ACD-57 control display and altimeter"
+category = "display"
+
+# Varios and flight computers
+[[product]]
+maker = "LXNAV"
+model = "V8"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "V9"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "V80"
+category = "vario"
+
+[[product]]
+maker = "LXNAV"
+model = "LX8080"
+category = "flight-computer"
+
+[[product]]
+maker = "LXNAV"
+model = "LX9000"
+category = "flight-computer"
+
+[[product]]
+maker = "LXNAV"
+model = "LX8000"
+category = "flight-computer"
+
+[[product]]
+maker = "Borgelt"
+model = "B50"
+name = "Borgelt B50 Super Vario"
+category = "vario"
+
+[[product]]
+maker = "Borgelt"
+model = "B2000"
+name = "Borgelt B2000 glide computer"
+category = "flight-computer"
+
+[[product]]
+maker = "Naviter"
+model = "Oudie N"
+category = "flight-computer"
+
+[[product]]
+maker = "XCVario"
+model = "XCTouchNav"
+category = "flight-computer"
+
+[[product]]
+maker = "XCVario"
+model = "XCFlarmView"
+category = "display"
+
+# SteFly. NAV 57 and NAV 70 are 5.7 and 7 inch screens, not 57 mm instruments.
+[[product]]
+maker = "SteFly"
+model = "NAV 57"
+name = "SteFly NAV 57 navigation computer"
+category = "flight-computer"
+
+[[product]]
+maker = "SteFly"
+model = "NAV 70"
+name = "SteFly NAV 70 navigation computer"
+category = "flight-computer"
+
+[[product]]
+maker = "SteFly"
+model = "OpenVario"
+name = "SteFly OpenVario"
+category = "flight-computer"
+
+[[product]]
+maker = "SteFly"
+model = "LARUS Sensor Unit"
+name = "SteFly LARUS gliding sensor unit"
+category = "vario"
+
+[[product]]
+maker = "SteFly"
+model = "LARUS Vario Display"
+name = "SteFly LARUS vario display 57 mm"
+category = "vario"
+
+[[product]]
+maker = "SteFly"
+model = "Sensor Board"
+name = "SteFly OpenVario sensor board"
+category = "other"
+
+[[product]]
+maker = "SteFly"
+model = "Remote Stick"
+name = "SteFly remote control stick"
+category = "switch"
+
+[[product]]
+maker = "SteFly"
+model = "Rotary Module"
+name = "SteFly rotary module"
+category = "switch"
+
+# Traffic
+[[product]]
+maker = "FLARM"
+model = "Classic FLARM"
+category = "flarm"
+
+[[product]]
+maker = "FLARM"
+model = "PowerFLARM Flex"
+name = "FLARM PowerFLARM Flex (Flex Pure)"
+category = "flarm"
+
+[[product]]
+maker = "uAvionix"
+model = "SkyEcho 2"
+name = "uAvionix SkyEcho 2 electronic conspicuity device"
+category = "other"
+
+# Transponders, radios and recorders
+[[product]]
+maker = "Air Avionics"
+model = "VT-01"
+name = "Air Avionics VT-01 Mode S transponder (formerly Garrecht)"
+category = "transponder"
+
+[[product]]
+maker = "TQ"
+model = "KTX2"
+name = "TQ KTX2 Mode S transponder"
+category = "transponder"
+
+[[product]]
+maker = "Becker"
+model = "AR6201"
+name = "Becker AR6201 VHF transceiver"
+category = "radio"
+
+[[product]]
+maker = "Becker"
+model = "AR6203"
+name = "Becker AR6203 VHF transceiver"
+category = "radio"

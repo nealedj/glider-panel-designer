@@ -1,0 +1,104 @@
+{
+  "id": "lxnav.flarmview57",
+  "version": 1,
+  "maker": "LXNAV",
+  "model": "FlarmView57",
+  "category": "display",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "port-rj12",
+      "type": "RJ12",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "(Power input) 12VDC (On version 2)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "2",
+          "function": "(Power input) 3.3VDC (On version 1)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "3",
+          "function": "GND",
+          "signal": "ground"
+        },
+        {
+          "number": "4",
+          "function": "(input) Data in RS232 – receive line",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "(output) Data out RS232 – transmit line",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "6",
+          "function": "Ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.097,
+    "voltage": 12
+  },
+  "weightG": 97,
+  "datasheet": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+  "sources": {
+    "weightG": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+      "snippet": "• Weight FlarmView - 25g, FlarmView57 – 97g",
+      "status": "verified",
+      "note": "Page 7."
+    },
+    "power.currentA": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+      "snippet": "• Weight FlarmView - 25g, FlarmView57 – 97g",
+      "status": "verified",
+      "note": "Page 7. Entered by the reviewer from the source document."
+    },
+    "power.voltage": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+      "snippet": "• Consumption of LXNAV FlarmView is (0.84W) 70mA@12V",
+      "status": "verified",
+      "note": "Page 7. The voltage the current was quoted at.; This line names FlarmView, not FlarmView57; it may not apply."
+    },
+    "datasheet": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+      "snippet": "FlarmView, FlarmView57 User Manual",
+      "status": "verified"
+    },
+    "connectors.port-rj12": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmViewManualEnglishVer0256.pdf",
+      "snippet": "Pin number | Description\n1 | (Power input) 12VDC (On version 2)\n2 | (Power input) 3.3VDC (On version 1)\n3 | GND",
+      "status": "verified",
+      "note": "Page 21."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}
