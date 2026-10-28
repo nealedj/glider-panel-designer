@@ -41,6 +41,8 @@ export const CandidateProduct = z.object({
   name: z.string(),
   category: PartCategory.nullable(),
   variant: z.string().nullable().optional(),
+  /** Why the discovery tools split this size variant out, quoting the manual. */
+  variantNote: z.string().optional(),
   /** Part of the reference panel (M5 acceptance tracks these). */
   reference: z.boolean().default(false),
   candidates: z.array(CandidateValue),

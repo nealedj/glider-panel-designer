@@ -7,7 +7,7 @@ import pytest
 from PIL import Image, ImageDraw
 
 from discover import html, makers
-from discover.candidates import Builder, core_model, split_variant
+from discover.candidates import STANDARD_SIZE, Builder, core_model, split_variant
 from discover.config import Config
 from discover.fetch import Fetcher, NetworkRefused
 from discover.images import extract_face
@@ -15,7 +15,7 @@ from discover.importer import ImportError_, check_part, import_bundle
 from discover.pdf import analyse
 from discover.pipeline import Seed, run
 from discover.retailer import crawl
-from discover.specs import Context, extract, model_pattern, pinout_from_rows
+from discover.specs import Candidate, Context, extract, model_pattern, pinout_from_rows
 from conftest import FakeClock
 from fakesite import MAKER, S100_DESC, SHOP, install_manual
 
@@ -129,6 +129,24 @@ def test_robots_rate_limit_and_cache(config, site):
     assert f2.requests == 0
 
 
+def test_failed_requests_are_skipped_not_cached(config, site):
+    # A URL with spaces is encoded before it is requested.
+    site.pages[SHOP + "/files/Install%20Manual.pdf"] = ("application/pdf", b"%PDF-1.4")
+    real = site.__call__
+
+    def flaky(url, headers):
+        if url.endswith("/varios.html"):
+            raise TimeoutError("The read operation timed out")
+        return real(url, headers)
+
+    f = Fetcher(config, flaky, clock=FakeClock())
+    assert f.get(SHOP + "/files/Install Manual.pdf").ok
+    assert f.get(SHOP + "/varios.html") is None
+    assert f.failed == [(SHOP + "/varios.html", "TimeoutError: The read operation timed out")]
+    # Not cached: the next run asks again.
+    assert Fetcher(config, site, clock=FakeClock()).get(SHOP + "/varios.html").ok
+
+
 # ---------------------------------------------------------------- retailer
 
 
@@ -153,7 +171,8 @@ def test_crawl_finds_products_and_respects_limits(config, site):
 def test_lxnav_listing_and_ranking(config, site):
     ad = makers.BY_ID["lxnav"]
     links = ad.listing(Fetcher(config, site, clock=FakeClock()))
-    assert len(links) == 4
+    # Four from the synthetic listing page, plus the V8/V80 manual the adapter seeds.
+    assert len(links) == 5
     best = ad.manuals_for("S100", links)
     # English only; installation before user manual; the range "S8x, S10x" covers the S100.
     assert [m.url.rsplit("/", 1)[1] for m in best] == ["S8x-S10xInstallEnglish.pdf", "S8x-S10xManualEnglish.pdf"]
@@ -216,6 +235,31 @@ def test_variants_and_models():
     assert p1.key != p2.key and p1.model == p2.model == "S100"
 
 
+def test_sizes_named_in_one_sentence_make_variants():
+    b = Builder()
+    sid = b.source("manual", MAKER + "/s.pdf", "S8x/S10x installation manual")
+
+    def cand(path, value, snippet, conf=0.5):
+        return Candidate(path, value, snippet, sid, MAKER + "/s.pdf", conf, "test", page=4)
+
+    s100 = b.product("LXNAV", "S100", "LXNAV S100", "vario")
+    b.add(s100, [cand("front.cutout", {"kind": "circle", "d": 80.0}, "The LXNAV S8x/10x requires a standard 57 or 80mm cut-out."), cand("weightG", 270, "Weight 270 g")], sid)
+    # A range manual lists other models' sizes one per line: not variants of this product.
+    lx = b.product("LXNAV", "LX9070", "LXNAV LX9070", "flight-computer")
+    b.add(lx, [cand("front.bezel", {"kind": "rect", "w": 61.0, "h": 61.0}, "Vario indicator (57mm V5) 61 x 61 x 42 mm 200 g"), cand("front.bezel", {"kind": "rect", "w": 81.0, "h": 81.0}, "Vario indicator (80mm V80) 81 x 81 x 44 mm 270 g")], sid)
+    # Already a variant: left alone.
+    b.product("XCVario", "XCVario 57mm", "XCVario", "vario")
+
+    assert b.split_sizes() == [("lxnav.s100", ["lxnav.s100.57-mm", "lxnav.s100.80-mm"])]
+    assert set(b.products) == {"lxnav.s100.57-mm", "lxnav.s100.80-mm", "lxnav.lx9070", "xcvario.xcvario.57-mm"}
+    v = b.products["lxnav.s100.57-mm"]
+    assert v.model == "S100" and v.variant == "57 mm" and len(v.candidates) == 2
+    assert "S8x/S10x installation manual, page 4" in v.variant_note and "57 or 80mm" in v.variant_note
+    assert next(x for x in b.to_json()["products"] if x["key"] == "lxnav.s100.80-mm")["variantNote"]
+    # Both sizes in a bezel line count too.
+    assert {int(m[1]) for m in STANDARD_SIZE.finditer("Case dimensions 64x68x35 mm (57 mm) 80x80x35 mm (80 mm)")} == {57, 80}
+
+
 # ---------------------------------------------------------------- faces
 
 
@@ -248,3 +292,24 @@ def test_import_refuses_retailer_sources(config, tmp_path):
     bundle.write_text(json.dumps({"kind": "gpd-reviewed-parts", "parts": [part]}))
     out = import_bundle(bundle, config, tmp_path / "cat")
     assert json.loads(out[0].read_text())["id"] == "lxnav.s100"
+
+
+def test_range_names_cover_the_base_model_and_its_siblings():
+    from discover.makers.base import _range_covers
+
+    assert _range_covers("S8x, S10x", "S8") and _range_covers("S8x, S10x", "S80") and _range_covers("S8x, S10x", "S100")
+    assert not _range_covers("S8x, S10x", "S7") and not _range_covers("S8x", "S800")
+    assert _range_covers("LX80xx", "LX8080")
+
+
+def test_winter_ties_pdfs_to_the_models_their_page_names():
+    from discover.makers.winter import ADAPTER
+
+    ugd = "https://www.winter-instruments.de/_files/ugd/"
+    asi = html.parse(f'<h1>Fahrtmesser / Airspeed indicator</h1><p>6 FMS 4 and 7 FMS 4</p><a href="{ugd}a1.pdf">Maßzeichnung</a><a href="{ugd}a2.pdf">Einbau-und Wartungsanweisung</a>')
+    every = html.parse(f'<p>4 FGH, 6 FMS, 7 FMS</p><a href="{ugd}b1.pdf">Tabelle</a>')
+    links = ADAPTER.read_listing("https://www.winter-instruments.de/fahrtmesser-airspeed-indicator", asi) + ADAPTER.read_listing("https://www.winter-instruments.de/download-service", every)
+    hits = ADAPTER.manuals_for("7 FMS", links)
+    assert [m.url.rsplit("/", 1)[-1] for m in hits] == ["a1.pdf", "a2.pdf"]
+    assert [m.kind for m in hits] == ["drawing", "installation"]
+    assert ADAPTER.manuals_for("4 FGH", links) == []

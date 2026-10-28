@@ -1,0 +1,119 @@
+{
+  "id": "lxnav.lx8080",
+  "version": 1,
+  "maker": "LXNAV",
+  "model": "LX8080",
+  "category": "flight-computer",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 80
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 82,
+      "h": 82,
+      "r": 0
+    },
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": 60,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "ports-rj12",
+      "type": "RJ12",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "(output) 12V DC, to supply GPS",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "4",
+          "function": "(input) Receive to main display unit RS232 (e.g.: NANO power 232)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "(output) Transmit from LXNAV main display unit RS232 (e.g.: NANO power\n232)",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "6",
+          "function": "Ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.41,
+    "voltage": null
+  },
+  "weightG": 435,
+  "datasheet": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "6.1.2.4 LX8080 Cut-Out",
+      "status": "verified",
+      "note": "Entered by the reviewer from the source document."
+    },
+    "front.bezel": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "LX8080 main unit 82 x 82 x 60 mm 435 g",
+      "status": "verified",
+      "note": "Page 13. First two figures of W × H × D, taken as the front face."
+    },
+    "rear.depth": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "LX8080 main unit 82 x 82 x 60 mm 435 g",
+      "status": "verified",
+      "note": "Page 13. Third figure of W × H × D. Check whether it is depth behind the panel or overall."
+    },
+    "weightG": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "LX8080 main unit 82 x 82 x 60 mm 435 g",
+      "status": "verified",
+      "note": "Page 13."
+    },
+    "power.currentA": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxUserManualEnglishVer950rev61.pdf",
+      "snippet": "o 410 mA – maximum brightness without audio and with Power FLARM.",
+      "status": "verified",
+      "note": "Page 22."
+    },
+    "datasheet": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "LX80xx, LX90xx Installation Manual",
+      "status": "verified"
+    },
+    "connectors.ports-rj12": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "Pin Number | Description\n1 | (output) 12V DC, to supply GPS\n2,3 | N.C.\n4 | (input) Receive to main display unit RS232 (e.g.: NANO power 232)",
+      "status": "verified",
+      "note": "Page 54."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

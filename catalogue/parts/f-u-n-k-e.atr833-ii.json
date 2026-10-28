@@ -1,0 +1,32 @@
+{
+  "id": "f-u-n-k-e.atr833-ii",
+  "version": 1,
+  "maker": "f.u.n.k.e.",
+  "model": "ATR833-II",
+  "category": "radio",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+  "sources": {
+    "datasheet": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "Installation & Operation (PDF)",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

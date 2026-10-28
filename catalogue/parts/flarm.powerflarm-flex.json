@@ -1,0 +1,59 @@
+{
+  "id": "flarm.powerflarm-flex",
+  "version": 1,
+  "maker": "FLARM",
+  "model": "PowerFLARM Flex",
+  "category": "flarm",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 4.9
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": {
+    "currentA": 0.16,
+    "voltage": 3
+  },
+  "weightG": 225,
+  "datasheet": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+  "sources": {
+    "front.protrusion": {
+      "url": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+      "snippet": "The screws must not protrude more than 4.9 mm into the",
+      "status": "verified",
+      "note": "Page 11."
+    },
+    "weightG": {
+      "url": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+      "snippet": "Mass 225 g (with battery)",
+      "status": "verified",
+      "note": "Page 32."
+    },
+    "power.currentA": {
+      "url": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+      "snippet": "Current Consumption (typ.) Nominal: 160 mA (12 V),70 mA (32 V)",
+      "status": "verified",
+      "note": "Page 9.2. Entered by the reviewer from the source document."
+    },
+    "power.voltage": {
+      "url": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+      "snippet": "Current Consumption (typ.) Nominal: 160 mA (12 V),70 mA (32 V)",
+      "status": "verified",
+      "note": "Page 9.2. Entered by the reviewer from the source document."
+    },
+    "datasheet": {
+      "url": "https://www.flarm.com/wp-content/uploads/2026/08/FTD-114-PowerFLARM-Flex-Manual-v1.6.pdf",
+      "snippet": "PowerFLARM Flex Manual (FTD-114)\n6. August 2026 – [1 MB]\nDownload",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

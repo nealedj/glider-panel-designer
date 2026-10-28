@@ -95,7 +95,7 @@ def run(
                 log(f"{adapter.id}: skipped ({e})")
                 listings[adapter.id] = list(adapter.seed_manuals)
             model = core_model(p.name, p.maker, adapter.models)
-            for m in adapter.manuals_for(model, listings[adapter.id])[:max_manuals]:
+            for m in adapter.manuals_for(model, listings[adapter.id])[: max(max_manuals, adapter.max_manuals)]:
                 try:
                     r = fetcher.get(m.url)
                 except NetworkRefused as e:
@@ -117,5 +117,9 @@ def run(
                     b.add(p, extract(parse(r.text()).text(), ctx), sid)
                     p.manuals.append({"source": sid, "url": m.url, "title": m.title, "pages": None})
                 b.add(p, [Candidate("datasheet", m.url, m.title, sid, m.url, 0.8 if maker_hosted else 0.5, "manual-link", note=None if maker_hosted else "Not hosted by the maker.")], sid)
+    for key, variants in b.split_sizes():
+        log(f"{key}: split into {', '.join(variants)} (the manuals name several sizes)")
+    for url, reason in fetcher.failed:
+        log(f"failed: {url} ({reason})")
     log(f"candidates: {len(b.products)} products, {sum(len(p.candidates) for p in b.products.values())} candidate values, {fetcher.requests} requests sent")
     return b

@@ -1,0 +1,57 @@
+{
+  "id": "tq.krt2",
+  "version": 1,
+  "maker": "TQ",
+  "model": "KRT2",
+  "category": "radio",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": 150,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": 360,
+  "datasheet": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Mounting Panel mounting, cut-out Ø 57 mm or figure KRT2-L /-P panel cut out",
+      "status": "verified",
+      "note": "Page 54."
+    },
+    "rear.depth": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Dimensions Portrait Height: 64mm, Width: 46 mm, Depth: 150mm plus rear panel",
+      "status": "verified",
+      "note": "Page 54."
+    },
+    "weightG": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "57mm approx. 0.36 kg",
+      "status": "verified",
+      "note": "Page 54."
+    },
+    "datasheet": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "KRT2 Operation and Installation Manual (2018)",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

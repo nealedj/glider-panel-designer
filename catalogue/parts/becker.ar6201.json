@@ -1,0 +1,96 @@
+{
+  "id": "becker.ar6201",
+  "version": 1,
+  "maker": "Becker",
+  "model": "AR6201",
+  "category": "radio",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": 211.4,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "x1",
+      "type": "unknown",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "12",
+          "function": "12",
+          "signal": "other"
+        },
+        {
+          "number": "21",
+          "function": "21",
+          "signal": "other"
+        },
+        {
+          "number": "24",
+          "function": "24",
+          "signal": "other"
+        },
+        {
+          "number": "23",
+          "function": "23",
+          "signal": "other"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 2,
+    "voltage": 12
+  },
+  "weightG": 850,
+  "datasheet": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+  "sources": {
+    "rear.depth": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+      "snippet": "Depth of unit 211.4 mm (front plate till end of antenna connector)",
+      "status": "verified",
+      "note": "Page 9."
+    },
+    "weightG": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+      "snippet": "Weight 850 g",
+      "status": "verified",
+      "note": "Page 9."
+    },
+    "power.currentA": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Transmit Mode ................. ≤ 2 A @ 14 VDC; 70% modulation, VSWR=1:1",
+      "status": "verified",
+      "note": "Page 13."
+    },
+    "power.voltage": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Power “OFF” state ............. ≈ 1.5 mA @ 12 VDC",
+      "status": "verified",
+      "note": "Page 13. The voltage the current was quoted at."
+    },
+    "datasheet": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+      "snippet": "AR6201 Installation&Operation Manual, en",
+      "status": "verified"
+    },
+    "connectors.x1": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+      "snippet": "12 | 12\n21 | 21\n | \n24 | 24",
+      "status": "verified",
+      "note": "Page 26."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

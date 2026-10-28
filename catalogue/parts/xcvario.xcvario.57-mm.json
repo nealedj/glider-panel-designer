@@ -1,0 +1,86 @@
+{
+  "id": "xcvario.xcvario.57-mm",
+  "version": 1,
+  "maker": "XCVario",
+  "model": "XCVario 57 mm",
+  "category": "vario",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 64,
+      "h": 68,
+      "r": 0
+    },
+    "screwHoles": [],
+    "protrusion": 10
+  },
+  "rear": {
+    "body": null,
+    "depth": 35,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": {
+    "currentA": 0.1,
+    "voltage": 12
+  },
+  "weightG": 165,
+  "datasheet": "https://xcvario.com/print/print-docs.php?category=vario",
+  "sources": {
+    "front.cutout": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "The 57 mm variant (left) conforms to the standard aviation cutout for 57 mm instruments.",
+      "status": "verified"
+    },
+    "front.bezel": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Case dimensions (width x height x depth)64x68x35 mm (57 mm) 80x80x35 mm (80 mm)",
+      "status": "verified",
+      "note": "First two figures of W × H × D, taken as the front face."
+    },
+    "front.protrusion": {
+      "url": "https://xcvario.com/print/print-docs.php?category=vario",
+      "snippet": "The instrument screws must not protrude more than 10 mm into the housing.",
+      "status": "verified"
+    },
+    "rear.depth": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Housing depth: 35 mm",
+      "status": "verified"
+    },
+    "weightG": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Weight165 g (57 mm) 235 g (80 mm)",
+      "status": "verified"
+    },
+    "power.currentA": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Low power consumption, typical 100 mA at 12V",
+      "status": "verified"
+    },
+    "power.voltage": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Low power consumption, typical 100 mA at 12V",
+      "status": "verified",
+      "note": "The voltage the current was quoted at."
+    },
+    "datasheet": {
+      "url": "https://xcvario.com/print/print-docs.php?category=vario",
+      "snippet": "XCVario manual (earlier models)",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

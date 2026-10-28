@@ -1,0 +1,53 @@
+{
+  "id": "flarm.classic-flarm",
+  "version": 1,
+  "maker": "FLARM",
+  "model": "Classic FLARM",
+  "category": "flarm",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": {
+    "currentA": 0.055,
+    "voltage": 12
+  },
+  "weightG": 125,
+  "datasheet": "https://www.flarm.com/wp-content/uploads/2024/04/FLARM_InstallationManual_Legacy_v5.00_EN.pdf",
+  "sources": {
+    "weightG": {
+      "url": "https://www.flarm.com/wp-content/uploads/2024/04/FLARM_InstallationManual_Legacy_v5.00_EN.pdf",
+      "snippet": "Weight: 125 g (with internal radio antenna, without cable, without GPS antenna)",
+      "status": "verified",
+      "note": "Page 8."
+    },
+    "power.currentA": {
+      "url": "https://www.flarm.com/wp-content/uploads/2024/04/FLARM_InstallationManual_Legacy_v5.00_EN.pdf",
+      "snippet": "Power drain: typically approx. 55 mA at 12 V DC, approx. 37 mA at 24 V DC (Normal operation meets the requirements of the CE Mark.",
+      "status": "verified",
+      "note": "Page 8."
+    },
+    "power.voltage": {
+      "url": "https://www.flarm.com/wp-content/uploads/2024/04/FLARM_InstallationManual_Legacy_v5.00_EN.pdf",
+      "snippet": "Power drain: typically approx. 55 mA at 12 V DC, approx. 37 mA at 24 V DC (Normal operation meets the requirements of the CE Mark.",
+      "status": "verified",
+      "note": "Page 8. The voltage the current was quoted at."
+    },
+    "datasheet": {
+      "url": "https://www.flarm.com/wp-content/uploads/2024/04/FLARM_InstallationManual_Legacy_v5.00_EN.pdf",
+      "snippet": "FLARM Installation Manual (legacy devices) 5.00",
+      "status": "verified"
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}
