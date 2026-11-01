@@ -27,6 +27,8 @@ export function fmtValue(path: string, v: unknown, unit?: string): string {
     case 'front.bezel':
     case 'rear.body':
       return fmtShape(v);
+    case 'rear.box':
+      return Array.isArray(v) ? `${v.join(' × ')} mm box` : JSON.stringify(v);
     case 'front.screwHoles': {
       const o = v as { spacing: number; d: number };
       return `4 × Ø${o.d} mm on a ${o.spacing} mm square`;

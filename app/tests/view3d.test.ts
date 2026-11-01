@@ -66,6 +66,25 @@ describe('3D model', () => {
     expect(solid(m, 'panel').holes).toHaveLength(1 + 4 + resolveTemplate(doc)!.fixings.length);
   });
 
+  it('draws a box part as fitted: the chosen size runs rearward, the other two face the panel', () => {
+    // LX Navigation Flarm Red Box, 84x53x30 mm, lying flat on top of a radio: 84 across, 53 rearward.
+    doc.parts = [
+      place('radio', 'generic.radio-57', 0, 0),
+      place('flarm', 'lx-navigation.flarm-red-box', 0, 60, { mountedTo: { parent: 'radio', dx: 0, dy: 60, dz: 10 }, boxDepth: 1 }),
+    ];
+    const m = buildModel3d(doc);
+    const body = solid(m, 'body:flarm');
+    expect(body).toMatchObject({ z0: 10, z1: 63, unknown: false });
+    const xs = body.outline.map((p) => p.x);
+    const ys = body.outline.map((p) => p.y);
+    expect(Math.max(...xs) - Math.min(...xs)).toBeCloseTo(84, 6);
+    expect(Math.max(...ys) - Math.min(...ys)).toBeCloseTo(30, 6);
+    expect(m.notes.join(' ')).not.toMatch(/off-panel/);
+    // By default the last printed size runs rearward.
+    doc = { ...doc, parts: [place('flarm', 'lx-navigation.flarm-red-box', 0, 0)] };
+    expect(solid(buildModel3d(doc), 'body:flarm')).toMatchObject({ z0: 0, z1: 30 });
+  });
+
   it('marks clashing bodies', () => {
     doc.parts = [place('radio', 'generic.round-57', 0, 0, { params: { depth: 120 } }), place('box', 'generic.remote-unit', 0, 0)];
     const m = buildModel3d(doc);

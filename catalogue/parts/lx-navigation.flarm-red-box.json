@@ -13,7 +13,12 @@
   "rear": {
     "body": null,
     "depth": null,
-    "bracketPoints": []
+    "bracketPoints": [],
+    "box": [
+      84,
+      53,
+      30
+    ]
   },
   "connectors": [
     {
@@ -97,8 +102,14 @@
       "snippet": "Data interface 6P telephone type, for display and FW update ... Pin 6 power input (8-16V), 4 and 1 GND (near to RF connector), 2 data in, 3 data out, 5 power for external display",
       "status": "verified",
       "note": "Page 4. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.box": {
+      "url": "https://lxnavigation.com/downloads/file/172",
+      "snippet": "Dimensions: 84x53x30 mm aluminum housing",
+      "status": "verified",
+      "note": "Page 4. Housing sizes as printed; the manual does not say which face meets the panel, so each placed part picks the size that runs rearward (ADR 0016). Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",
-  "offPanel": true
+  "offPanel": false
 }

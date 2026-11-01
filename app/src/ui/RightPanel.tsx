@@ -116,6 +116,26 @@ export function Inspector() {
             </div>
           </>
         )}
+        {base?.rear.box && (
+          <label className="field">
+            <span className="field-label">Runs rearward</span>
+            <select
+              value={pp.boxDepth ?? 2}
+              data-testid="insp-box-depth"
+              disabled={pp.locked}
+              onChange={(e) => setPartFields(id, { boxDepth: Number(e.target.value) }, 'Turn box')}
+            >
+              {base.rear.box.map((d, i) => {
+                const [w, h] = base.rear.box!.filter((_, k) => k !== i);
+                return (
+                  <option key={i} value={i}>
+                    {boxLen(d, units)}, facing the panel {boxLen(w!, units)} × {boxLen(h!, units)}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        )}
         <LengthField label="Extra depth offset" mm={pp.depthOffset} units={units} onCommit={(depthOffset) => setPartFields(id, { depthOffset }, 'Set depth offset')} disabled={pp.locked} testId="insp-depth-offset" />
         {def && (
           <>
@@ -174,6 +194,8 @@ export function Inspector() {
     </section>
   );
 }
+
+const boxLen = (mm: number, units: 'metric' | 'imperial') => (units === 'imperial' ? formatLength(mm, units) : `${round(mm, 2)} mm`);
 
 function KeepOutInspector({ k, units }: { k: KeepOut; units: 'metric' | 'imperial' }) {
   const s = k.shape;
