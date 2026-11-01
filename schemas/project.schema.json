@@ -747,6 +747,11 @@
                 "type": "null"
               }
             ]
+          },
+          "boxDepth": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
           }
         },
         "required": [
@@ -1255,6 +1260,26 @@
                     "y"
                   ]
                 }
+              },
+              "box": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                ],
+                "items": false,
+                "minItems": 3,
+                "maxItems": 3
               }
             },
             "required": [

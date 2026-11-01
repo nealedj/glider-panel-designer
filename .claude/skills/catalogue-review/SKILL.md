@@ -108,6 +108,8 @@ cd ../tools && .venv/bin/python -m discover import-reviewed --dry-run $S/reviewe
   diagonals: spacing = circle ÷ √2 (LXNAV prints 47.38 for its Ø67 pattern). A maker saying
   the unit uses the "standard mounting dimensions" for 57/80 mm instruments counts.
 - **Overall or envelope sizes are not depth behind the panel**: leave `rear.depth` null.
+  A remote box with no panel face is the exception: its printed housing sizes go in
+  `rear.box` (ADR 0016), and the user picks which size runs rearward when placing it.
 - **Current draw is the highest documented figure** (max brightness, max volume, plus battery
   charging), paired with the voltage it is quoted at. Never pair a current with a voltage from
   another line.
@@ -118,7 +120,9 @@ cd ../tools && .venv/bin/python -m discover import-reviewed --dry-run $S/reviewe
 - One entered pinout per product: second connectors go in `notes.md`; say so to the user.
 - `screwHoles` is a square of four: rectangular, three-hole or mixed-diameter patterns stay
   empty and are reported.
-- `offPanel` and `ports` are not set by the build; edit them in the part file if needed.
+- `offPanel` and `ports` are not set by the build; edit them in the part file if needed. `offPanel` is only for
+  parts away from the panel (battery, speaker); no view draws them. A box fitted behind the
+  panel, even on another part, is not `offPanel`.
 - A product that is really two boxes (e.g. Borgelt B50 system unit plus display) or several
   models under one name (e.g. Winter 4 FGH 10/20/40) should be split; report it.
 

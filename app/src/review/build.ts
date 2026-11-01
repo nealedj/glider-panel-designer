@@ -43,6 +43,7 @@ export const FIELD_ORDER: { path: string; label: string; exported: boolean; mult
   { path: 'front.protrusion', label: 'Stands proud of the panel', exported: true },
   { path: 'rear.depth', label: 'Depth behind the panel', exported: true },
   { path: 'rear.body', label: 'Body (rear outline)', exported: true },
+  { path: 'rear.box', label: 'Box sizes (fitted any way round)', exported: true },
   { path: 'weightG', label: 'Weight', exported: true },
   { path: 'power.currentA', label: 'Current draw', exported: true },
   { path: 'power.voltage', label: 'At voltage', exported: true },
@@ -116,6 +117,11 @@ function shapeOf(v: unknown): Shape | null {
   return null;
 }
 
+/** Three positive sizes, mm, as the maker prints them. */
+function boxOf(v: unknown): [number, number, number] | undefined {
+  return Array.isArray(v) && v.length === 3 && v.every((n) => typeof n === 'number' && Number.isFinite(n) && n > 0) ? (v as [number, number, number]) : undefined;
+}
+
 const asNumber = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
 /** Square pattern of `count` holes (4) on `spacing`, diameter `d`. */
@@ -181,6 +187,7 @@ export function buildPart(file: CandidatesFile, p: CandidateProduct, r: ProductR
   const protrusion = take('front.protrusion');
   const depth = take('rear.depth');
   const body = take('rear.body');
+  const box = take('rear.box');
   const weight = take('weightG');
   const current = take('power.currentA');
   const voltage = take('power.voltage');
@@ -212,7 +219,7 @@ export function buildPart(file: CandidatesFile, p: CandidateProduct, r: ProductR
       screwHoles: holes ? holesOf(holes.value) : [],
       protrusion: protrusion ? asNumber(protrusion.value) : null,
     },
-    rear: { body: body ? shapeOf(body.value) : null, depth: depth ? asNumber(depth.value) : null },
+    rear: { body: body ? shapeOf(body.value) : null, depth: depth ? asNumber(depth.value) : null, ...(box ? { box: boxOf(box.value) } : {}) },
     connectors,
     power: current || voltage ? { currentA: current ? asNumber(current.value) : null, voltage: voltage ? asNumber(voltage.value) : null } : null,
     weightG: weight ? asNumber(weight.value) : null,
