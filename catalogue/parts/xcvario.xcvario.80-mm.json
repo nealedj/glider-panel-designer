@@ -14,7 +14,28 @@
       }
     ],
     "bezel": null,
-    "screwHoles": [],
+    "screwHoles": [
+      {
+        "x": -31.5,
+        "y": 31.5,
+        "d": 4.5
+      },
+      {
+        "x": 31.5,
+        "y": 31.5,
+        "d": 4.5
+      },
+      {
+        "x": -31.5,
+        "y": -31.5,
+        "d": 4.5
+      },
+      {
+        "x": 31.5,
+        "y": -31.5,
+        "d": 4.5
+      }
+    ],
     "protrusion": null
   },
   "rear": {
@@ -141,6 +162,12 @@
       "snippet": "Chapter 29 Installation, 'RJ45 connector S1' / 'Interface S1' table (Pin# RJ45 FCC | Identifier | Direction): 1 Plus 8..28 VDC Power In; 2 RS232 TTL RX Signal In; 3 RS232 TTL TX Signal Out; 4 Vario/Speed to Fly Switch Signal In; 5 T-Sensor +3.3 VDC Power Out; 6 T-Sensor Data Signal Out; 7 GND; 8 GND. 'The 80 mm variant has the same rear connections.'",
       "status": "verified",
       "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Pur manual, Installation: 'The 80 mm variant corresponds to the standard mounting dimensions for 80 mm panel instruments. Mounting is performed using four M4 screws. The panel holes should be drilled to a minimum diameter of 4.5 mm. ... Mounting hole circle diameters: 80 mm device: 89.1 mm 57 mm device: 66.7 mm'",
+      "status": "verified",
+      "note": "Standard instrument pattern: four holes on the 45° diagonals of the Ø89.1 hole circle, square spacing 89.1/√2 = 63.00 mm. Holes confirmed on the front plate by the maintainer on the G-DDLY unit (2026-11-01). Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",
