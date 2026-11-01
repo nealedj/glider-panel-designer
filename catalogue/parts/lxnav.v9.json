@@ -1,0 +1,178 @@
+{
+  "id": "lxnav.v9",
+  "version": 1,
+  "maker": "LXNAV",
+  "model": "V9",
+  "category": "vario",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": null,
+    "screwHoles": [
+      {
+        "x": -23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": -23.69,
+        "y": -23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": -23.69,
+        "d": 4.5
+      }
+    ],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "main-port-d-sub-15",
+      "type": "D-Sub 15",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GND / shield",
+          "signal": "ground"
+        },
+        {
+          "number": "2",
+          "function": "OAT (outside air temperature sensor, LM335Z)",
+          "signal": "other",
+          "direction": "in"
+        },
+        {
+          "number": "3",
+          "function": "CANH",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "4",
+          "function": "IN0",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "RS485 B",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "6",
+          "function": "IN2 (input 2)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "7",
+          "function": "12V IN",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "IN1 (input 1)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "9",
+          "function": "GND (joined to pin 1 / shield on the harness)",
+          "signal": "ground"
+        },
+        {
+          "number": "10",
+          "function": "VP (vario priority switch)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "11",
+          "function": "CANL",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "12",
+          "function": "RS485 A",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "13",
+          "function": "SC (speed command switch)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "14",
+          "function": "IN3 (input 3)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "15",
+          "function": "12V IN (joined to pin 7 on the harness)",
+          "signal": "power",
+          "direction": "in"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV9InstallationManualEnglishVer0200.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV9InstallationManualEnglishVer0200.pdf",
+      "snippet": "The V9 vario unit and any additional vario indicators each require a standard 57 mm cut-out.",
+      "status": "verified",
+      "note": "Page 5. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV9InstallationManualEnglishVer0200.pdf",
+      "snippet": "Drawing p.6, section 3.3 'Cutout of V9': ø57 hole, four screw holes ø4,5 on ø67 circle (square pattern, centre spacing 67/√2 = 47.38).",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV9InstallationManualEnglishVer0200.pdf",
+      "snippet": "V9 Installation Manual",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.main-port-d-sub-15": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXV9InstallationManualEnglishVer0200.pdf",
+      "snippet": "Wiring drawing p.8, section 3.4.2 'V9 vario unit wiring', SUBD15 harness connector (SBOX): 1 GND/shield, 2 OAT, 3 CANH, 4 IN0, 5 B, 6 IN2, 7 12V IN, 8 IN1, 9 GND (joined to 1), 10 VP, 11 CANL, 12 A, 13 SC, 14 IN3, 15 joined to 7 (12V IN).",
+      "status": "verified",
+      "note": "Page 8. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

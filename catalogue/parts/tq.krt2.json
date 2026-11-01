@@ -10,46 +10,215 @@
         "kind": "circle",
         "cx": 0,
         "cy": 0,
-        "d": 57
+        "d": 57.5
       }
     ],
     "bezel": null,
-    "screwHoles": [],
-    "protrusion": null
+    "screwHoles": [
+      {
+        "x": -23.5,
+        "y": 23.5,
+        "d": 4.5
+      },
+      {
+        "x": 23.5,
+        "y": 23.5,
+        "d": 4.5
+      },
+      {
+        "x": -23.5,
+        "y": -23.5,
+        "d": 4.5
+      },
+      {
+        "x": 23.5,
+        "y": -23.5,
+        "d": 4.5
+      }
+    ],
+    "protrusion": 19
   },
   "rear": {
-    "body": null,
-    "depth": 150,
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 62,
+      "h": 62,
+      "r": 0
+    },
+    "depth": 146,
     "bracketPoints": []
   },
-  "connectors": [],
+  "connectors": [
+    {
+      "id": "st1-d-sub-15",
+      "type": "D-Sub 15",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "Batt. Minus (GND)",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "TX-PC (serial data out, remote/PC)",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "3",
+          "function": "Microphone L",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "4",
+          "function": "LSP- (speaker minus, not GND)",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "5",
+          "function": "Ext.-NF (external audio in; ground if unused)",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "6",
+          "function": "Microphone R",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "7",
+          "function": "LSP+ (speaker plus)",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "8",
+          "function": "Batt. Plus (3 A slow-blow fuse)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "9",
+          "function": "Micro-GND (microphone ground)",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "10",
+          "function": "PTT-L",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "11",
+          "function": "PTT-R",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "12",
+          "function": "Intercom (switch to GND; ground if manual intercom not used)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "13",
+          "function": "RX-PC (serial data in, remote/PC)",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "14",
+          "function": "Headset (earphone out)",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "15",
+          "function": "Batt. Plus (bridged to pin 8)",
+          "signal": "power",
+          "direction": "in"
+        }
+      ]
+    }
+  ],
   "ports": [],
-  "power": null,
+  "power": {
+    "currentA": 2,
+    "voltage": 13.8
+  },
   "weightG": 360,
   "datasheet": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
   "sources": {
     "front.cutout": {
       "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
-      "snippet": "Mounting Panel mounting, cut-out Ø 57 mm or figure KRT2-L /-P panel cut out",
+      "snippet": "Drawing p.51, Figure 14 'KRT2-S panel cutout': cut-out circle dimensioned Ø 57,5 (text on p.8/p.54 gives the nominal 'Ø 57 mm' instrument size)",
       "status": "verified",
-      "note": "Page 54."
+      "note": "Page 51. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Drawing p.51, Figure 14 'KRT2-S panel cutout': 4 x Ø 4,5 holes on a 47,0 x 47,0 square",
+      "status": "verified",
+      "note": "Page 51. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.protrusion": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Drawing p.49, Figure 11 'KRT2-S Dimensions' side view: knob in front of the front flange dimensioned 19,0 mm",
+      "status": "verified",
+      "note": "Page 49. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "rear.depth": {
       "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
-      "snippet": "Dimensions Portrait Height: 64mm, Width: 46 mm, Depth: 150mm plus rear panel",
+      "snippet": "Dimensions 57mm-case Height: 62mm, Width: 62 mm, Depth: 146mm plus rear panel",
       "status": "verified",
-      "note": "Page 54."
+      "note": "Page 54. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.body": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Drawing p.49, Figure 11 'KRT2-S Dimensions' rear view: 62 x 62 (Table 12 p.54: 57mm-case Height 62mm, Width 62 mm)",
+      "status": "verified",
+      "note": "Page 49. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "weightG": {
       "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
       "snippet": "57mm approx. 0.36 kg",
       "status": "verified",
-      "note": "Page 54."
+      "note": "Page 54. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.currentA": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Table 12 p.54 Power Supply: '9 VDC to 30VDC test at 13.8VDC; Transmitter: 2.0 A (typ.); Receiver: 0.13 A'",
+      "status": "verified",
+      "note": "Page 54. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.voltage": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Table 12 p.54 Power Supply: 'test at 13.8VDC' (the voltage the 2.0 A transmit current is quoted at)",
+      "status": "verified",
+      "note": "Page 54. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "datasheet": {
       "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
       "snippet": "KRT2 Operation and Installation Manual (2018)",
-      "status": "verified"
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.st1-d-sub-15": {
+      "url": "https://www.tq-group.com/filedownloads/files/products/general_aviation/manuals/KRT2/en/TQ-KRT2-Manual-Englisch-2018.pdf",
+      "snippet": "Figure 7 'Connector pinout' p.38 (15-pin D-Sub, p.34): 1 Batt. Minus (GND), 2 TX-PC, 3 Microfon-L, 4 LSP-, 5 Ext.-NF, 6 Microfon-R, 7 LSP+, 8 Batt. Plus (linked to 15), 9 Micro-GND, 10 PTT-L, 11 PTT-R, 12 Intercom, 13 RX-PC, 14 Headset; confirmed by p.47 list",
+      "status": "verified",
+      "note": "Page 38. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

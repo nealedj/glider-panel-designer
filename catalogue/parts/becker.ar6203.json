@@ -1,0 +1,217 @@
+{
+  "id": "becker.ar6203",
+  "version": 1,
+  "maker": "Becker",
+  "model": "AR6203",
+  "category": "radio",
+  "front": {
+    "cutouts": [],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 158.8,
+      "h": 41.2,
+      "r": 0
+    },
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "p1-system-interfaces-d-sub-25-male",
+      "type": "D-Sub 25",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "SPK_HI - Speaker output signal",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "2",
+          "function": "HDPH1_A - Balanced headphone output 1",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "3",
+          "function": "HDPH1_B - Balanced headphone output 1",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "4",
+          "function": "AF_AUX_IN_HI - Auxiliary audio input",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "MIKE_DYN_HI - Balanced dynamic microphone input",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "6",
+          "function": "MIKE_DYN_LO - Balanced dynamic microphone input",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "7",
+          "function": "/IC - Intercom key input, active = contact to GND",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "MIKE_STD_LO - Standard microphone(s) low (STD1/2/3)",
+          "signal": "audio",
+          "direction": "passive"
+        },
+        {
+          "number": "9",
+          "function": "MIKE_STD2_HI - Standard microphone 2 high",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "10",
+          "function": "ILL_LO - Illumination low input",
+          "signal": "ground",
+          "direction": "in"
+        },
+        {
+          "number": "11",
+          "function": "P_SUPP - Power supply (positive)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "12",
+          "function": "P_SUPP - Power supply (positive)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "13",
+          "function": "P_SUPP_GND - Power supply ground",
+          "signal": "ground"
+        },
+        {
+          "number": "14",
+          "function": "SPK_LO - Speaker ground",
+          "signal": "audio",
+          "direction": "passive"
+        },
+        {
+          "number": "15",
+          "function": "LINE_OUT - Linear audio output, unbalanced",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "16",
+          "function": "AGC_OUT - Receiver AGC output",
+          "signal": "other",
+          "direction": "out"
+        },
+        {
+          "number": "17",
+          "function": "/PTT1 - Push To Talk input 1, active = contact to GND",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "18",
+          "function": "MIKE_STD1_HI - Standard microphone 1 high",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "19",
+          "function": "MIKE_STD3_HI - Standard microphone 3 high",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "20",
+          "function": "HDPH2_A - Balanced headphone output 2",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "21",
+          "function": "AF_AUX_IN_LO - Auxiliary audio input low",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "22",
+          "function": "HDPH2_B - Balanced headphone output 2",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "23",
+          "function": "ILL_HI - Illumination high",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "24",
+          "function": "/PWR_EVAL - Power-on monitor output (open collector, max 100 mA)",
+          "signal": "switch",
+          "direction": "out"
+        },
+        {
+          "number": "25",
+          "function": "P_SUPP_GND - Power supply ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": 800,
+  "datasheet": "https://becker-avionics.com/wp-content/uploads/00_Literature/6200_Series_IO_en.pdf",
+  "sources": {
+    "front.bezel": {
+      "url": "https://becker-avionics.com/wp-content/uploads/00_Literature/6200_Series_IO_en.pdf",
+      "snippet": "Figure 12 Dimensions AR6203/AR6213: front 158.8 (6.25) wide x 41.2 (1.6 in) high; p.29 'Front panel (W x H) 158.8 x 41.2 mm' for AR62X3",
+      "status": "verified",
+      "note": "Page 51. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "weightG": {
+      "url": "https://becker-avionics.com/wp-content/uploads/00_Literature/6200_Series_IO_en.pdf",
+      "snippet": "Weight 675 g (1.488 lbs) 800 g (1.763 lbs) 200 g (0.44 lbs) 600 g (1.32 lbs)",
+      "status": "verified",
+      "note": "Page 29. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://becker-avionics.com/wp-content/uploads/00_Literature/6200_Series_IO_en.pdf",
+      "snippet": "AR/RT/RCU 6200 series Installation and Operation Manual",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.p1-system-interfaces-d-sub-25-male": {
+      "url": "https://becker-avionics.com/wp-content/uploads/00_Literature/6200_Series_IO_en.pdf",
+      "snippet": "2.5.3.1 Connector P1 (System Interfaces) pin table 1..25; p.57 'P1 Type: 25pin D-Sub male connector' (applies to AR62XX incl. AR62X3)",
+      "status": "verified",
+      "note": "Page 58. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

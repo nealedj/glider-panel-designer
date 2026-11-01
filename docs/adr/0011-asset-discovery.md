@@ -115,3 +115,30 @@ Nothing may count as verified until a person has checked it.
   size only; the reviewer leaves that entry unreviewed and it is not exported.
 - **A failed request skips the page** (timeout, dropped connection, unusable URL). It is
   logged and not cached, so the next run retries it. URLs are percent-encoded before fetching.
+
+## Amendment (2026-11-01): review by AI subagents
+
+- **Who reviews.** The maintainer asked for candidates to be reviewed by AI subagents in place
+  of the Review tab pass. One subagent per maker family checked every candidate against the
+  cached maker document page (text and rendered drawings), and recorded accept, reject or
+  entered-value decisions in the Review tab's own `ProductReview` format, with a note per field.
+  The bundle is then built with the app's `buildBundle`, so retailer exclusion and provenance
+  work as before, and `import-reviewed` checks it again.
+- **Provenance says so.** Every source note on these parts ends "Reviewed by an AI subagent
+  against the cached maker document, not by a person." `verified` now means checked against
+  the cited document, by a person or an agent, as the note says. It still never means checked
+  against the real part: verify dimensions on the part before cutting.
+- **Rules the reviewers followed** (maintainer decisions, 2026-11-01):
+  - a value must be printed for this exact model and size; range-manual figures for other
+    models are rejected;
+  - screw spacing may be derived from a hole-centre circle with holes on the 45° diagonals
+    (spacing = circle ÷ √2), as LXNAV prints 47.38 for its Ø67 pattern;
+  - overall size or envelope figures are not depth behind the panel and stay null;
+  - current draw is the highest documented figure (maximum brightness or volume, plus charging
+    where a battery charges), for wire and breaker sizing.
+- **Manuals the maintainer supplies** are added as `user` sources with the maker's download
+  URL, so they are cited like crawled manuals.
+- **Known gaps.** A product holds one entered pinout, so second connectors are in the review
+  notes only; rectangular or mixed-diameter screw patterns and `offPanel` are not set by the
+  review. Size variants the manual shows do not exist (LXNAV S10 and S100 at 57 mm, S8 and
+  S80 at 80 mm) are left unreviewed.

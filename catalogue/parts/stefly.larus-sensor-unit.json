@@ -1,0 +1,92 @@
+{
+  "id": "stefly.larus-sensor-unit",
+  "version": 1,
+  "maker": "SteFly",
+  "model": "LARUS Sensor Unit",
+  "category": "vario",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "can-rj45",
+      "type": "RJ45",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GND (internally connected)",
+          "signal": "ground"
+        },
+        {
+          "number": "2",
+          "function": "GND (internally connected)",
+          "signal": "ground"
+        },
+        {
+          "number": "3",
+          "function": "NC",
+          "signal": "other"
+        },
+        {
+          "number": "4",
+          "function": "CAN Low",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "5",
+          "function": "CAN High",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "6",
+          "function": "NC",
+          "signal": "other"
+        },
+        {
+          "number": "7",
+          "function": "VCC 9-28 V DC (internally connected)",
+          "signal": "power"
+        },
+        {
+          "number": "8",
+          "function": "VCC 9-28 V DC (internally connected)",
+          "signal": "power"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://stefly.aero/wp-content/uploads/2025/06/Larus_Installation_Operating_Manual_Version1.8_en.pdf",
+  "sources": {
+    "datasheet": {
+      "url": "https://stefly.aero/wp-content/uploads/2025/06/Larus_Installation_Operating_Manual_Version1.8_en.pdf",
+      "snippet": "LARUS Installation and Operating Manual 1.8",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.can-rj45": {
+      "url": "https://stefly.aero/wp-content/uploads/2025/06/Larus_Installation_Operating_Manual_Version1.8_en.pdf",
+      "snippet": "4.3 CAN and RS232 Ports table, CAN column: 1-2 GND (internally connected), 3 NC, 4 CAN Low, 5 CAN High, 6 NC, 7-8 VCC [9-28V DC] (internally connected)",
+      "status": "verified",
+      "note": "Page 7. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

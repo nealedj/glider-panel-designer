@@ -5,13 +5,22 @@
   "model": "FlarmView2",
   "category": "display",
   "front": {
-    "cutouts": [],
+    "cutouts": [
+      {
+        "kind": "rect",
+        "cx": 0,
+        "cy": 0,
+        "w": 14,
+        "h": 15,
+        "r": 0
+      }
+    ],
     "bezel": {
       "kind": "rect",
       "cx": 0,
       "cy": 0,
       "w": 65,
-      "h": 42,
+      "h": 41.6,
       "r": 0
     },
     "screwHoles": [],
@@ -19,18 +28,30 @@
   },
   "rear": {
     "body": null,
-    "depth": 18,
+    "depth": null,
     "bracketPoints": []
   },
   "connectors": [
     {
-      "id": "x1",
-      "type": "unknown",
+      "id": "flarmview2-port-rj12",
+      "type": "RJ12",
       "x": 0,
       "y": 0,
       "face": "rear",
       "clearance": null,
       "pins": [
+        {
+          "number": "1",
+          "function": "(Power input) 12VDC (On version 2)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "2",
+          "function": "(Power input) 3.3VDC (On version 1)",
+          "signal": "power",
+          "direction": "in"
+        },
         {
           "number": "3",
           "function": "GND",
@@ -64,46 +85,47 @@
   "weightG": 36,
   "datasheet": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
   "sources": {
+    "front.cutout": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
+      "snippet": "\"A square hole with dimensions 14mm x 15mm, need to be cut.\" Drawing p.29: hole 14 wide x 15 high, centred on the 65 x 41,6 outline",
+      "status": "verified",
+      "note": "Page 29. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
     "front.bezel": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
-      "snippet": "• Outline dimension: 65 x 42 x 18 mm",
+      "snippet": "Drawing p.29 (7.1 Installing the LXNAV FlarmView2): housing outline dimensioned 65 wide x 41,6 high (rounded corners, radius not dimensioned); p.7 text rounds this to 65 x 42",
       "status": "verified",
-      "note": "Page 7. First two figures of W × H × D, taken as the front face."
-    },
-    "rear.depth": {
-      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
-      "snippet": "• Outline dimension: 65 x 42 x 18 mm",
-      "status": "verified",
-      "note": "Page 7. Third figure of W × H × D. Check whether it is depth behind the panel or overall."
+      "note": "Page 29. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "weightG": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
       "snippet": "• Weight: ~36g",
       "status": "verified",
-      "note": "Page 7."
+      "note": "Page 7. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.currentA": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
       "snippet": "• Consumption (0.84W) ~70mA@12V",
       "status": "verified",
-      "note": "Page 7."
+      "note": "Page 7. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.voltage": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
       "snippet": "• Consumption (0.84W) ~70mA@12V",
       "status": "verified",
-      "note": "Page 7. The voltage the current was quoted at."
+      "note": "Page 7. The voltage the current was quoted at. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "datasheet": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
       "snippet": "FlarmView2 User Manual",
-      "status": "verified"
-    },
-    "connectors.x1": {
-      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
-      "snippet": "3 | GND\n4 | (input) Data in RS232 – receive line\n5 | (output) Data out RS232 – transmit line\n6 | Ground",
       "status": "verified",
-      "note": "Page 30."
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.flarmview2-port-rj12": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/LXFlarmView2ManualEnglishVer0261rev9.pdf",
+      "snippet": "7.2.1.1 LXNAV FlarmView2 port (RJ12), table on pp.29-30: 1 (Power input) 12VDC (On version 2); 2 (Power input) 3.3VDC (On version 1); 3 GND; 4 (input) Data in RS232 – receive line; 5 (output) Data out RS232 – transmit line; 6 Ground",
+      "status": "verified",
+      "note": "Page 29. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

@@ -1,0 +1,173 @@
+{
+  "id": "trig.ty91",
+  "version": 1,
+  "maker": "Trig",
+  "model": "TY91",
+  "category": "radio",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 58
+      }
+    ],
+    "bezel": null,
+    "screwHoles": [
+      {
+        "x": -23.65,
+        "y": 23.65,
+        "d": 3
+      },
+      {
+        "x": 23.65,
+        "y": 23.65,
+        "d": 3
+      },
+      {
+        "x": -23.65,
+        "y": -23.65,
+        "d": 3
+      },
+      {
+        "x": 23.65,
+        "y": -23.65,
+        "d": 3
+      }
+    ],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "tc90-controller-d-sub-15-male",
+      "type": "D-Sub 15",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "Ground",
+          "signal": "ground"
+        },
+        {
+          "number": "2",
+          "function": "TMAPA",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "3",
+          "function": "TMAPB",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "4",
+          "function": "Ground",
+          "signal": "ground"
+        },
+        {
+          "number": "5",
+          "function": "RS232 Tx",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "6",
+          "function": "RS232 Rx",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "7",
+          "function": "Ground",
+          "signal": "ground"
+        },
+        {
+          "number": "8",
+          "function": "Remote ON",
+          "signal": "other",
+          "direction": "out"
+        },
+        {
+          "number": "9",
+          "function": "Power IN",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "10",
+          "function": "Power Ground",
+          "signal": "ground"
+        },
+        {
+          "number": "11",
+          "function": "Reserved",
+          "signal": "other"
+        },
+        {
+          "number": "12",
+          "function": "Step Button",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "13",
+          "function": "Transfer Button",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "14",
+          "function": "Reserved",
+          "signal": "other"
+        },
+        {
+          "number": "15",
+          "function": "Reserved",
+          "signal": "other"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://trig-avionics.com/library/00839-00-AH TY91 and TY92 Installation Manual.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://trig-avionics.com/library/00839-00-AH TY91 and TY92 Installation Manual.pdf",
+      "snippet": "Install manual 00839-00 AH, PDF p.59 (printed p.51), 12.3 Front Panel Cut-out Options, conventional round option: cut-out Ø58.00 (text calls it a conventional 57mm (2¼ inch) instrument cut-out). Same drawing in issue AG p.59. All dimensions in millimetres.",
+      "status": "verified",
+      "note": "Page 59. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://trig-avionics.com/library/00839-00-AH TY91 and TY92 Installation Manual.pdf",
+      "snippet": "PDF p.59 (printed p.51): four holes '3.0 CSK at 100°' on a 47.30 x 47.30 square around the Ø58.00 cut-out. Mounting thread 4-40 (printed p.15).",
+      "status": "verified",
+      "note": "Page 59. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://trig-avionics.com/library/00839-00-AH TY91 and TY92 Installation Manual.pdf",
+      "snippet": "TY91/92 Installation Manual (version AH)",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.tc90-controller-d-sub-15-male": {
+      "url": "https://trig-avionics.com/library/00839-00-AH TY91 and TY92 Installation Manual.pdf",
+      "snippet": "Issue AH PDF p.29 (printed p.21) 5.7.1 TC90 Interface - Pinout: 'single 15 way D type male connector'; 1 Ground, 2 TMAPA Bidir, 3 TMAPB Bidir, 4 Ground, 5 RS232 Tx Output, 6 RS232 Rx Input, 7 Ground, 8 Remote ON Output, 9 Power IN Input, 10 Power Ground, 11 Reserved, 12 Step Button Input, 13 Transfer Button Input, 14-15 Reserved.",
+      "status": "verified",
+      "note": "Page 29. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}
