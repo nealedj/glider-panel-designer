@@ -285,3 +285,9 @@ maker = "Becker"
 model = "AR6203"
 name = "Becker AR6203 VHF transceiver"
 category = "radio"
+
+[[product]]
+maker = "LX Navigation"
+model = "Flarm Red Box"
+name = "LX Navigation Flarm Red Box (HW 2)"
+category = "flarm"
