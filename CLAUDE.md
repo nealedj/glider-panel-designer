@@ -66,6 +66,7 @@ local/ cache/ git-ignored crawler config and caches
 - The 3D view only looks; edits go through the inspector and 2D views. It draws unknown thicknesses flat and lists them; it never guesses a depth (ADR 0014).
 - Nets are derived from wires after every wiring edit (`wiring/nets.ts`); never edit nets alone. Wire charts in `wiring/charts.ts` are transcribed with their source; do not add chart values without one.
 - Discovery candidates keep their verbatim snippet; only reviewed, maker-sourced values reach `catalogue/` (ADR 0011). `python -m pytest` in `tools/` runs the tool tests.
+- To add a part or review candidates or catalogue parts, use the `catalogue-review` skill (`.claude/skills/catalogue-review/`): reviewer subagents check each value against the maker's document.
 - Work is autosaved and snapshotted in IndexedDB; preferences (theme, key bindings, welcome seen) are in `localStorage` via `store/prefs.ts`. Anything that replaces the working copy goes through `replaceWork` in `store/recovery.ts`, so it is kept as a snapshot first (ADR 0013).
 - Templates hold only the panel: outline, bend lines, fixing holes, keep-outs, depth and clearance. Instruments and other parts belong in the project, never in a template.
 - Template photos stay in the browser (IndexedDB). Traced features are stored in template mm and remapped through the photo when calibration changes (ADR 0010).

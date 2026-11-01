@@ -21,7 +21,28 @@
       "h": 82,
       "r": 0
     },
-    "screwHoles": [],
+    "screwHoles": [
+      {
+        "x": -31.465,
+        "y": 31.465,
+        "d": 6
+      },
+      {
+        "x": 31.465,
+        "y": 31.465,
+        "d": 6
+      },
+      {
+        "x": -31.465,
+        "y": -31.465,
+        "d": 6
+      },
+      {
+        "x": 31.465,
+        "y": -31.465,
+        "d": 6
+      }
+    ],
     "protrusion": null
   },
   "rear": {
@@ -142,6 +163,12 @@
       "snippet": "6.1.4.14 PDA Port (RJ45), pp.52-53: 1,2 Ground; 3 (output) Transmit from LXNAV RS232; 4 (input) Receive to LXNAV RS232; 5 (output) Transmit LV-TTL (3.3V); 6 (input) Receive LV-TTL (3.3V); 7,8 5V OUTPUT (maximum 1A). 'Newer types of units' only.",
       "status": "verified",
       "note": "Page 53. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/lx90xx-80xxInstallationManualEnglish_rev41.pdf",
+      "snippet": "6.1.2.4 LX8080 Cut-Out drawing p.28: four holes '6mm' on a 'ø89.0mm' circle, on the 45° diagonals; spacing 89/√2 = 62.93 mm. p.36 front view: corner knob centres 63 x 63. The holes take the corner rotary-knob shafts, fixed with 'the four M6 screws' (p.25).",
+      "status": "verified",
+      "note": "Page 28. Entered by hand from the review. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",
