@@ -1,0 +1,33 @@
+{
+  "id": "trig.tt22",
+  "version": 1,
+  "maker": "Trig",
+  "model": "TT22",
+  "category": "transponder",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://trig-avionics.com/library/SUP.TT2X.010-1.0-FMS.pdf",
+  "sources": {
+    "datasheet": {
+      "url": "https://trig-avionics.com/library/SUP.TT2X.010-1.0-FMS.pdf",
+      "snippet": "SUP/TT2x/010, issue 1.0 – Fixed Wing (CS-23) TT21/TT22 Flight Manual Supplement",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

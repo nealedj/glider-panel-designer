@@ -1,0 +1,135 @@
+{
+  "id": "stefly.larus-vario-display",
+  "version": 1,
+  "maker": "SteFly",
+  "model": "LARUS Vario Display",
+  "category": "vario",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 60.5,
+      "h": 63.4,
+      "r": 0
+    },
+    "depth": null,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "can-rj45",
+      "type": "RJ45",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GND (internally connected)",
+          "signal": "ground"
+        },
+        {
+          "number": "2",
+          "function": "GND (internally connected)",
+          "signal": "ground"
+        },
+        {
+          "number": "3",
+          "function": "NC",
+          "signal": "other"
+        },
+        {
+          "number": "4",
+          "function": "CAN Low",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "5",
+          "function": "CAN High",
+          "signal": "bus",
+          "direction": "bidi"
+        },
+        {
+          "number": "6",
+          "function": "NC",
+          "signal": "other"
+        },
+        {
+          "number": "7",
+          "function": "VCC 9-28 V DC (internally connected)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "VCC 9-28 V DC (internally connected)",
+          "signal": "power",
+          "direction": "in"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.08,
+    "voltage": null
+  },
+  "weightG": 80,
+  "datasheet": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+      "snippet": "The display fits into a standard 57 mm cut-out and is secured with three M3 screws.",
+      "status": "verified",
+      "note": "Page 12. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.body": {
+      "url": "https://stefly.aero/wp-content/uploads/2025/10/SteFly-Vario-Display-Montage-Zeichnung-v1.1.pdf",
+      "snippet": "Drawing LARUS Vario Display 57 mm rev 1.1: housing 60.5 wide x 63.4 high (front view); matches manual p.29 'Housing dimensions excluding the knob 60,5 mm x 63,4 mm x 31,2 mm'. Cut-out centre is offset in the housing (31 / 29.5 horizontally, 33.8 / 29.6 vertically).",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "weightG": {
+      "url": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+      "snippet": "Weight 80g",
+      "status": "verified",
+      "note": "Page 29. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.currentA": {
+      "url": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+      "snippet": "Power consumption 80 mA",
+      "status": "verified",
+      "note": "Page 29. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+      "snippet": "LARUS Vario Display manual 0.4.1",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.can-rj45": {
+      "url": "https://stefly.aero/wp-content/uploads/2026/05/manual_en_v0-4-1-0.pdf",
+      "snippet": "Table 1: Pin Configuration for CAN and RS232 RJ45, CAN column: 1 GND, 2 GND (internally connected), 3 NC, 4 CAN Low, 5 CAN High, 6 NC, 7 VCC [9-28V DC], 8 VCC [9-28V DC]",
+      "status": "verified",
+      "note": "Page 9. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

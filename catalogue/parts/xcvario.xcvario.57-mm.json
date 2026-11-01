@@ -13,7 +13,12 @@
         "d": 57
       }
     ],
-    "bezel": {
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": {
       "kind": "rect",
       "cx": 0,
       "cy": 0,
@@ -21,64 +26,121 @@
       "h": 68,
       "r": 0
     },
-    "screwHoles": [],
-    "protrusion": 10
-  },
-  "rear": {
-    "body": null,
     "depth": 35,
     "bracketPoints": []
   },
-  "connectors": [],
+  "connectors": [
+    {
+      "id": "s1-rj45",
+      "type": "RJ45",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "Plus 8..28 VDC",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "2",
+          "function": "RS232 TTL RX",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "3",
+          "function": "RS232 TTL TX",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "4",
+          "function": "Vario/Speed to Fly switch (to GND pin 8)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "T-Sensor +3.3 VDC",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "6",
+          "function": "T-Sensor data (OneWire, DS18B20)",
+          "signal": "other"
+        },
+        {
+          "number": "7",
+          "function": "GND",
+          "signal": "ground"
+        },
+        {
+          "number": "8",
+          "function": "GND",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
   "ports": [],
   "power": {
-    "currentA": 0.1,
-    "voltage": 12
+    "currentA": 0.25,
+    "voltage": 12.5
   },
   "weightG": 165,
-  "datasheet": "https://xcvario.com/print/print-docs.php?category=vario",
+  "datasheet": "https://xcvario.com/print/print-docs.php?category=pur",
   "sources": {
     "front.cutout": {
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
       "snippet": "The 57 mm variant (left) conforms to the standard aviation cutout for 57 mm instruments.",
-      "status": "verified"
-    },
-    "front.bezel": {
-      "url": "https://xcvario.com/print/print-docs.php?category=pur",
-      "snippet": "Case dimensions (width x height x depth)64x68x35 mm (57 mm) 80x80x35 mm (80 mm)",
       "status": "verified",
-      "note": "First two figures of W × H × D, taken as the front face."
-    },
-    "front.protrusion": {
-      "url": "https://xcvario.com/print/print-docs.php?category=vario",
-      "snippet": "The instrument screws must not protrude more than 10 mm into the housing.",
-      "status": "verified"
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "rear.depth": {
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
-      "snippet": "Housing depth: 35 mm",
-      "status": "verified"
+      "snippet": "Case dimensions (width x height x depth)64x68x35 mm (57 mm) 80x80x35 mm (80 mm)",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.body": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Technical Specification table: 'Case dimensions (width x height x depth) 64x68x35 mm (57 mm)'. Housing sits behind the panel (M4 screws thread into it on a 66.7 mm hole circle, outside the 57 mm cut-out), so this is the rear outline, not a front bezel.",
+      "status": "verified",
+      "note": "Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "weightG": {
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
       "snippet": "Weight165 g (57 mm) 235 g (80 mm)",
-      "status": "verified"
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.currentA": {
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
-      "snippet": "Low power consumption, typical 100 mA at 12V",
-      "status": "verified"
+      "snippet": "Pur manual ch. 30 Technical Specification: 'Current consumption at 12.5V typical 70 mA = 0.9 Watt (idle) 100 mA =1.2W (Wireless connected) 120 mA =1.5W (XCV-23, heating on) 250 mA = 2.5W (max Volume)'",
+      "status": "verified",
+      "note": "Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.voltage": {
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
-      "snippet": "Low power consumption, typical 100 mA at 12V",
+      "snippet": "Pur manual ch. 30 Technical Specification: 'Current consumption at 12.5V typical 70 mA = 0.9 Watt (idle) 100 mA =1.2W (Wireless connected) 120 mA =1.5W (XCV-23, heating on) 250 mA = 2.5W (max Volume)'",
       "status": "verified",
-      "note": "The voltage the current was quoted at."
+      "note": "Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "datasheet": {
-      "url": "https://xcvario.com/print/print-docs.php?category=vario",
-      "snippet": "XCVario manual (earlier models)",
-      "status": "verified"
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "XCVario Pur manual",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.s1-rj45": {
+      "url": "https://xcvario.com/print/print-docs.php?category=pur",
+      "snippet": "Chapter 29 Installation, 'RJ45 connector S1' / 'Interface S1' table (Pin# RJ45 FCC | Identifier | Direction): 1 Plus 8..28 VDC Power In; 2 RS232 TTL RX Signal In; 3 RS232 TTL TX Signal Out; 4 Vario/Speed to Fly Switch Signal In; 5 T-Sensor +3.3 VDC Power Out; 6 T-Sensor Data Signal Out; 7 GND; 8 GND. 'The 80 mm variant has the same rear connections.'",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

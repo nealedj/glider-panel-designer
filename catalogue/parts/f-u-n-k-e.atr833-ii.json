@@ -5,26 +5,246 @@
   "model": "ATR833-II",
   "category": "radio",
   "front": {
-    "cutouts": [],
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57.5
+      }
+    ],
     "bezel": null,
     "screwHoles": [],
-    "protrusion": null
+    "protrusion": 20
   },
   "rear": {
-    "body": null,
-    "depth": null,
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 65,
+      "h": 65,
+      "r": 0
+    },
+    "depth": 150,
     "bracketPoints": []
   },
-  "connectors": [],
+  "connectors": [
+    {
+      "id": "main-d-sub-25",
+      "type": "D-Sub 25",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "LSP(+) speaker positive",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "2",
+          "function": "HEAD-0 (+) headphone 0 positive",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "3",
+          "function": "GND (HEAD-0) headphone 0 return",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "4",
+          "function": "EXT-NF external audio in",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "MIC R DYN dynamic microphone right",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "6",
+          "function": "MIC L GND microphone left ground",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "7",
+          "function": "INTERCOM SWITCH (to GND activates intercom)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "MIC L DYN dynamic microphone left",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "9",
+          "function": "DATA-RX RS232 receive (remote)",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "10",
+          "function": "IDENT / SWAP (adapter detect / frequency swap button to GND)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "11",
+          "function": "+14 / +28V PWR supply in (4 A slow-blow fuse)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "12",
+          "function": "+14 / +28V PWR supply in",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "13",
+          "function": "BATT (-) ground",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "14",
+          "function": "MIC R GND microphone right ground",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "15",
+          "function": "PTT-0 (to GND to transmit)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "16",
+          "function": "LSP(-) speaker negative (not ground)",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "17",
+          "function": "PTT-1 (to GND to transmit)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "18",
+          "function": "MIC R STD standard microphone right (headset 1)",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "19",
+          "function": "MIC L STD standard microphone left (headset 0)",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "20",
+          "function": "HEAD 1 (+) headphone 1 positive",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "21",
+          "function": "GND (HEAD 1) headphone 1 return",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "22",
+          "function": "DATA-TX RS232 transmit (remote)",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "23",
+          "function": "N/A, do not connect",
+          "signal": "other"
+        },
+        {
+          "number": "24",
+          "function": "+5VDC OUT supply for remote",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "25",
+          "function": "BATT (-) ground",
+          "signal": "ground",
+          "direction": "passive"
+        }
+      ]
+    }
+  ],
   "ports": [],
-  "power": null,
-  "weightG": null,
+  "power": {
+    "currentA": 2.5,
+    "voltage": null
+  },
+  "weightG": 460,
   "datasheet": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
   "sources": {
+    "front.cutout": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.49 (printed p.47), 4.11.2 Einbauhinweise, 'Abmessungen des Panel Ausschnitts': cut-out Ø 57,5 mm",
+      "status": "verified",
+      "note": "Page 49. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.protrusion": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.48 (printed p.46), 4.11.1 Geräteabmessungen side view: knobs in front of the front plate dimensioned 20 mm",
+      "status": "verified",
+      "note": "Page 48. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.48 (printed p.46), 4.11.1 Geräteabmessungen side view: body 150 mm from front plate to rear face, plus 19 mm rear connector (Technische Daten p.51: 'Tiefe: 169 mm' = 150 + 19)",
+      "status": "verified",
+      "note": "Page 48. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.body": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.48 (printed p.46) 4.11.1 Geräteabmessungen rear view: 65 mm x 65 mm (Technische Daten p.51: Höhe 65 mm, Breite 65 mm)",
+      "status": "verified",
+      "note": "Page 48. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "weightG": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.51 (printed p.49), 5.2 Technische Daten: 'GEWICHT 0,46 kg (1,01 lbs)'",
+      "status": "verified",
+      "note": "Page 51. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.currentA": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.51 (printed p.49), 5.2 Technische Daten STROMVERSORGUNG: '11.0 – 30.0 VDC nominal ... Sender: 2,5A; Empfänger: 0,2A (Standby), max. 0,5A' (no test voltage stated)",
+      "status": "verified",
+      "note": "Page 51. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
     "datasheet": {
       "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
       "snippet": "Installation & Operation (PDF)",
-      "status": "verified"
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.main-d-sub-25": {
+      "url": "https://www.funkeavionics.de/wp-content/uploads/2024/02/01.143.010.71d_ATR833-II_OI-Rev1.06_240124_WEB-PRINT.pdf",
+      "snippet": "PDF p.42-43 (printed p.40-41), 4.7.2 Stecker-Pinbelegung, 25-poliger Anschlussstecker: 1 LSP(+), 2 HEAD-0(+), 3 GND(HEAD-0), 4 EXT-NF, 5 MIC R DYN, 6 MIC L GND, 7 INTERCOM SWITCH, 8 MIC L DYN, 9 DATA-RX, 10 IDENT/SWAP, 11/12 +14/+28V-PWR, 13 BATT(-), 14 MIC R GND, 15 PTT-0, 16 LSP(-), 17 PTT-1, 18 MIC R STD, 19 MIC L STD, 20 HEAD 1(+), 21 GND(HEAD 1), 22 DATA-TX, 23 N/A, 24 +5VDC OUT, 25 BATT(-)",
+      "status": "verified",
+      "note": "Page 42. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

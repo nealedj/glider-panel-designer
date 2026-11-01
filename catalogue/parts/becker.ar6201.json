@@ -5,10 +5,45 @@
   "model": "AR6201",
   "category": "radio",
   "front": {
-    "cutouts": [],
-    "bezel": null,
-    "screwHoles": [],
-    "protrusion": null
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 58
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 61.2,
+      "h": 61.2,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -23.65,
+        "y": 23.65,
+        "d": 3.5
+      },
+      {
+        "x": 23.65,
+        "y": 23.65,
+        "d": 3.5
+      },
+      {
+        "x": -23.65,
+        "y": -23.65,
+        "d": 3.5
+      },
+      {
+        "x": 23.65,
+        "y": -23.65,
+        "d": 3.5
+      }
+    ],
+    "protrusion": 18.3
   },
   "rear": {
     "body": null,
@@ -17,78 +52,227 @@
   },
   "connectors": [
     {
-      "id": "x1",
-      "type": "unknown",
+      "id": "p1-system-interfaces-d-sub-25-male",
+      "type": "D-Sub 25",
       "x": 0,
       "y": 0,
       "face": "rear",
       "clearance": null,
       "pins": [
         {
+          "number": "1",
+          "function": "SPK_HI - Speaker output (HI)",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "2",
+          "function": "HDPH_A - Balanced headphone output",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "3",
+          "function": "HDPH_B - Balanced headphone output",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "4",
+          "function": "AF_AUX_IN_HI - Auxiliary audio input (HI)",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "MIKE_DYN_HI - Balanced dynamic microphone input",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "6",
+          "function": "MIKE_DYN_LO - Balanced dynamic microphone input",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "7",
+          "function": "IC - Intercom key input, LO active (contact to GND)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "MIKE_STD_LO - Standard microphone LO (return)",
+          "signal": "audio",
+          "direction": "passive"
+        },
+        {
+          "number": "9",
+          "function": "NC - not connected",
+          "signal": "other"
+        },
+        {
+          "number": "10",
+          "function": "ILL_LO - Illumination LO (connect to aircraft ground)",
+          "signal": "ground",
+          "direction": "in"
+        },
+        {
+          "number": "11",
+          "function": "P_SUPP - Power supply (+)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
           "number": "12",
-          "function": "12",
+          "function": "P_SUPP - Power supply (+)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "13",
+          "function": "P_SUPP_GND - Power supply return",
+          "signal": "ground"
+        },
+        {
+          "number": "14",
+          "function": "SPK_LO - Speaker ground (return)",
+          "signal": "audio",
+          "direction": "passive"
+        },
+        {
+          "number": "15",
+          "function": "LINE_OUT - High impedance audio output",
+          "signal": "audio",
+          "direction": "out"
+        },
+        {
+          "number": "16",
+          "function": "AGC_OUT - Receiver AGC output",
+          "signal": "other",
+          "direction": "out"
+        },
+        {
+          "number": "17",
+          "function": "/PTT - Press To Talk input, LO active (contact to GND)",
+          "signal": "switch",
+          "direction": "in"
+        },
+        {
+          "number": "18",
+          "function": "MIKE_STD_HI - Standard microphone (HI)",
+          "signal": "audio",
+          "direction": "in"
+        },
+        {
+          "number": "19",
+          "function": "CPIN - Coding pin (removed)",
+          "signal": "other"
+        },
+        {
+          "number": "20",
+          "function": "NC - not connected",
           "signal": "other"
         },
         {
           "number": "21",
-          "function": "21",
-          "signal": "other"
+          "function": "AF_AUX_IN_LO - Auxiliary audio input LO (return)",
+          "signal": "audio",
+          "direction": "passive"
         },
         {
-          "number": "24",
-          "function": "24",
+          "number": "22",
+          "function": "NC - not connected",
           "signal": "other"
         },
         {
           "number": "23",
-          "function": "23",
-          "signal": "other"
+          "function": "ILL_HI - Illumination (HI), to dimming bus",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "24",
+          "function": "/PWR_EVAL - Power-on monitor output (closed to GND when on, max 100 mA)",
+          "signal": "switch",
+          "direction": "out"
+        },
+        {
+          "number": "25",
+          "function": "P_SUPP_GND - Power supply return",
+          "signal": "ground"
         }
       ]
     }
   ],
   "ports": [],
   "power": {
-    "currentA": 2,
-    "voltage": 12
+    "currentA": 4,
+    "voltage": 14
   },
   "weightG": 850,
-  "datasheet": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
+  "datasheet": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
   "sources": {
-    "rear.depth": {
-      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
-      "snippet": "Depth of unit 211.4 mm (front plate till end of antenna connector)",
+    "front.cutout": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Figure 2-3 Drilling jig for back-panel mounting: Ø58 (2.283 in); p.13 'Mounting-hole (instrument panel) standard 58 mm diameter (21/4 inch)'",
       "status": "verified",
-      "note": "Page 9."
+      "note": "Page 20. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Figure 2-2 Mounting dimensions: front plate 61.2 x 61.2; p.13 'Front panel 61.2 mm x 61.2 mm' (corner radius not dimensioned)",
+      "status": "verified",
+      "note": "Page 20. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Figure 2-3 Drilling jig: 4 holes on 47.3±0.2 x 47.3±0.2 square, Ø3.5 (0.138 in) DIA",
+      "status": "verified",
+      "note": "Page 20. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.protrusion": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Figure 2-1 side view: knob tip 18.3 ahead of the front plate face (unit is back-panel mounted, so proud of the panel face by 18.3 minus panel thickness)",
+      "status": "verified",
+      "note": "Page 20. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Depth of unit ................... 211.4 mm",
+      "status": "verified",
+      "note": "Page 13. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "weightG": {
-      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
-      "snippet": "Weight 850 g",
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "Weight .......................... 850g",
       "status": "verified",
-      "note": "Page 9."
+      "note": "Page 13. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.currentA": {
       "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
-      "snippet": "Transmit Mode ................. ≤ 2 A @ 14 VDC; 70% modulation, VSWR=1:1",
+      "snippet": "≤ 4 A @ 14 VDC; 70% modulation, VSWR=3:1",
       "status": "verified",
-      "note": "Page 13."
+      "note": "Page 13. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.voltage": {
       "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
-      "snippet": "Power “OFF” state ............. ≈ 1.5 mA @ 12 VDC",
+      "snippet": "≤ 4 A @ 14 VDC; 70% modulation, VSWR=3:1",
       "status": "verified",
-      "note": "Page 13. The voltage the current was quoted at."
+      "note": "Page 13. The voltage the current was quoted at. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "datasheet": {
-      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
-      "snippet": "AR6201 Installation&Operation Manual, en",
-      "status": "verified"
-    },
-    "connectors.x1": {
-      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO.pdf",
-      "snippet": "12 | 12\n21 | 21\n | \n24 | 24",
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "AR6201 Installation&Operation Manual (upwards SW3050149), en",
       "status": "verified",
-      "note": "Page 26."
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.p1-system-interfaces-d-sub-25-male": {
+      "url": "https://becker-avionics.com/wp-content/uploads/2017/08/AR6201_IO_SW3050149.pdf",
+      "snippet": "2.4.1 P1 Connector (System Interfaces) pin table P1-1..P1-25, pp.21-22 (D-SUB male, 25 pins)",
+      "status": "verified",
+      "note": "Page 21. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

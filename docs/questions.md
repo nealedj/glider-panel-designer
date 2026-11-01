@@ -50,8 +50,10 @@ answer in a message, whenever suits. Work carries on with the stated assumption 
 13. **Python dependencies for the maintainer tools:** pdfplumber (MIT), pypdfium2
     (Apache-2.0 / BSD-3), Pillow (MIT-CMU) and pytest (MIT). They are maintainer-only and not
     shipped. OK?
-14. **Reviewing.** Only you (or someone you trust) can mark catalogue values verified. M5's
-    acceptance needs every part in the reference panel reviewed, and at least 20 parts overall.
+14. ~~**Reviewing.** Only you (or someone you trust) can mark catalogue values verified.~~
+    Answered 2026-11-01: AI subagents review candidates against the maker documents (ADR 0011
+    amendment); each source note says so. 35 parts reviewed. Whether that covers the reference panel
+    depends on its exact parts (15).
 15. **The reference panel's exact parts.** For each, please give the maker and model, so the tools can find
     the right manual:
     - the ASI and the altimeter (Winter? which models, 57 or 80 mm?);

@@ -1,0 +1,98 @@
+{
+  "id": "winter.6-fms",
+  "version": 1,
+  "maker": "Winter",
+  "model": "6 FMS",
+  "category": "instrument",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 80
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 83,
+      "h": 83,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -31.465,
+        "y": 31.465,
+        "d": 4.5
+      },
+      {
+        "x": 31.465,
+        "y": 31.465,
+        "d": 4.5
+      },
+      {
+        "x": -31.465,
+        "y": -31.465,
+        "d": 4.5
+      },
+      {
+        "x": 31.465,
+        "y": -31.465,
+        "d": 4.5
+      }
+    ],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": 77.5,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": 205,
+  "datasheet": "https://www.winter-instruments.de/_files/ugd/067599_b6b2fa5008e74b1ca02e4641dad156a4.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_b8b2b35ab180430ba1934fcbfb4b42c6.pdf",
+      "snippet": "Drawing 'Einbaumaße 6 FMS' p.1: panel cut-out Ø80; manual m:9ecc76a055 p.2: 'diameter of the hole in the instrument panel is 80 mm'",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_b8b2b35ab180430ba1934fcbfb4b42c6.pdf",
+      "snippet": "Drawing 'Einbaumaße 6 FMS' p.1: front flange 83 x 83 (corners chamfered, not radiused; rect is the bounding envelope)",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_b8b2b35ab180430ba1934fcbfb4b42c6.pdf",
+      "snippet": "Drawing 'Einbaumaße 6 FMS' p.1: 4 holes 4,5 on Ø89 hole circle at 45° (spacing = 89/√2 = 62.93); M4 countersunk screws",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_e08c8d5164a24658918cbb9aefdd826f.pdf",
+      "snippet": "Tabelle Fahrtmesser 6 FMS: Einbautiefe / instal. depth 77,5 mm (all items); drawing m:a211542237 shows 54 body + 23,5 pressure nipples",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "weightG": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_e08c8d5164a24658918cbb9aefdd826f.pdf",
+      "snippet": "Tabelle Fahrtmesser 6 FMS: Gewicht / weight 0,205 kg (all items)",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_b6b2fa5008e74b1ca02e4641dad156a4.pdf",
+      "snippet": "Einbau-und Wartungsanweisung",
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

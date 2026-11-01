@@ -6,23 +6,75 @@
   "category": "flarm",
   "front": {
     "cutouts": [],
-    "bezel": {
-      "kind": "rect",
-      "cx": 0,
-      "cy": 0,
-      "w": 119,
-      "h": 80,
-      "r": 0
-    },
+    "bezel": null,
     "screwHoles": [],
     "protrusion": null
   },
   "rear": {
     "body": null,
-    "depth": 42,
+    "depth": null,
     "bracketPoints": []
   },
-  "connectors": [],
+  "connectors": [
+    {
+      "id": "data-port-1-rj45",
+      "type": "RJ45",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GND",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "GND",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "3",
+          "function": "RX, Fusion receives (RS-232)",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "4",
+          "function": "TX, Fusion sends (RS-232)",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "5",
+          "function": "GND",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "6",
+          "function": "Fusion supplies +3 V DC for display (250 mA max)",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "7",
+          "function": "+12 to +32 V DC power supply (linked to pin 8 and D-sub pin 7)",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "8",
+          "function": "+12 to +32 V DC power supply (linked to pin 7 and D-sub pin 7)",
+          "signal": "power",
+          "direction": "in"
+        }
+      ]
+    }
+  ],
   "ports": [],
   "power": {
     "currentA": 0.18,
@@ -31,40 +83,35 @@
   "weightG": 250,
   "datasheet": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
   "sources": {
-    "front.bezel": {
-      "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
-      "snippet": "Dimensions 119 x 80 x 42 mm",
-      "status": "verified",
-      "note": "Page 26. First two figures of W × H × D, taken as the front face."
-    },
-    "rear.depth": {
-      "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
-      "snippet": "Dimensions 119 x 80 x 42 mm",
-      "status": "verified",
-      "note": "Page 26. Third figure of W × H × D. Check whether it is depth behind the panel or overall."
-    },
     "weightG": {
       "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
       "snippet": "Mass 250 g",
       "status": "verified",
-      "note": "Page 26."
+      "note": "Page 26. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.currentA": {
       "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
-      "snippet": "Typical current drain is 180 mA @ 12 V, less for",
+      "snippet": "(no external consumers) 180 mA @ 12 V DC (Typical)",
       "status": "verified",
-      "note": "Page 15."
+      "note": "Page 26. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "power.voltage": {
       "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
-      "snippet": "Typical current drain is 180 mA @ 12 V, less for",
+      "snippet": "(no external consumers) 180 mA @ 12 V DC (Typical)",
       "status": "verified",
-      "note": "Page 15. The voltage the current was quoted at."
+      "note": "Page 26. The voltage the current was quoted at. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "datasheet": {
       "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
       "snippet": "PowerFLARM Fusion Installation Manual",
-      "status": "verified"
+      "status": "verified",
+      "note": "Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.data-port-1-rj45": {
+      "url": "https://www.flarm.com/wp-content/uploads/2024/03/FTD-077-PowerFLARM-Fusion-Installation-Manual.pdf",
+      "snippet": "2.4.6 RJ45 - Power and Data Connections: 1 GND; 2 GND; 3 RX, Fusion receives (RS-232); 4 TX, Fusion sends (RS-232); 5 GND; 6 Fusion supplies +3 V DC for display; 7 +12 to +32 V DC power supply; 8 +12 to +32 V DC power supply. Numbering follows international standard.",
+      "status": "verified",
+      "note": "Page 16. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

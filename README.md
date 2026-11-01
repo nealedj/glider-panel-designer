@@ -20,7 +20,7 @@ stays on your machine unless you export or share it.
 | M2 Rear and stacking | done |
 | M3 Exports and sharing | done |
 | M4 Panel templates | done |
-| M5 Asset discovery | done (tools ready; live run and review pending) |
+| M5 Asset discovery | done (35 parts reviewed by AI subagents; see ADR 0011) |
 | M6 Wiring and pneumatics | done |
 | M7 Reference panel and polish | done (in software, on placeholder parts; see `docs/questions.md`) |
 
