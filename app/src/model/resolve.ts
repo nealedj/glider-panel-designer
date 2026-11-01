@@ -12,6 +12,7 @@ const genericCache = new Map<string, CataloguePart>();
 export function resolvePart(pp: PlacedPart, project: Pick<Project, 'customParts'>): CataloguePart | undefined {
   const base = findPart(pp.part, project.customParts);
   if (!base) return undefined;
+  if (base.rear.box) return fitBox(base, pp.boxDepth ?? 2);
   if (!base.generator || !pp.params || !Object.keys(pp.params).length) return base;
   const def = GENERIC_BY_ID.get(base.generator);
   if (!def) return base;
@@ -21,6 +22,25 @@ export function resolvePart(pp: PlacedPart, project: Pick<Project, 'customParts'
     built = buildGeneric(def, pp.params);
     genericCache.set(key, built);
   }
+  return built;
+}
+
+const boxCache = new WeakMap<CataloguePart, CataloguePart[]>();
+
+/**
+ * A box part as fitted: the size at `depthIndex` runs rearward, and the other two, in printed
+ * order, face the panel as width then height, centred on the part origin (ADR 0016).
+ */
+export function fitBox(part: CataloguePart, depthIndex: number): CataloguePart {
+  const box = part.rear.box!;
+  let fitted = boxCache.get(part);
+  if (!fitted) boxCache.set(part, (fitted = []));
+  const i = depthIndex === 0 || depthIndex === 1 ? depthIndex : 2;
+  const hit = fitted[i];
+  if (hit) return hit;
+  const [w, h] = box.filter((_, k) => k !== i) as [number, number];
+  const built: CataloguePart = { ...part, rear: { ...part.rear, body: { kind: 'rect', cx: 0, cy: 0, w, h, r: 0 }, depth: box[i]! } };
+  fitted[i] = built;
   return built;
 }
 

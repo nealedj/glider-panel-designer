@@ -138,6 +138,13 @@ export const RearProfile = z.object({
   /** Depth behind the panel back face, mm. */
   depth: z.number().nonnegative().nullable(),
   bracketPoints: z.array(Vec2).default([]),
+  /**
+   * A housing that can be fitted any way round (a remote box behind the panel): its three
+   * sizes as the maker prints them, mm. Each placed part picks which size runs rearward
+   * (`boxDepth`); the other two face the panel, the first across and the second up, before
+   * rotation. When set, `body` and `depth` stay null; the box gives both (ADR 0016).
+   */
+  box: z.tuple([z.number().positive(), z.number().positive(), z.number().positive()]).optional(),
 });
 export type RearProfile = z.infer<typeof RearProfile>;
 
@@ -270,6 +277,8 @@ export const PlacedPart = z.object({
   schematic: Vec2.optional(),
   /** Off-panel parts: loom length from the panel exit point to the part, mm; null if not measured. */
   offPanelRunMm: z.number().nonnegative().nullable().default(null),
+  /** Parts with a `rear.box`: which of its three sizes runs rearward (0, 1 or 2; default 2). */
+  boxDepth: z.number().int().min(0).max(2).optional(),
 });
 export type PlacedPart = z.infer<typeof PlacedPart>;
 

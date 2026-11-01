@@ -101,3 +101,39 @@ test('3D view: draws the PIK-20D example, turns, and selects in step with the in
   await expect.poll(() => colours(page)).toBeGreaterThan(8);
   expect(errors).toEqual([]);
 });
+
+test('3D view: a remote box mounted on top of the radio is drawn as fitted', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto('/');
+  await runCommand(page, 'new project');
+  await page.getByTestId('new-create').click();
+  await page.keyboard.press('f');
+  const box = (await page.getByTestId('canvas').boundingBox())!;
+  const placeAt = async (partId: string, fx: number, fy: number) => {
+    await page.getByTestId(`lib-${partId}`).click();
+    await page.mouse.click(box.x + box.width * fx, box.y + box.height * fy);
+    await page.keyboard.press('Escape');
+    return (await page.evaluate(() => (window as unknown as Gpd).gpd.docs.doc.parts.at(-1)!.id))!;
+  };
+  const radio = await placeAt('generic.radio-57', 0.5, 0.55);
+  await placeAt('lx-navigation.flarm-red-box', 0.5, 0.3);
+
+  // Mounted to the radio, lying flat: 53 mm runs rearward, so the panel sees 84 × 30.
+  await page.getByTestId('insp-mount').selectOption(radio);
+  await page.getByTestId('insp-box-depth').selectOption('1');
+  const dz = page.getByTestId('insp-dz');
+  await dz.fill('0');
+  await dz.press('Enter');
+  await expect(page.getByTestId('insp-band')).toHaveText('0 to 53 mm behind panel');
+  await expect(page.getByTestId('inspector')).toContainText('84 × 30 mm');
+
+  await page.getByRole('button', { name: '3D', exact: true }).click();
+  await expect(page.getByTestId('view3d-canvas')).toBeVisible();
+  // Panel, radio bezel and body, and the box body.
+  await expect.poll(() => page.evaluate(() => (window as unknown as Gpd).gpd.view3d?.counts().solids)).toBeGreaterThanOrEqual(4);
+  await expect(page.getByTestId('view3d-notes')).not.toContainText('off-panel');
+  await page.waitForTimeout(150);
+  await page.screenshot({ path: 'test-results/3d-remote-box.png' });
+  expect(errors).toEqual([]);
+});
