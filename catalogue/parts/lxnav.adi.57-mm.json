@@ -1,0 +1,165 @@
+{
+  "id": "lxnav.adi.57-mm",
+  "version": 1,
+  "maker": "LXNAV",
+  "model": "ADI 57 mm",
+  "category": "instrument",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 61.6,
+      "h": 61.65,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": -23.69,
+        "y": -23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": -23.69,
+        "d": 4.5
+      }
+    ],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": 47.7,
+    "bracketPoints": []
+  },
+  "connectors": [
+    {
+      "id": "power-rj12",
+      "type": "RJ12",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "Power supply input",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "2",
+          "function": "No connection",
+          "signal": "other"
+        },
+        {
+          "number": "3",
+          "function": "Ground",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "4",
+          "function": "RS232 RX (data in)",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "RS232 TX (data out)",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "6",
+          "function": "Ground",
+          "signal": "ground",
+          "direction": "passive"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 0.14,
+    "voltage": 12
+  },
+  "weightG": 195,
+  "datasheet": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "7.1 Cut-out drawing p.20: main hole ø57, holes ø4,5 on ø67; p.6 ADI57: 'Dimensions: 57 mm (2.25'') cut-out'",
+      "status": "verified",
+      "note": "Page 20. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "3.1.3 Technical data p.6, ADI57 front-view drawing: front plate 61,60 wide x 61,65 high (corner radius not dimensioned)",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "p.6 ADI57 front view: hole centres 47,38 x 47,38; 7.1 Cut-out drawing p.20: 4 holes ø4,5 on ø67 at the 45° diagonals (67/√2 = 47.38, agrees); all four holes drawn equal",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "3.1.3 p.6 ADI57 side-view drawing: body behind front plate 47,70; 51,57 incl. rear RJ12/port fittings; 65,50 incl. pressure-port hose barbs",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "weightG": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "ADI57 ... Weight 195g",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.currentA": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "ADI57 ... Consumption 90-140mA@12V",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "power.voltage": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "ADI57 ... Consumption 90-140mA@12V",
+      "status": "verified",
+      "note": "Page 6. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "USER MANUAL Airdata indicator Version 1.0 April 2024 (Rev #14)",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.power-rj12": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADIManualEnglishVer0100rev14.pdf",
+      "snippet": "6.1 Pinout p.19: 'Power connector is pin compatible with S3 power or any other FLARM cable with RJ12 connector.' 1 Power supply input; 2 No connection; 3 Ground; 4 RS232 RX (data in); 5 RS232 TX (data out); 6 Ground",
+      "status": "verified",
+      "note": "Page 19. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

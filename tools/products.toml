@@ -45,6 +45,12 @@ category = "instrument"
 
 [[product]]
 maker = "LXNAV"
+model = "ADI"
+name = "LXNAV ADI airdata indicator"
+category = "instrument"
+
+[[product]]
+maker = "LXNAV"
 model = "LX9070"
 category = "flight-computer"
 
