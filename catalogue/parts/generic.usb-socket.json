@@ -1,0 +1,157 @@
+{
+  "id": "generic.usb-socket",
+  "version": 1,
+  "maker": "Generic",
+  "model": "USB charging socket (round, double)",
+  "category": "power",
+  "description": "Round panel-mount USB charging socket, run from a fused 12 V supply. Defaults suit a common double socket: 28 mm hole, 37 mm flange, 33 mm long.",
+  "generator": "generic.usb-socket",
+  "params": {
+    "holeD": {
+      "label": "Hole diameter",
+      "value": 28,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "flangeD": {
+      "label": "Flange diameter",
+      "value": 37,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "bodyD": {
+      "label": "Body diameter",
+      "value": 28,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Body depth",
+      "value": 33,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "protrusion": {
+      "label": "Flange protrusion",
+      "value": 8,
+      "unit": "mm",
+      "min": 0
+    },
+    "currentA": {
+      "label": "Current draw (placeholder)",
+      "value": 1.5,
+      "unit": "A",
+      "min": 0
+    }
+  },
+  "connectors": [
+    {
+      "id": "PWR",
+      "type": "power",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "+",
+          "function": "supply +",
+          "signal": "power",
+          "direction": "in"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": {
+    "currentA": 1.5,
+    "voltage": 12
+  },
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 28
+      }
+    ],
+    "bezel": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 37
+    },
+    "screwHoles": [],
+    "protrusion": 8
+  },
+  "rear": {
+    "body": {
+      "kind": "circle",
+      "cx": 0,
+      "cy": 0,
+      "d": 28
+    },
+    "depth": 33,
+    "bracketPoints": []
+  },
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default, estimated from a product photo of the flange. Measure the real part."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default: the whole 33 mm length of a common double socket, flange included, so the clearance behind the panel errs on the long side. Measure the real part."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "power.currentA": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Two 1.5 A outputs at 5 V are 15 W, about 1.25 A at 12 V before converter losses; 1.5 A allows for them. Use the maker's input current if you have it."
+    }
+  },
+  "review": "unverified"
+}

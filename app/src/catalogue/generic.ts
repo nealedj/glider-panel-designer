@@ -253,6 +253,32 @@ export const GENERIC_DEFS: GenericDef[] = [
     }),
   },
   {
+    id: 'generic.usb-socket',
+    model: 'USB charging socket (round, double)',
+    category: 'power',
+    description: 'Round panel-mount USB charging socket, run from a fused 12 V supply. Defaults suit a common double socket: 28 mm hole, 37 mm flange, 33 mm long.',
+    notes: {
+      'front.protrusion': 'Generic placeholder default, estimated from a product photo of the flange. Measure the real part.',
+      'rear.depth': 'Generic placeholder default: the whole 33 mm length of a common double socket, flange included, so the clearance behind the panel errs on the long side. Measure the real part.',
+      'power.currentA':
+        'Generic placeholder default. Two 1.5 A outputs at 5 V are 15 W, about 1.25 A at 12 V before converter losses; 1.5 A allows for them. Use the maker\'s input current if you have it.',
+    },
+    params: {
+      holeD: p('Hole diameter', 28),
+      flangeD: p('Flange diameter', 37),
+      bodyD: p('Body diameter', 28),
+      depth: p('Body depth', 33),
+      protrusion: p('Flange protrusion', 8, 'mm', 0),
+      currentA: currentParam(1.5),
+    },
+    build: (x) => ({
+      front: { cutouts: [circle(v(x, 'holeD'))], bezel: circle(v(x, 'flangeD')), screwHoles: [], protrusion: v(x, 'protrusion') },
+      rear: { body: circle(v(x, 'bodyD')), depth: v(x, 'depth'), bracketPoints: [] },
+      connectors: [powerConn(0, 0)],
+      power: { currentA: v(x, 'currentA'), voltage: 12 },
+    }),
+  },
+  {
     id: 'generic.phone-mount-base',
     model: 'Phone mount base',
     category: 'mount',
