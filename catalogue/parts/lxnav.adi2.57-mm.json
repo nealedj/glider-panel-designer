@@ -46,7 +46,14 @@
     "protrusion": null
   },
   "rear": {
-    "body": null,
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 61.8,
+      "h": 61.8,
+      "r": 0
+    },
     "depth": 39.4,
     "bracketPoints": []
   },
@@ -129,11 +136,17 @@
       "status": "verified",
       "note": "Page 7. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
+    "rear.body": {
+      "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADI2ManualEnglishVer0100rev09.pdf",
+      "snippet": "3.1.3 Technical data p.7, ADI57: '62x62x40mm'; front view: front plate 61,80 x 61,80; side view draws the housing flush with the front plate top and bottom",
+      "status": "verified",
+      "note": "Page 7. Housing taken as the dimensioned 61.80 square (the text's 62x62 is the same size rounded). Added on 2026-11-02 at the user's request, as no body outline meant the unit was not drawn behind the panel. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
     "rear.depth": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADI2ManualEnglishVer0100rev09.pdf",
-      "snippet": "3.1.3 p.7 ADI57 side-view drawing: body behind front plate 39,40; 44,16 incl. rear D-sub connector; 57,05 incl. pressure-port hose barbs",
+      "snippet": "3.1.3 p.7 ADI57 side-view drawing: 39,40 from the instrument's front face (which sits on the panel's rear face; the '3' dimension in front of it is the panel) to the back of the housing; 44,16 incl. rear D-sub connector; 57,05 incl. pressure-port hose barbs",
       "status": "verified",
-      "note": "Page 7. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+      "note": "Page 7. Re-checked against the drawing on 2026-11-02. Text gives the case as 62x62x40mm, which agrees. Reviewed by an AI subagent against the cached maker document, not by a person."
     },
     "weightG": {
       "url": "https://gliding.lxnav.com/wp-content/uploads/manuals/ADI2ManualEnglishVer0100rev09.pdf",
