@@ -10,7 +10,7 @@ type Gpd = {
   gpd: {
     docs: { doc: { parts: Part[]; wires: unknown[] } };
     ui: { state: { selection: string[]; view: string } };
-    view3d?: { project: (x: number, y: number, z: number) => { x: number; y: number }; counts: () => { solids: number; wires: number; looms: number } };
+    view3d?: { project: (x: number, y: number, z: number) => { x: number; y: number }; counts: () => { solids: number; wires: number; looms: number }; labels: () => number };
   };
 };
 
@@ -51,6 +51,8 @@ test('3D view: draws the PIK-20D example, turns, and selects in step with the in
   expect(counts.wires).toBe(doc.wires.length);
   expect(counts.solids).toBeGreaterThan(doc.parts.length);
   await expect.poll(() => colours(page)).toBeGreaterThan(8);
+  // Faces with room for it carry the part's label.
+  expect(await page.evaluate(() => (window as unknown as Gpd).gpd.view3d!.labels())).toBeGreaterThan(5);
   await expect(page.getByTestId('view3d-notes')).toContainText('not to scale for cutting');
   await page.waitForTimeout(150);
   await page.screenshot({ path: 'test-results/3d-iso.png' });
