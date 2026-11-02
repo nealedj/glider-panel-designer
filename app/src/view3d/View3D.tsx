@@ -52,7 +52,7 @@ function solidGeometry(s: Solid): THREE.BufferGeometry {
   return g;
 }
 
-/** Straight tube segments with a ball at each bend; routes and wires have sharp corners. */
+/** Straight tube segments with a ball at each joint; paths come with their corners already rounded (ADR 0017). */
 function tubeGeometry(points: Vec3[], radius: number, radial: number): THREE.BufferGeometry | null {
   const parts: THREE.BufferGeometry[] = [];
   const up = new THREE.Vector3(0, 1, 0);

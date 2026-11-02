@@ -76,6 +76,9 @@ export function nextLabel(doc: Pick<Project, 'wires'>, type: NetType): string {
   return `${pre}${String(n + 1).padStart(width, '0')}`;
 }
 
+/** A tee's ports and a bus bar's pins are joined inside the part, to the others of their kind. */
+export const joinedInside = (t: TerminalInfo) => t.port?.kind === 'any' || (!!t.bus && t.kind === 'pin');
+
 /** Connected components of terminals over wires, and through tube tees (their ports are one space). */
 function components(wires: Wire[], terms?: Map<string, TerminalInfo>): Map<string, Set<string>> {
   const parent = new Map<string, string>();
@@ -97,11 +100,12 @@ function components(wires: Wire[], terms?: Map<string, TerminalInfo>): Map<strin
     if (a !== b) parent.set(a, b);
   };
   for (const w of wires) union(keyOf(w.from), keyOf(w.to));
-  // Tees: every 'any' port of a part is the same pressure, so a tee joins its tubes.
+  // Tees: every 'any' port of a part is the same pressure, so a tee joins its tubes. Bus bars
+  // likewise join every wire on their studs.
   if (terms) {
     const used = new Set(parent.keys());
     const byPart = new Map<string, string[]>();
-    for (const t of terms.values()) if (t.port?.kind === 'any' && used.has(t.key)) byPart.set(t.partId, [...(byPart.get(t.partId) ?? []), t.key]);
+    for (const t of terms.values()) if (joinedInside(t) && used.has(t.key)) byPart.set(`${t.partId}|${t.kind}`, [...(byPart.get(`${t.partId}|${t.kind}`) ?? []), t.key]);
     for (const keys of byPart.values()) for (let i = 1; i < keys.length; i++) union(keys[0]!, keys[i]!);
   }
   const out = new Map<string, Set<string>>();

@@ -1,16 +1,19 @@
 /**
  * Wiring in the rear view: routes drawn as bundles at their estimated diameter, wires along
  * their paths, pins and ports to click with the wire tool, and the exit points of off-panel
- * parts. Drawn in screen space so lines stay crisp; hit testing helpers for the canvas.
+ * parts. Paths are drawn with rounded corners. A selected wire or route shows handles to shape
+ * it (ADR 0017). Drawn in screen space so lines stay crisp; hit testing helpers for the canvas.
  */
 import { memo } from 'react';
 import { distanceToSegment } from '../../geom/shapes';
+import { smoothPath } from '../../geom/smooth';
 import { toScreen, type Viewport } from '../../editor/viewport';
 import type { Project } from '../../model/schema';
 import type { Analysis } from '../circuit';
 import { bundles } from '../bundles';
 import { cssColour } from '../nets';
-import { keyOf, type TerminalInfo } from '../terminals';
+import { handlesOf, type Control, type Handle } from '../guides';
+import { keyOf, type TerminalInfo, type Vec3 } from '../terminals';
 
 const plan = (vp: Viewport, p: { x: number; y: number }) => toScreen(vp, p);
 
@@ -18,16 +21,19 @@ const plan = (vp: Viewport, p: { x: number; y: number }) => toScreen(vp, p);
 const FAN_PX = 10;
 export function terminalScreen(vp: Viewport, t: TerminalInfo): { x: number; y: number } {
   const q = plan(vp, t.pos);
-  if (!t.connector || t.connector.pins.length < 2) return q;
+  if (t.placed || !t.connector || t.connector.pins.length < 2) return q;
   const i = t.connector.pins.findIndex((p) => p.number === t.pin!.number);
   return { x: q.x + (i - (t.connector.pins.length - 1) / 2) * FAN_PX, y: q.y };
 }
 
-/** A wire's path in plan, screen space. */
-function wirePath(vp: Viewport, a: Analysis, id: string): { x: number; y: number }[] {
+/** A path with rounded corners, in screen space. */
+const smoothScreen = (vp: Viewport, pts: Vec3[]) => smoothPath(pts).map((p) => plan(vp, p));
+
+/** A wire's path in plan, screen space; `override` is its control points while being shaped. */
+function wirePath(vp: Viewport, a: Analysis, id: string, override?: Vec3[]): { x: number; y: number }[] {
   const c = a.wires.get(id);
   if (!c?.length) return [];
-  const pts = c.length.path.map((p) => plan(vp, p));
+  const pts = smoothScreen(vp, override ?? c.length.path);
   // Start and end at the pin's dot, which is fanned out from the connector's centre.
   const ta = a.terms.get(keyOf(c.wire.from));
   const tb = a.terms.get(keyOf(c.wire.to));
@@ -71,12 +77,25 @@ export function hitWiring(vp: Viewport, doc: Project, a: Analysis, s: { x: numbe
     for (let i = 1; i < pts.length; i++) if (distanceToSegment(s, pts[i - 1]!, pts[i]!) <= 4) return { kind: 'wire', id: w.id };
   }
   for (const b of bundles(doc)) {
-    const pts = b.route.points.map((p) => plan(vp, p));
+    const pts = smoothScreen(vp, b.route.points);
     const tol = Math.max(5, (b.diameterMm / 2) * vp.zoom);
     for (let i = 1; i < pts.length; i++) if (distanceToSegment(s, pts[i - 1]!, pts[i]!) <= tol) return { kind: 'route', id: b.route.id };
   }
   return null;
 }
+
+/** The handle of the shaped wire or route under a screen point, points before leg middles. */
+export function hitHandle(vp: Viewport, c: Control, s: { x: number; y: number }): Handle | null {
+  let best: { h: Handle; d: number } | null = null;
+  for (const h of handlesOf(c)) {
+    const q = plan(vp, h.at);
+    const d = Math.hypot(q.x - s.x, q.y - s.y) + (h.insert ? 0.5 : 0);
+    if (d <= 7 && (!best || d < best.d)) best = { h, d };
+  }
+  return best?.h ?? null;
+}
+
+const pathD = (pts: { x: number; y: number }[]) => pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join('');
 
 /** Off-panel parts grouped by exit point, so parts sharing an exit stack their labels. */
 function exitGroups(doc: Project, a: Analysis): { at: { x: number; y: number }; parts: string[] }[] {
@@ -118,29 +137,36 @@ interface Props {
   wireTool: boolean;
   wireStart: string | null;
   showTerminals: boolean;
+  /** The selected wire or route that can be shaped, with its handles. */
+  edit: Control | null;
+  /** Its control points while a handle is being dragged. */
+  preview: Vec3[] | null;
 }
 
-export const RearWiring = memo(function RearWiring({ vp, doc, a, selection, hover, wireTool, wireStart, showTerminals }: Props) {
+export const RearWiring = memo(function RearWiring({ vp, doc, a, selection, hover, wireTool, wireStart, showTerminals, edit, preview }: Props) {
   const bs = bundles(doc);
+  const shaping = edit && preview ? { ...edit, points: preview } : edit;
+  const over = (kind: 'wire' | 'route', id: string) => (shaping && preview && shaping.target.kind === kind && shaping.target.id === id ? preview : undefined);
   return (
     <g className="rear-wiring">
       {bs.map((b) => {
-        const pts = b.route.points.map((p) => plan(vp, p));
-        const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join('');
+        const control = over('route', b.route.id) ?? b.route.points;
+        const d = pathD(smoothScreen(vp, control));
         return (
           <g key={b.route.id} className={`route${selection.has(b.route.id) ? ' is-selected' : ''}${hover === b.route.id ? ' is-hovered' : ''}`} data-route={b.route.id}>
             <path className="bundle" d={d} style={{ strokeWidth: Math.max(4, b.diameterMm * vp.zoom) }} />
             <path className="spine" d={d} />
-            {pts.map((p, i) => (
-              <circle key={i} cx={p.x} cy={p.y} r={2.5} className="route-pt" />
-            ))}
+            {control.map((p, i) => {
+              const q = plan(vp, p);
+              return <circle key={i} cx={q.x} cy={q.y} r={2.5} className="route-pt" />;
+            })}
           </g>
         );
       })}
       {doc.wires.map((w) => {
-        const pts = wirePath(vp, a, w.id);
+        const pts = wirePath(vp, a, w.id, over('wire', w.id));
         if (pts.length < 2) return null;
-        const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join('');
+        const d = pathD(pts);
         const tube = !!w.tubeBoreMm;
         return (
           <path
@@ -152,6 +178,25 @@ export const RearWiring = memo(function RearWiring({ vp, doc, a, selection, hove
           />
         );
       })}
+      {shaping && !wireTool && (
+        <g className="guide-handles" data-guide={shaping.target.id}>
+          <path className="guide-control" d={pathD(shaping.points.map((p) => plan(vp, p)))} />
+          {handlesOf(shaping).map((h) => {
+            const q = plan(vp, h.at);
+            return h.insert ? (
+              <g key={`i${h.index}`} className="guide-insert" data-handle={`insert-${h.index}`} transform={`translate(${q.x.toFixed(1)} ${q.y.toFixed(1)})`}>
+                <circle r={4.5} />
+                <path d="M-2.5 0H2.5M0 -2.5V2.5" />
+                <title>Drag to add a bend here</title>
+              </g>
+            ) : (
+              <rect key={`p${h.index}`} className="guide-point" data-handle={`point-${h.index}`} x={q.x - 4} y={q.y - 4} width={8} height={8}>
+                <title>Drag to move; double-click to remove</title>
+              </rect>
+            );
+          })}
+        </g>
+      )}
       {(showTerminals || wireTool) &&
         [...a.terms.values()]
           .filter((t) => !t.offPanel)

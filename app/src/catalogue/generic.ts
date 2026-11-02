@@ -465,6 +465,40 @@ export const GENERIC_DEFS: GenericDef[] = [
       ports: [port('A', 'any', -5, 0), port('B', 'any', 5, 0), port('C', 'any', 0, 5)],
     }),
   },
+  {
+    id: 'generic.bus-bar',
+    model: 'Bus bar',
+    category: 'connector',
+    description:
+      'A strip of studs joined inside, mounted behind the panel: a common ground, or a power bus after a fuse. Its net takes the type of what is wired to it. Set the number of studs per placed part.',
+    params: {
+      studs: p('Studs', 6, 'count', 2, 24),
+      pitch: p('Stud spacing', 10),
+      w: p('Bar width', 12),
+      depth: p('Depth behind the panel', 15),
+    },
+    build: (x) => {
+      const n = Math.max(2, Math.round(v(x, 'studs')));
+      const pitch = v(x, 'pitch');
+      const span = (n - 1) * pitch;
+      return {
+        front: { cutouts: [], bezel: null, screwHoles: [], protrusion: 0 },
+        rear: { body: { kind: 'rect', cx: 0, cy: 0, w: span + pitch, h: v(x, 'w'), r: 1 }, depth: v(x, 'depth'), bracketPoints: [] },
+        bus: true,
+        connectors: [
+          {
+            id: 'BUS',
+            type: 'bus bar',
+            x: 0,
+            y: 0,
+            face: 'rear',
+            clearance: null,
+            pins: Array.from({ length: n }, (_, i) => ({ number: String(i + 1), function: 'stud', signal: 'other' as const, direction: 'passive' as const, x: i * pitch - span / 2, y: 0 })),
+          },
+        ],
+      };
+    },
+  },
   // ---- off the panel: they appear in the rear view as the point where the loom leaves it
   offPanel('generic.battery', 'Battery', 'power', 'Main battery, off the panel.', { connectors: [conn('T', 'terminals', 0, 0, [pin('+', 'positive', 'power', 'out'), pin('-', 'negative', 'ground')])], ports: [] }, {}, {
     capacityAh: p('Capacity', 7.2, 'Ah', 0.1),

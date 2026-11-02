@@ -31,7 +31,7 @@ export function contextMenuEntries(doc: Project, s: Pick<UiState, 'selection' | 
     if (placed >= 2) out.push('arrange.auto');
     if (parts.length) out.push('-', 'arrange.mirror', 'arrange.linear-array', 'arrange.circular-array');
     if (parts.some((p) => p.mountedTo)) out.push('arrange.detach');
-    if (rear) out.push('-', 'view.cycle-stack', 'wiring.put-on-route', 'wiring.take-off-route');
+    if (rear) out.push('-', 'view.cycle-stack', 'wiring.put-on-route', 'wiring.take-off-route', 'wiring.straighten');
     out.push('-', 'view.fit-selection');
   } else {
     out.push('edit.undo', 'edit.redo', '-', 'edit.select-all', '-', 'view.fit', 'view.flip', 'view.clear-depth-clip', 'view.clear-guides');

@@ -6,7 +6,7 @@ import { setPartFields } from '../../editor/actions';
 import type { Project, Route, Wire } from '../../model/schema';
 import { LengthField, NumberField, TextField } from '../../ui/Field';
 import { formatLength } from '../../util/units';
-import { assignRoute, setNet, setRoute, setWire } from '../actions';
+import { assignRoute, setNet, setRoute, setWire, straightenWires } from '../actions';
 import { bundles } from '../bundles';
 import { analyse } from '../circuit';
 import { CSS_COLOUR, cssColour } from '../nets';
@@ -85,7 +85,7 @@ export function WireInspector({ doc, w }: { doc: Project; w: Wire }) {
         <dl className="facts" data-testid="insp-wire-facts">
           <dt>Length</dt>
           <dd>
-            {c?.length ? `${formatLength(c.length.mm, units, units === 'metric' ? 0 : 1)}${c.length.estimated ? ' (straight-line estimate)' : ''}` : '—'}
+            {c?.length ? `${formatLength(c.length.mm, units, units === 'metric' ? 0 : 1)}${c.length.estimated ? ' (straight-line estimate)' : !w.route && w.via?.length ? ' (through its guide points)' : ''}` : '—'}
             {c?.length?.missingOffPanel && <span className="badge badge-warn">off-panel run not set</span>}
           </dd>
           {!tube && (
@@ -104,7 +104,7 @@ export function WireInspector({ doc, w }: { doc: Project; w: Wire }) {
         <label className="field">
           <span className="field-label">Route</span>
           <select value={w.route ?? ''} onChange={(e) => assignRoute([w.id], e.target.value || null)} data-testid="insp-wire-route">
-            <option value="">None (straight-line estimate)</option>
+            <option value="">{w.via?.length ? 'None (through its guide points)' : 'None (straight-line estimate)'}</option>
             {doc.routes.map((r) => (
               <option key={r.id} value={r.id}>
                 {r.label || r.id}
@@ -112,6 +112,20 @@ export function WireInspector({ doc, w }: { doc: Project; w: Wire }) {
             ))}
           </select>
         </label>
+        {w.route && doc.routes.some((r) => r.id === w.route) ? (
+          <p className="muted small" data-testid="insp-wire-guide">
+            Follows its route{w.via?.length ? `; its ${w.via.length} guide point${w.via.length === 1 ? ' is' : 's are'} kept for if it leaves the route` : ''}. Shape the route in the rear view.
+          </p>
+        ) : (
+          <p className="muted small" data-testid="insp-wire-guide">
+            {w.via?.length ? `Led through ${w.via.length} guide point${w.via.length === 1 ? '' : 's'}. ` : ''}In the rear view, drag the + in the middle of a leg to add a bend, drag a point to move it, double-click a point to remove it.
+          </p>
+        )}
+        {!!w.via?.length && (
+          <button className="btn" onClick={() => straightenWires([w.id])} data-testid="insp-wire-straighten">
+            Straighten
+          </button>
+        )}
       </div>
     </section>
   );
@@ -156,6 +170,7 @@ export function RouteInspector({ doc, r }: { doc: Project; r: Route }) {
           })}
         </ul>
         <p className="muted small">Tick a wire to put it on this route (it leaves any other). Or select wires with the route and use Arrange › Put selected wires on selected route.</p>
+        <p className="muted small">To reshape the route in the rear view, drag a point, drag the + in the middle of a leg to add one, or double-click a point to remove it.</p>
       </div>
     </section>
   );
