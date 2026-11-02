@@ -21,6 +21,7 @@ const paths: Record<string, string> = {
   fuse: 'M3 10h3M14 10h3M6 7h8v6H6z',
   mount: 'M4 12h12v5H4zM10 12V5M7 3h6v2H7z',
   placard: 'M3 7h14v6H3zM6 10h8',
+  bus: 'M2 11h16v4H2zM5 11V6M10 11V6M15 11V6M4 6h2M9 6h2M14 6h2',
   check: 'M4 10l4 4 8-8',
   edit: 'M3 17l1-4 9-9 3 3-9 9-4 1zM11 6l3 3',
   text: 'M4 5V3h12v2M10 3v14M7.5 17h5',

@@ -7,7 +7,8 @@ import { docs } from '../store/app';
 import { ops, type Op } from '../store/doc';
 import { ui } from '../store/ui';
 import { addRouteOps, assignRouteOps, connectOps, removeRoutesOps, removeWiresOps } from './ops';
-import { terminals } from './terminals';
+import { setControlOps, straightenOps, type GuideTarget } from './guides';
+import { terminals, type Vec3 } from './terminals';
 
 export function connectKeys(aKey: string, bKey: string): string | null {
   const terms = terminals(docs.doc, projectGeometry(docs.doc));
@@ -71,4 +72,15 @@ export function resetSchematic() {
       return ops.replace('parts', rest);
     }),
   );
+}
+
+/** Give a wire or route new control points, as one undoable step (ADR 0017). */
+export function setControl(t: GuideTarget, points: Vec3[], label: string) {
+  const o = setControlOps(docs.doc, t, points);
+  if (o.length) docs.dispatch(label, o);
+}
+
+export function straightenWires(ids: string[]) {
+  const o = straightenOps(docs.doc, ids);
+  if (o.length) docs.dispatch(o.length === 1 ? 'Straighten wire' : 'Straighten wires', o);
 }

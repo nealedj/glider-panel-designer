@@ -20,8 +20,10 @@ import { collectTargets, snapMove, snapPoint, type SnapGap, type SnapLine, type 
 import { canvasSize, toScreen, toWorld, worldMatrix, zoomAt, type Viewport } from './viewport';
 import { resolvePart } from '../model/resolve';
 import { analyse } from '../wiring/circuit';
-import { connectKeys, finishRoute } from '../wiring/actions';
-import { hitOffPanelTerminal, hitWiring, RearWiring } from '../wiring/ui/RearWiring';
+import { connectKeys, finishRoute, setControl } from '../wiring/actions';
+import { controlOf, movePoint, withoutPoint, type Control, type Handle } from '../wiring/guides';
+import type { Vec3 } from '../wiring/terminals';
+import { hitHandle, hitOffPanelTerminal, hitWiring, RearWiring } from '../wiring/ui/RearWiring';
 
 const RULER = 24;
 const SNAP_PX = 8;
@@ -33,7 +35,9 @@ type Drag =
   | { mode: 'move'; start: Vec2; world: Vec2; ids: Set<string>; box: Box; anchor: Vec2; targets: SnapTargets; delta: Vec2; lines: SnapLine[]; gaps: SnapGap[] }
   | { mode: 'window'; start: Vec2; end: Vec2; additive: boolean }
   | { mode: 'keepout'; a: Vec2; b: Vec2 }
-  | { mode: 'guide'; axis: 'x' | 'y'; value: number | null };
+  | { mode: 'guide'; axis: 'x' | 'y'; value: number | null }
+  /** Rear view: dragging a handle of the selected wire or route (ADR 0017). */
+  | { mode: 'shape'; start: Vec2; control: Control; handle: Handle; targets: SnapTargets; points: Vec3[] | null };
 
 export function Canvas() {
   const doc = useDoc();
@@ -92,6 +96,8 @@ export function Canvas() {
   }, [rear, doc, geometry]);
   const vp: Viewport = useMemo(() => ({ w: size.w, h: size.h, zoom, centre, mirror }), [size, zoom, centre, mirror]);
   const selSet = useMemo(() => new Set(selection), [selection]);
+  // The one selected wire or route, if it can be shaped with handles.
+  const shapeable = useMemo(() => (rear && tool === 'select' && selection.length === 1 ? controlOf(doc, analyse(doc), selection[0]!) : null), [rear, tool, selection, doc]);
 
   const updateDrag = (d: Drag | null) => {
     dragRef.current = d;
@@ -344,6 +350,14 @@ export function Canvas() {
     }
     // Select tool.
     if (rear) {
+      const c = ui.state.selection.length === 1 ? controlOf(docs.doc, analyse(docs.doc), ui.state.selection[0]!) : null;
+      const handle = c && hitHandle(vp, c, s);
+      if (c && handle) {
+        // A double-click on a point removes it (onDoubleClick); its first click only starts a drag.
+        const targets = collectTargets(geometry, new Set(), template, docs.doc.guides, docs.doc.keepOuts, ui.state.snap, () => null);
+        updateDrag({ mode: 'shape', start: s, control: c, handle, targets, points: null });
+        return;
+      }
       const h = hitWiring(vp, docs.doc, analyse(docs.doc), s, false);
       if (h && h.kind !== 'exit') {
         const sel = ui.state.selection;
@@ -374,6 +388,17 @@ export function Canvas() {
     } else {
       updateDrag({ mode: 'window', start: s, end: s, additive: e.shiftKey });
     }
+  };
+
+  /** Double-click a point of the selected wire or route to remove it (ADR 0017). */
+  const onDoubleClick = (e: React.MouseEvent) => {
+    if (!rear || tool !== 'select' || ui.state.selection.length !== 1) return;
+    const c = controlOf(docs.doc, analyse(docs.doc), ui.state.selection[0]!);
+    const handle = c && hitHandle(vp, c, localPoint(e));
+    if (!c || !handle || handle.insert) return;
+    const pts = withoutPoint(c, handle.index);
+    if (pts) setControl(c.target, pts, c.target.kind === 'wire' ? 'Remove guide point' : 'Remove route point');
+    else ui.set({ message: 'A route needs at least two points' });
   };
 
   /** Right-click: select what is under the pointer (keeping a selection it is part of), then open the menu. */
@@ -462,6 +487,13 @@ export function Canvas() {
         updateDrag({ ...d, b: sp.point });
         break;
       }
+      case 'shape': {
+        if (!d.points && Math.hypot(s.x - d.start.x, s.y - d.start.y) <= DRAG_PX) break;
+        const sp = e.altKey ? { point: w, lines: [], marker: null } : snapPoint(w, d.targets, ui.state.snap, grid, tolMm);
+        setSnapped(sp);
+        updateDrag({ ...d, points: movePoint(d.control, d.handle, sp.point) });
+        break;
+      }
     }
   };
 
@@ -504,6 +536,13 @@ export function Canvas() {
       }
       case 'guide':
         if (d.value !== null) docs.dispatch('Add guide', [ops.insert('guides', { id: newId('g'), axis: d.axis, value: d.value })]);
+        break;
+      case 'shape':
+        setSnapped(null);
+        if (d.points) {
+          const wire = d.control.target.kind === 'wire';
+          setControl(d.control.target, d.points, d.handle.insert ? (wire ? 'Add guide point' : 'Add route point') : wire ? 'Move guide point' : 'Move route point');
+        }
         break;
       case 'keepout': {
         const box = pointsBox([d.a, d.b]);
@@ -557,7 +596,7 @@ export function Canvas() {
     return partGeometry(pp, resolvePart(pp, doc) ?? part, { x: snapped.point.x, y: snapped.point.y, rotation: 0 });
   }, [tool, placing, snapped, doc]);
 
-  const snapLines = moving ? moving.lines : snapped && tool !== 'select' ? snapped.lines : [];
+  const snapLines = moving ? moving.lines : snapped && (tool !== 'select' || drag?.mode === 'shape') ? snapped.lines : [];
   const parentMoving = (id: string): boolean => {
     if (!moving) return false;
     return moving.ids.has(id);
@@ -583,6 +622,7 @@ export function Canvas() {
       }}
       onDrop={onDrop}
       onContextMenu={onContextMenu}
+      onDoubleClick={onDoubleClick}
       data-testid="canvas"
     >
       <Rulers vp={vp} cursor={cursorScreen} />
@@ -671,6 +711,8 @@ export function Canvas() {
             wireTool={tool === 'wire'}
             wireStart={wireStart}
             showTerminals={layers.labels && zoom >= 1.5}
+            edit={shapeable}
+            preview={drag?.mode === 'shape' ? drag.points : null}
           />
         )}
         {rear && tool === 'route' && routeDraft.length > 0 && (

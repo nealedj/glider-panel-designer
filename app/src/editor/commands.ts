@@ -12,7 +12,7 @@ import { replaceWork } from '../store/recovery';
 import type { ExportKind } from '../export';
 import { createDraft, detectGrid, drafts, editTemplate, fitPhotoView, fitPlaneView, photo, tplUi, type TplTool } from '../template/session';
 import { deleteTplSelection, moveSelectedFeature } from '../template/edit';
-import { assignRoute, finishRoute, resetSchematic } from '../wiring/actions';
+import { assignRoute, finishRoute, resetSchematic, straightenWires } from '../wiring/actions';
 
 const selectedWires = () => ui.state.selection.filter((id) => docs.doc.wires.some((w) => w.id === id));
 const selectedRoute = () => ui.state.selection.find((id) => docs.doc.routes.some((r) => r.id === id)) ?? null;
@@ -290,6 +290,14 @@ export const COMMANDS: CommandDef[] = [
     enabled: () => ui.state.tool === 'route' && ui.state.routeDraft.length >= 2,
   },
   { id: 'wiring.put-on-route', label: 'Put selected wires on selected route', group: 'Arrange', views: ['rear', 'schematic'], run: putOnRoute, enabled: () => selectedRoute() !== null && selectedWires().length > 0 },
+  {
+    id: 'wiring.straighten',
+    label: 'Straighten selected wires (remove guide points)',
+    group: 'Arrange',
+    views: ['rear', 'schematic', '3d'],
+    run: () => straightenWires(selectedWires()),
+    enabled: () => selectedWires().some((id) => docs.doc.wires.find((w) => w.id === id)?.via?.length),
+  },
   { id: 'wiring.take-off-route', label: 'Take selected wires off their route', group: 'Arrange', views: ['rear', 'schematic'], run: () => assignRoute(selectedWires(), null), enabled: () => selectedWires().some((id) => docs.doc.wires.find((w) => w.id === id)?.route) },
   { id: 'view.schematic', label: 'Schematic view', group: 'View', views: 'all', run: () => setView('schematic') },
   { id: 'view.3d', label: '3D view', group: 'View', views: 'all', run: () => setView('3d') },

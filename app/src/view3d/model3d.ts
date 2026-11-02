@@ -9,6 +9,7 @@
 import { runChecks } from '../checks/checks';
 import { FLATTEN_TOL, insideMargin, shapesOverlap, toPolygon } from '../geom/region';
 import { boxesIntersect, shapeBox, type Box } from '../geom/shapes';
+import { smoothPath } from '../geom/smooth';
 import { projectGeometry, resolveTemplate } from '../model/resolve';
 import type { BendLine, Project, Shape, Vec2 } from '../model/schema';
 import { bundles } from '../wiring/bundles';
@@ -144,12 +145,12 @@ export function buildModel3d(doc: Project): Model3D {
   for (const w of doc.wires) {
     const c = a.wires.get(w.id);
     if (!c?.length || c.length.path.length < 2) continue;
-    wires.push({ key: `wire:${w.id}`, id: w.id, points: c.length.path, diameterMm: outerDiameter(w, c.sizeMm2), colour: cssColour(w.colour) });
+    wires.push({ key: `wire:${w.id}`, id: w.id, points: smoothPath(c.length.path), diameterMm: outerDiameter(w, c.sizeMm2), colour: cssColour(w.colour) });
   }
   const looms: Path3[] = [];
   for (const b of bundles(doc)) {
     if (b.route.points.length < 2) continue;
-    looms.push({ key: `loom:${b.route.id}`, id: b.route.id, points: b.route.points, diameterMm: Math.max(b.diameterMm, 2), colour: '' });
+    looms.push({ key: `loom:${b.route.id}`, id: b.route.id, points: smoothPath(b.route.points), diameterMm: Math.max(b.diameterMm, 2), colour: '' });
   }
   for (const p of [...wires, ...looms].flatMap((w) => w.points)) {
     zMin = Math.min(zMin, p.z);

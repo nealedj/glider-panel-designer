@@ -1,0 +1,165 @@
+{
+  "id": "generic.bus-bar",
+  "version": 1,
+  "maker": "Generic",
+  "model": "Bus bar",
+  "category": "connector",
+  "description": "A strip of studs joined inside, mounted behind the panel: a common ground, or a power bus after a fuse. Its net takes the type of what is wired to it. Set the number of studs per placed part.",
+  "generator": "generic.bus-bar",
+  "params": {
+    "studs": {
+      "label": "Studs",
+      "value": 6,
+      "unit": "count",
+      "min": 2,
+      "max": 24
+    },
+    "pitch": {
+      "label": "Stud spacing",
+      "value": 10,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "w": {
+      "label": "Bar width",
+      "value": 12,
+      "unit": "mm",
+      "min": 0.1
+    },
+    "depth": {
+      "label": "Depth behind the panel",
+      "value": 15,
+      "unit": "mm",
+      "min": 0.1
+    }
+  },
+  "connectors": [
+    {
+      "id": "BUS",
+      "type": "bus bar",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": -25,
+          "y": 0
+        },
+        {
+          "number": "2",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": -15,
+          "y": 0
+        },
+        {
+          "number": "3",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": -5,
+          "y": 0
+        },
+        {
+          "number": "4",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": 5,
+          "y": 0
+        },
+        {
+          "number": "5",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": 15,
+          "y": 0
+        },
+        {
+          "number": "6",
+          "function": "stud",
+          "signal": "other",
+          "direction": "passive",
+          "x": 25,
+          "y": 0
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": null,
+  "offPanel": false,
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": 0
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 60,
+      "h": 12,
+      "r": 1
+    },
+    "depth": 15,
+    "bracketPoints": []
+  },
+  "bus": true,
+  "sources": {
+    "front.cutouts": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.bezel": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.screwHoles": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "front.protrusion": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.body": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "rear.depth": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    },
+    "connectors": {
+      "url": null,
+      "snippet": null,
+      "status": "unverified",
+      "note": "Generic placeholder default. Check against the real part or its datasheet before cutting."
+    }
+  },
+  "review": "unverified"
+}

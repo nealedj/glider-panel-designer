@@ -2,8 +2,9 @@
  * Electrical and pneumatic analysis of the wiring. See ADR 0012.
  *
  * Power paths are traced from each battery's positive terminal along wires, through
- * switches (taken as closed) and fuses or breakers, to each powered part's supply pin;
- * returns from its ground pin back to the battery's negative terminal. Each wire carries the
+ * switches (taken as closed), fuses or breakers and bus bars, to each powered part's supply
+ * pin; returns from its ground pin, along wires and through bus bars, back to the battery's
+ * negative terminal. Each wire carries the
  * current of every load whose path uses it. From that:
  * - wires sized automatically are given the smallest chart size that carries the current,
  *   keeps their share of the voltage-drop limit, and is protected by the fuse or breaker
@@ -59,7 +60,8 @@ export interface Analysis {
   results: CheckResult[];
 }
 
-type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean };
+/** `bus`: the conductor inside a bus bar, which returns run through as well as feeds. */
+type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean; bus?: boolean };
 
 const isProtector = (p: CataloguePart) => p.category === 'fuse' || p.category === 'breaker';
 const isSwitch = (p: CataloguePart) => p.category === 'switch';
@@ -101,6 +103,14 @@ function compute(doc: Project): Analysis {
   let hasBattery = false;
   for (const [id, g] of geometry) {
     const part = g.part;
+    if (part.bus) {
+      // Every stud is joined to the first, so a path crosses the bar in two steps at most.
+      const keys = part.connectors.flatMap((c) => c.pins.map((p) => `${id}/${c.id}/${p.number}`));
+      for (const k of keys.slice(1)) {
+        link(keys[0]!, { to: k, pass: true, bus: true });
+        link(k, { to: keys[0]!, pass: true, bus: true });
+      }
+    }
     for (const c of part.connectors) {
       const keys = c.pins.map((p) => `${id}/${c.id}/${p.number}`);
       if (isProtector(part) && c.pins.length === 2) {
@@ -140,7 +150,8 @@ function compute(doc: Project): Analysis {
     return parent;
   };
   const feedTree = bfs(sources, () => true);
-  const groundTree = bfs(sinks, (e) => !!e.wire);
+  // Returns run along wires and through bus bars, never back through a switch or fuse.
+  const groundTree = bfs(sinks, (e) => !!e.wire || !!e.bus);
   const walk = (tree: ReturnType<typeof bfs>, k: string) => {
     const wires: string[] = [];
     const devices: Protector[] = [];
@@ -315,7 +326,7 @@ function compute(doc: Project): Analysis {
 
   // ---- lengths and endurance
   const est = [...calcs.values()].filter((c) => c.length?.estimated);
-  if (est.length) results.push(info('length:estimated', 'electrical', `${est.length} wire${est.length === 1 ? '' : 's'} not on a route; ${est.length === 1 ? 'its length is' : 'their lengths are'} straight-line estimates`, est.map((c) => c.wire.id)));
+  if (est.length) results.push(info('length:estimated', 'electrical', `${est.length} wire${est.length === 1 ? '' : 's'} not on a route or guided; ${est.length === 1 ? 'its length is' : 'their lengths are'} straight-line estimates`, est.map((c) => c.wire.id)));
   const offMissing = [...calcs.values()].filter((c) => c.length?.missingOffPanel);
   if (offMissing.length) results.push(info('length:offpanel', 'electrical', `Off-panel run not set for ${offMissing.length} wire${offMissing.length === 1 ? '' : 's'}; set it on the off-panel part`, offMissing.map((c) => c.wire.id)));
   const totalA = loads.reduce((s, l) => s + (l.currentA ?? 0), 0);

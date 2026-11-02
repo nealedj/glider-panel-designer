@@ -39,3 +39,6 @@ Ideas that came up while building and are out of the current milestone's scope.
 - Auto-arrange: pack into the panel outline, avoiding keep-outs, fixings and folds, rather than only tidying rows (ADR 0015).
 - Equal-gap snapping while placing a new part from the library, not only while moving one.
 - Equal-gap snapping by exact cut-to-cut separation rather than boxes, for tighter rows of round instruments.
+- Guided wires: set the depth of a wire's own guide points (they take the depth of their leg when added), and offer to move them with a part when it moves (ADR 0017).
+- Guided wires: a minimum bend-radius check per wire and tube (about 10× the outside diameter for wire), once real tubing and cable data are in the catalogue; the 30 mm rounding is for drawing only.
+- Bus bars: groups of joined pins within one part (split terminal blocks), and a bus symbol in the schematic in place of one ground symbol per stud.

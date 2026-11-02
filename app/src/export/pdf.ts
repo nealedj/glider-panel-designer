@@ -148,6 +148,9 @@ export class PdfPage {
   lineCap(c: 0 | 1 | 2) {
     return this.op(`${c} J`);
   }
+  lineJoin(j: 0 | 1 | 2) {
+    return this.op(`${j} j`);
+  }
   /** Text at (x, y) in points, rotated counter-clockwise by `deg`. */
   text(x: number, y: number, s: string, sizePt: number, opts: { bold?: boolean; anchor?: 'start' | 'middle' | 'end'; deg?: number } = {}) {
     const w = opts.anchor && opts.anchor !== 'start' ? textWidthPt(s, sizePt, opts.bold) : 0;

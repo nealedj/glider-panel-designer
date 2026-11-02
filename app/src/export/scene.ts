@@ -19,6 +19,8 @@ export interface Style {
 export type Prim =
   | ({ kind: 'shape'; shape: Shape } & Style)
   | ({ kind: 'line'; a: Vec2; b: Vec2 } & Style)
+  /** An open path, drawn with round joins and ends (a loom along its rounded route). */
+  | ({ kind: 'polyline'; points: Vec2[] } & Style)
   /** `size` is the font size (em), mm. */
   | { kind: 'text'; at: Vec2; text: string; size: number; rotation: number; anchor: 'start' | 'middle' | 'end'; fill: string; bold?: boolean };
 
@@ -102,6 +104,8 @@ function svgPrim(p: Prim): string {
       return `<path d="${svgPathData(p.shape)}" ${styleAttrs(p)}/>`;
     case 'line':
       return `<line x1="${n(p.a.x)}" y1="${n(-p.a.y)}" x2="${n(p.b.x)}" y2="${n(-p.b.y)}" ${styleAttrs(p)}/>`;
+    case 'polyline':
+      return `<path d="${p.points.map((q, i) => `${i ? 'L' : 'M'}${n(q.x)} ${n(-q.y)}`).join('')}" ${styleAttrs({ ...p, fill: null })} stroke-linejoin="round" stroke-linecap="round"/>`;
     case 'text': {
       const rot = p.rotation ? ` transform="rotate(${n(-p.rotation)} ${n(p.at.x)} ${n(-p.at.y)})"` : '';
       return `<text x="${n(p.at.x)}" y="${n(-p.at.y)}" font-family="Helvetica, Arial, sans-serif" font-size="${n(p.size)}"${p.bold ? ' font-weight="bold"' : ''} text-anchor="${p.anchor}" fill="${p.fill}"${rot}>${escapeXml(p.text)}</text>`;
@@ -201,6 +205,13 @@ export function drawScene(page: PdfPage, scene: Scene, m: PageMap, minStrokePt =
         const a = toPage(m, p.a);
         const b = toPage(m, p.b);
         page.moveTo(a.x, a.y).lineTo(b.x, b.y);
+      } else if (p.kind === 'polyline') {
+        page.lineCap(1).lineJoin(1);
+        p.points.forEach((q, i) => {
+          const t = toPage(m, q);
+          if (i) page.lineTo(t.x, t.y);
+          else page.moveTo(t.x, t.y);
+        });
       } else pdfShapePath(page, m, p.shape);
       if (stroke && fill) page.fillStroke();
       else if (fill) page.fill();
