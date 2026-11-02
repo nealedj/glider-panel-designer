@@ -21,6 +21,7 @@ function iconFor(p: CataloguePart): string {
   if (p.category === 'fuse' || p.category === 'breaker') return 'fuse';
   if (p.category === 'mount') return 'mount';
   if (p.category === 'placard') return 'placard';
+  if (p.bus) return 'bus';
   const c = p.front.cutouts[0];
   return c?.kind === 'circle' ? 'round' : 'rect';
 }

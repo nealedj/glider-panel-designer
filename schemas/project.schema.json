@@ -1360,6 +1360,12 @@
                           "bidi",
                           "passive"
                         ]
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
                       }
                     },
                     "required": [
@@ -1541,6 +1547,9 @@
           },
           "offPanel": {
             "default": false,
+            "type": "boolean"
+          },
+          "bus": {
             "type": "boolean"
           }
         },
@@ -2053,6 +2062,28 @@
               "string",
               "null"
             ]
+          },
+          "via": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                },
+                "z": {
+                  "default": 0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            }
           },
           "sizeAuto": {
             "default": true,

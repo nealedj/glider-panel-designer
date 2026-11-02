@@ -1,6 +1,6 @@
 # 0012. Wiring and pneumatics: nets, sizing from AC 43.13-1B, lengths, schematic
 
-- Status: accepted
+- Status: accepted; guide points, route editing and bus bars added by 0017
 - Date: 2026-10-11
 
 ## Context

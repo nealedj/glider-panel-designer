@@ -94,6 +94,12 @@ export const Pin = z.object({
   signal: SignalType,
   /** For serial lines: tx, rx or bidirectional. */
   direction: z.enum(['in', 'out', 'bidi', 'passive']).optional(),
+  /**
+   * Where this pin is, in part coordinates, when its pins are spread out (the studs of a bus
+   * bar). Otherwise the pin is at its connector's position.
+   */
+  x: z.number().optional(),
+  y: z.number().optional(),
 });
 export type Pin = z.infer<typeof Pin>;
 
@@ -189,6 +195,11 @@ export const CataloguePart = z.object({
   review: ReviewStatus,
   /** Parts that sit off the panel (battery, antenna, speaker). */
   offPanel: z.boolean().default(false),
+  /**
+   * Every pin is joined inside the part: a bus bar or terminal strip. Wires to any of its pins
+   * are one net, and power and return paths run through it (ADR 0017).
+   */
+  bus: z.boolean().optional(),
 });
 export type CataloguePart = z.infer<typeof CataloguePart>;
 
@@ -309,6 +320,11 @@ export const Wire = z.object({
   colour: z.string(),
   label: z.string(),
   route: z.string().nullable().default(null),
+  /**
+   * Guide points the wire is led through between its ends, in order from `from` to `to`:
+   * x, y in plan and z, depth behind the panel. Used when the wire is not on a route (ADR 0017).
+   */
+  via: z.array(z.object({ x: z.number(), y: z.number(), z: z.number().default(0) })).optional(),
   /** Size chosen automatically from load and length; false once the user sets it. */
   sizeAuto: z.boolean().default(true),
 });

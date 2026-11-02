@@ -24,6 +24,10 @@ export interface TerminalInfo {
   port?: Port;
   pos: Vec3;
   offPanel: boolean;
+  /** The pin's own position is known (a bus bar stud), so it is not fanned out on screen. */
+  placed?: boolean;
+  /** On a bus bar: every pin of the part is joined inside it. */
+  bus?: boolean;
 }
 
 export const pinKey = (part: string, connector: string, pin: string) => `${part}/${connector}/${pin}`;
@@ -54,12 +58,16 @@ export function terminals(doc: Project, geometry: Map<string, PartGeometry>): Ma
     if (!g) continue;
     const off = !!g.part.offPanel;
     const name = partLabel(pp, g);
+    const bus = !!g.part.bus;
     for (const c of g.part.connectors) {
-      const p = applyTransform(g.transform, { x: c.x, y: c.y });
-      const pos = off ? { x: pp.x, y: pp.y, z: pp.depthOffset } : { ...p, z: depthOf(g, c.face) };
       for (const pin of c.pins) {
+        const placed = pin.x !== undefined || pin.y !== undefined;
+        const p = applyTransform(g.transform, placed ? { x: pin.x ?? c.x, y: pin.y ?? c.y } : { x: c.x, y: c.y });
+        const pos = off ? { x: pp.x, y: pp.y, z: pp.depthOffset } : { ...p, z: depthOf(g, c.face) };
         const key = pinKey(pp.id, c.id, pin.number);
-        out.set(key, { key, terminal: { part: pp.id, connector: c.id, pin: pin.number }, partId: pp.id, label: `${name} ${c.pins.length > 1 || c.id !== 'T' ? `${c.id} ` : ''}${pin.number}`.replace(/\s+/g, ' '), kind: 'pin', pin, connector: c, pos, offPanel: off });
+        // A bus bar's studs are named by number alone: "GND bus 3".
+        const label = bus ? `${name} ${pin.number}` : `${name} ${c.pins.length > 1 || c.id !== 'T' ? `${c.id} ` : ''}${pin.number}`.replace(/\s+/g, ' ');
+        out.set(key, { key, terminal: { part: pp.id, connector: c.id, pin: pin.number }, partId: pp.id, label, kind: 'pin', pin, connector: c, pos, offPanel: off, ...(placed && !off ? { placed: true } : {}), ...(bus ? { bus: true } : {}) });
       }
     }
     for (const port of g.part.ports) {

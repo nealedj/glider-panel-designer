@@ -3,8 +3,8 @@
  *
  * A wire on a route leaves its first terminal straight to the nearest point of the route,
  * follows the route, and leaves it at the point nearest its second terminal. All distances
- * are 3D, so depth changes count. A wire with no route is taken as a straight 3D line and
- * marked as an estimate. Two off-panel parts at the same exit are joined beyond the panel,
+ * are 3D, so depth changes count. A wire with no route runs through its guide points, if the
+ * user has led it; with none it is taken as a straight 3D line and marked as an estimate. Two off-panel parts at the same exit are joined beyond the panel,
  * by the difference of their runs. To either end is added the end allowance (stripping, termination,
  * service loop), and for off-panel parts, the run from the panel exit to the part.
  */
@@ -37,9 +37,14 @@ export function projectOnRoute(r: Pick<Route, 'points'>, p: Vec3): { at: Vec3; s
   return best;
 }
 
+/** A wire's guide points, with depth filled in (ADR 0017). */
+export function guidePoints(w: Pick<Wire, 'via'>): Vec3[] {
+  return (w.via ?? []).map((p) => ({ x: p.x, y: p.y, z: p.z ?? 0 }));
+}
+
 export interface WireLength {
   mm: number;
-  /** No route: a straight line, so the real wire will be longer. */
+  /** No route and no guide points: a straight line, so the real wire will be longer. */
   estimated: boolean;
   /** Off-panel run unknown for an end on an off-panel part. */
   missingOffPanel: boolean;
@@ -69,8 +74,10 @@ export function wireLength(w: Wire, doc: Project, terms: Map<string, TerminalInf
     const along = pa.s <= pb.s ? inner : inner.reverse();
     path = [a.pos, pa.at, ...along, pb.at, b.pos];
   } else {
-    core = d3(a.pos, b.pos);
-    path = [a.pos, b.pos];
+    // Led through the user's guide points, if any, else straight.
+    path = [a.pos, ...guidePoints(w), b.pos];
+    core = 0;
+    for (let i = 1; i < path.length; i++) core += d3(path[i - 1]!, path[i]!);
   }
   const byId = new Map(doc.parts.map((p) => [p.id, p]));
   const off = (t: TerminalInfo): { mm: number; missing: boolean } => {
@@ -85,7 +92,8 @@ export function wireLength(w: Wire, doc: Project, terms: Map<string, TerminalInf
   if (a.offPanel && b.offPanel && Math.hypot(a.pos.x - b.pos.x, a.pos.y - b.pos.y) < 1) {
     return { mm: Math.abs(oa.mm - ob.mm) + 2 * doc.settings.endAllowanceMm, estimated: false, missingOffPanel: oa.missing || ob.missing, path: [a.pos, b.pos] };
   }
-  return { mm: core + oa.mm + ob.mm + 2 * doc.settings.endAllowanceMm, estimated: !route, missingOffPanel: oa.missing || ob.missing, path };
+  const guided = !route && guidePoints(w).length > 0;
+  return { mm: core + oa.mm + ob.mm + 2 * doc.settings.endAllowanceMm, estimated: !route && !guided, missingOffPanel: oa.missing || ob.missing, path };
 }
 
 /** Outer diameter estimate for a wire of conductor area mm², or a tube of bore mm. */

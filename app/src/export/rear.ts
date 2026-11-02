@@ -3,7 +3,8 @@
  * shaded by depth, parts mounted on others, the looms at their bundle width and the exits
  * of off-panel parts; plus a depth table. For planning the fit, not for cutting.
  */
-import { mirrorShapeX, shapeBox, unionBox } from '../geom/shapes';
+import { mirrorShapeX, pointsBox, shapeBox, unionBox } from '../geom/shapes';
+import { smoothPath } from '../geom/smooth';
 import { projectGeometry, resolveTemplate } from '../model/resolve';
 import type { Project } from '../model/schema';
 import { bundles } from '../wiring/bundles';
@@ -88,10 +89,10 @@ export function rearScene(doc: Project): Scene {
   }
   for (const b of bundles(doc)) {
     const pts = b.route.points.map(mx);
-    for (let i = 1; i < pts.length; i++) {
-      looms.push({ kind: 'line', a: pts[i - 1]!, b: pts[i]!, stroke: C.loom, width: Math.max(1.5, b.diameterMm) });
-      looms.push({ kind: 'line', a: pts[i - 1]!, b: pts[i]!, stroke: C.loomSpine, width: 0.3, dash: [3, 1.5] });
-    }
+    // Drawn with rounded corners, as in the app; the label still sits on the longest straight leg.
+    const drawn = smoothPath(b.route.points).map(mx);
+    looms.push({ kind: 'polyline', points: drawn, stroke: C.loom, width: Math.max(1.5, b.diameterMm) });
+    looms.push({ kind: 'polyline', points: drawn, stroke: C.loomSpine, width: 0.3, dash: [3, 1.5] });
     // Label along the longest segment, just off the bundle, reading left to right.
     const z = b.route.points[0]?.z ?? 0;
     let best = 1;
@@ -127,7 +128,7 @@ export function rearScene(doc: Project): Scene {
     { id: 'looms', name: 'Looms and exits', prims: looms },
     { id: 'labels', name: 'Labels', prims: labels },
   ];
-  const boxes = [...panel, ...bodies, ...looms].map((p) => (p.kind === 'shape' ? shapeBox(p.shape) : p.kind === 'line' ? { minX: Math.min(p.a.x, p.b.x), maxX: Math.max(p.a.x, p.b.x), minY: Math.min(p.a.y, p.b.y), maxY: Math.max(p.a.y, p.b.y) } : null));
+  const boxes = [...panel, ...bodies, ...looms].map((p) => (p.kind === 'shape' ? shapeBox(p.shape) : p.kind === 'line' ? { minX: Math.min(p.a.x, p.b.x), maxX: Math.max(p.a.x, p.b.x), minY: Math.min(p.a.y, p.b.y), maxY: Math.max(p.a.y, p.b.y) } : p.kind === 'polyline' ? pointsBox(p.points) : null));
   const box = unionBox(boxes.filter((b) => b !== null)) ?? { minX: -100, minY: -100, maxX: 100, maxY: 100 };
   return { groups, box: { ...box, maxY: box.maxY + 6 } };
 }

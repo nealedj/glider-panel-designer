@@ -594,6 +594,12 @@
                     "bidi",
                     "passive"
                   ]
+                },
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
                 }
               },
               "required": [
@@ -775,6 +781,9 @@
     },
     "offPanel": {
       "default": false,
+      "type": "boolean"
+    },
+    "bus": {
       "type": "boolean"
     }
   },

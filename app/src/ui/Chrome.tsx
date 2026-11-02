@@ -44,6 +44,7 @@ const MENUS: { name: CommandDef['group']; ids: string[] }[] = [
       '-',
       'wiring.put-on-route',
       'wiring.take-off-route',
+      'wiring.straighten',
       'schematic.reset',
     ],
   },

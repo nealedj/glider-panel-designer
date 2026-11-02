@@ -5,7 +5,7 @@
 import { projectGeometry } from '../model/resolve';
 import type { Project, Route, Terminal, Wire } from '../model/schema';
 import { applyOps, newId, ops, type Op } from '../store/doc';
-import { COLOUR_BY_TYPE, DATA_COLOURS, DEFAULT_TUBE_BORE_MM, netOps, netType, nextLabel } from './nets';
+import { COLOUR_BY_TYPE, DATA_COLOURS, DEFAULT_TUBE_BORE_MM, joinedInside, netOps, netType, nextLabel } from './nets';
 import { keyOf, terminals } from './terminals';
 
 export interface ConnectResult {
@@ -24,10 +24,11 @@ export function connectOps(doc: Project, a: Terminal, b: Terminal, patch: Partia
   if (doc.wires.some((w) => (keyOf(w.from) === ta.key && keyOf(w.to) === tb.key) || (keyOf(w.from) === tb.key && keyOf(w.to) === ta.key)))
     return { ops: [], wire: null, error: 'Those two are already connected' };
   // The type the joined net will have, for defaults.
-  // A tee's ports are one space: a tube on any of them joins the line on the others.
+  // A tee's ports are one space, and a bus bar's pins one conductor: a wire on any of them
+  // joins the net on the others.
   const sameSpace = (k: string) => {
     const t = terms.get(k)!;
-    return t.port?.kind === 'any' ? [...terms.values()].filter((o) => o.partId === t.partId && o.port?.kind === 'any').map((o) => o.key) : [k];
+    return joinedInside(t) ? [...terms.values()].filter((o) => o.partId === t.partId && o.kind === t.kind && joinedInside(o)).map((o) => o.key) : [k];
   };
   const keys = new Set([...sameSpace(ta.key), ...sameSpace(tb.key)]);
   const existing = doc.nets.find((n) => n.members.some((m) => keys.has(keyOf(m))));
