@@ -1,0 +1,74 @@
+{
+  "id": "wago.221-412",
+  "version": 1,
+  "maker": "WAGO",
+  "model": "221-412",
+  "category": "connector",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": [],
+    "box": [
+      13.1,
+      8.3,
+      18.6
+    ]
+  },
+  "connectors": [
+    {
+      "id": "clamping-units",
+      "type": "Clamping units",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-412",
+  "sources": {
+    "rear.box": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-412",
+      "snippet": "Item no. 221-412 product page description: \"Dimensions: (13.1 x 8.3 x 18.6) mm (width x height x depth).\"",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-412",
+      "snippet": "Maker's product page for item no. 221-412 (page title \"Splicing connector with levers (221-412) | WAGO GB\")",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.clamping-units": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-412",
+      "snippet": "Item no. 221-412 page heading: \"Splicing connector with levers; for all conductor types; max. 4 mm²; 2-conductor; transparent housing; Surrounding air temperature: max 85°C (T85); 4,00 mm²; transparent\"",
+      "status": "verified",
+      "note": "Page 1. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false,
+  "bus": true
+}
