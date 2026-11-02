@@ -291,3 +291,23 @@ maker = "LX Navigation"
 model = "Flarm Red Box"
 name = "LX Navigation Flarm Red Box (HW 2)"
 category = "flarm"
+
+[[product]]
+maker = "WAGO"
+model = "221-412"
+category = "connector"
+
+[[product]]
+maker = "WAGO"
+model = "221-413"
+category = "connector"
+
+[[product]]
+maker = "WAGO"
+model = "221-415"
+category = "connector"
+
+[[product]]
+maker = "WAGO"
+model = "221-420"
+category = "connector"

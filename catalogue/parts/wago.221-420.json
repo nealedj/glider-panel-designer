@@ -1,0 +1,122 @@
+{
+  "id": "wago.221-420",
+  "version": 1,
+  "maker": "WAGO",
+  "model": "221-420",
+  "category": "connector",
+  "front": {
+    "cutouts": [],
+    "bezel": null,
+    "screwHoles": [],
+    "protrusion": null
+  },
+  "rear": {
+    "body": null,
+    "depth": null,
+    "bracketPoints": [],
+    "box": [
+      29.8,
+      15.8,
+      18.3
+    ]
+  },
+  "connectors": [
+    {
+      "id": "clamping-units",
+      "type": "Clamping units",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "3",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "4",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "5",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "6",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "7",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "8",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "9",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        },
+        {
+          "number": "10",
+          "function": "clamping unit",
+          "signal": "other",
+          "direction": "passive"
+        }
+      ]
+    }
+  ],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-420",
+  "sources": {
+    "rear.box": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-420",
+      "snippet": "Item no. 221-420 product page description: \"The item's dimensions are (29.8 x 15.8 x 18.3) mm (width x height x depth).\"",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-420",
+      "snippet": "Maker's product page for item no. 221-420 (page title \"Splicing connector with levers (221-420) | WAGO GB\")",
+      "status": "verified",
+      "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.clamping-units": {
+      "url": "https://www.wago.com/gb/wire-splicing-connectors/compact-splicing-connector/p/221-420",
+      "snippet": "Item no. 221-420 page heading: \"Splicing connector with levers; for all conductor types; max. 4 mm²; 10-conductor; transparent housing; Surrounding air temperature: max 85°C (T85); 4,00 mm²; transparent\"",
+      "status": "verified",
+      "note": "Page 1. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false,
+  "bus": true
+}
