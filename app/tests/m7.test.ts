@@ -9,13 +9,15 @@ import { buildPik20d } from '../scripts/make-pik20d';
 import { runChecks } from '../src/checks/checks';
 import { buildDrawing, NOT_APPROVAL } from '../src/export/drawing';
 import { depthRows, rearPdf, rearScene } from '../src/export/rear';
-import { projectGeometry } from '../src/model/resolve';
+import { projectGeometry, resolveTemplate } from '../src/model/resolve';
+import { analyse } from '../src/wiring/circuit';
+import { netOps } from '../src/wiring/nets';
 import { Project } from '../src/model/schema';
 import { keyOf } from '../src/wiring/terminals';
 import { parsePdf } from './export-parse';
 
 const root = join(__dirname, '..', '..');
-const pik20d = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+const pik20d = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d-m7.json'), 'utf8')));
 const checks = (d: Project) => runChecks(d, projectGeometry(d));
 
 /** Wire ids are random, so compare projects by what the wires join. */
@@ -109,5 +111,24 @@ describe('key bindings', () => {
     expect(COMMAND_BY_ID.get('view.fit')!.shortcut).toBe('J');
     bindShortcut('view.fit', null);
     expect(COMMAND_BY_ID.get('view.fit')!.shortcut).toBe(DEFAULT_SHORTCUT.get('view.fit'));
+  });
+});
+
+describe('the PIK-20D example the app opens', () => {
+  const doc = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+
+  it('resolves its template and every part', () => {
+    expect(resolveTemplate(doc)).toBeTruthy();
+    const g = projectGeometry(doc);
+    for (const p of doc.parts) expect(g.has(p.id), p.id).toBe(true);
+  });
+
+  it('has nets that match its wires', () => {
+    expect(netOps(doc, doc.wires, analyse(doc).terms).ops).toEqual([]);
+  });
+
+  it('names no registration', () => {
+    expect(doc.registration).toBe('');
+    expect(doc.parts.find((p) => p.part.id === 'generic.placard')?.label).toBe('Registration');
   });
 });

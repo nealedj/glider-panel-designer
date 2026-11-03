@@ -17,7 +17,7 @@ export async function wiringSampleProject(): Promise<Project> {
   return Project.parse((await import('../../../fixtures/projects/wiring-sample.json')).default);
 }
 
-/** The reference PIK-20D T-panel on the cardboard mock-up template (M7): placeholder parts until reviewed. */
+/** The maintainer's own PIK-20D T-panel on the cardboard mock-up template, saved from the app. */
 export async function pik20dProject(): Promise<Project> {
   return Project.parse((await import('../../../fixtures/projects/pik20d.json')).default);
 }

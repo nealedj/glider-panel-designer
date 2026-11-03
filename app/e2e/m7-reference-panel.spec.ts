@@ -5,7 +5,7 @@
  *   project on the mock-up template; each instrument placed at a typed position; switch, fuses
  *   and exits typed in; placeholder sizes set in the inspector; the FLARM unit mounted on the
  *   XCTouchNav; every wire and tube connected pin to pin in the schematic; both looms drawn
- *   with the Route tool. The result equals the committed fixtures/projects/pik20d.json.
+ *   with the Route tool. The result equals the committed fixtures/projects/pik20d-m7.json.
  * - That project produces every output through the export dialog (cut file with the bend
  *   line, rear layout, wiring diagram, wire list, bill of materials) and shares by link into
  *   a fresh browser unchanged.
@@ -28,7 +28,7 @@ type Gpd = {
   };
 };
 const getDoc = (page: Page) => page.evaluate(() => (window as unknown as Gpd).gpd.docs.doc);
-const fixture = JSON.parse(readFileSync(new URL('../../fixtures/projects/pik20d.json', import.meta.url), 'utf8')) as Doc;
+const fixture = JSON.parse(readFileSync(new URL('../../fixtures/projects/pik20d-m7.json', import.meta.url), 'utf8')) as Doc;
 
 const termKey = (e: End, id: (x: string) => string) => (e.port ? `${id(e.part)}//${e.port}` : `${id(e.part)}/${e.connector}/${e.pin}`);
 
@@ -250,13 +250,16 @@ test('the PIK-20D example from scratch through the interface: template, parts, r
   expect(errors).toEqual([]);
 });
 
-test('PIK-20D example: every output through the export dialog, and a share link', async ({ page, browser }) => {
+test('PIK-20D M7 project: every output through the export dialog, and a share link', async ({ page, browser }) => {
   test.setTimeout(90_000);
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
+  // The M7 build (the example the app opens is now the maintainer's own panel), from its file.
   await page.getByRole('menubar').getByRole('button', { name: 'File' }).click();
-  await page.getByRole('menuitem', { name: /Open PIK-20D example project/ }).click();
+  const chooser = page.waitForEvent('filechooser');
+  await page.getByRole('menuitem', { name: /Open project file/ }).click();
+  await (await chooser).setFiles('../fixtures/projects/pik20d-m7.json');
   await expect(page.locator('.doc-title')).toContainText('PIK-20D T-panel');
   const doc = await getDoc(page);
   expect(doc.parts).toHaveLength(fixture.parts.length);

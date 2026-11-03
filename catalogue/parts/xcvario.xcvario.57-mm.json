@@ -167,7 +167,7 @@
       "url": "https://xcvario.com/print/print-docs.php?category=pur",
       "snippet": "Pur manual, Installation: 'The 80 mm variant corresponds to the standard mounting dimensions for 80 mm panel instruments. Mounting is performed using four M4 screws. The panel holes should be drilled to a minimum diameter of 4.5 mm. ... Mounting hole circle diameters: 80 mm device: 89.1 mm 57 mm device: 66.7 mm'",
       "status": "verified",
-      "note": "Standard instrument pattern: four holes on the 45° diagonals of the Ø66.7 hole circle, square spacing 66.7/√2 = 47.16 mm. Holes confirmed on the front plate by the maintainer on the G-DDLY unit (2026-11-01). Reviewed by an AI subagent against the cached maker document, not by a person."
+      "note": "Standard instrument pattern: four holes on the 45° diagonals of the Ø66.7 hole circle, square spacing 66.7/√2 = 47.16 mm. Holes confirmed on the front plate by the maintainer on the reference panel's unit (2026-11-01). Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",

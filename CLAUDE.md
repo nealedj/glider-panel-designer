@@ -36,7 +36,7 @@ local/ cache/ git-ignored crawler config and caches
 - `npm run dev` · `npm run build` · `npm test` (Vitest) · `npm run e2e` (Playwright)
 - `docs/questions.md` lists open questions for the user; add to it rather than blocking.
 - `npm run gen` regenerates `schemas/` and the generic parts in `catalogue/parts/`; tests fail if they are stale.
-- `npm run gen:pik20d` (and `gen:wiring-sample`) rebuild the sample projects in `fixtures/projects/` through the editor's ops; a test fails if the PIK-20D example is stale.
+- `npm run gen:pik20d` (and `gen:wiring-sample`) rebuild the test projects `fixtures/projects/pik20d-m7.json` and `wiring-sample.json` through the editor's ops; a test fails if either is stale. The PIK-20D example the app opens, `fixtures/projects/pik20d.json`, is the maintainer's own panel saved from the app: replace it with a saved file, never by hand.
 
 ## Working rules
 
