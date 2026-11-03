@@ -198,7 +198,7 @@ function compute(doc: Project): Analysis {
   const wireLoads = new Map<string, LoadCalc[]>();
   for (const [id, g] of geometry) {
     const part = g.part;
-    if (!part.power || isProtector(part) || part.category === 'power') continue;
+    if (!part.power || isProtector(part) || (part.category === 'power' && part.capacityAh != null)) continue;
     const supply = [...terms.values()].filter((t) => t.partId === id && t.pin?.signal === 'power' && t.pin.direction !== 'out');
     const ground = [...terms.values()].filter((t) => t.partId === id && t.pin?.signal === 'ground');
     if (!supply.length) continue;

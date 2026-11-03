@@ -203,13 +203,81 @@ describe('schematic layout', () => {
   const g = projectGeometry(sample);
   const s = layoutSchematic(sample, g, terminals(sample, g));
 
-  it('puts power flow left to right', () => {
+  it('puts power flow left to right, in wiring order', () => {
     const col = (id: string) => s.blocks.find((b) => b.partId === id)!.col;
+    // Battery, main fuse, master switch, the fuse bus (jumpered inputs share a column), loads.
     expect(col('bat')).toBe(0);
-    expect(col('ms')).toBe(1);
-    expect(col('f1')).toBe(2);
-    expect(col('vario')).toBe(3);
-    expect(col('spk')).toBe(5);
+    expect(col('f0')).toBe(1);
+    expect(col('ms')).toBe(2);
+    expect(['f1', 'f2', 'f3', 'f4'].map(col)).toEqual([3, 3, 3, 3]);
+    expect(col('vario')).toBe(4);
+    expect(col('spk')).toBeGreaterThan(col('vario'));
+  });
+});
+
+describe('schematic of a breaker-then-switch panel with bus splices', () => {
+  // Battery, master, main breaker, a + bus, a branch breaker, then a switch before the load;
+  // the ground returns through a ground bus. Breakers come before switches here, unlike the
+  // sample, which has the switch first.
+  const placed = (id: string, part: string, label: string) => ({ ...sample.parts.find((p) => p.id === 'ms')!, id, part: { id: part, version: 1 }, label, params: undefined, mountedTo: null });
+  let doc: Project = {
+    ...sample,
+    parts: [...sample.parts.filter((p) => ['bat', 'ms', 'vario'].includes(p.id)), placed('cbMain', 'generic.breaker', 'Main'), placed('cbVario', 'generic.breaker', 'Vario CB'), placed('swVario', 'generic.toggle-switch', 'Vario sw'), placed('pbus', 'wago.221-415', '+ bus'), placed('gbus', 'wago.221-415', 'GND bus')],
+    wires: [],
+    nets: [],
+    routes: [],
+  };
+  const C = 'clamping-units';
+  const links: [Terminal, Terminal][] = [
+    [pin('bat', 'T', '+'), pin('ms', 'T', '2')],
+    [pin('ms', 'T', '1'), pin('cbMain', 'T', 'LINE')],
+    [pin('cbMain', 'T', 'LOAD'), pin('pbus', C, '1')],
+    [pin('pbus', C, '2'), pin('cbVario', 'T', 'LINE')],
+    [pin('cbVario', 'T', 'LOAD'), pin('swVario', 'T', '2')],
+    [pin('swVario', 'T', '1'), pin('vario', 'PWR', '+')],
+    [pin('vario', 'PWR', 'GND'), pin('gbus', C, '2')],
+    [pin('gbus', C, '1'), pin('bat', 'T', '-')],
+  ];
+  const ids: string[] = [];
+  for (const [a, b] of links) {
+    const r = connectOps(doc, a, b);
+    expect(r.error ?? null).toBeNull();
+    doc = applyOps(doc, r.ops)[0];
+    ids.push(r.wire!.id);
+  }
+  const g = projectGeometry(doc);
+  const s = layoutSchematic(doc, g, terminals(doc, g));
+  const col = (id: string) => s.blocks.find((b) => b.partId === id)!.col;
+
+  it('follows the wiring: battery, master, main breaker, + bus, branch breaker, switch, load, ground bus', () => {
+    expect(['bat', 'ms', 'cbMain', 'pbus', 'cbVario', 'swVario', 'vario', 'gbus'].map(col)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it('draws every power wire as a line', () => {
+    const drawn = new Set(s.wires.map((w) => w.wireId));
+    for (const id of ids.slice(0, 6)) expect(drawn.has(id), id).toBe(true);
+  });
+
+  it('draws grounds through the ground bus, with a ground symbol only on the wire to the battery', () => {
+    expect(s.wires.some((w) => w.wireId === ids[6])).toBe(true);
+    expect(s.grounds.map((gr) => gr.key).sort()).toEqual(['bat/T/-', 'gbus/clamping-units/1']);
+  });
+});
+
+describe('a powered part in the power category', () => {
+  it('counts a USB charging socket as a load, not a source', () => {
+    let doc: Project = { ...sample, parts: [...sample.parts, { ...sample.parts.find((p) => p.id === 'ms')!, id: 'usb', part: { id: 'generic.usb-socket', version: 1 }, label: 'USB', mountedTo: null }] };
+    for (const [a, b] of [
+      [pin('f2', 'T', 'LOAD'), pin('usb', 'PWR', '+')],
+      [pin('usb', 'PWR', 'GND'), pin('bat', 'T', '-')],
+    ] as const) {
+      const r = connectOps(doc, a, b);
+      expect(r.error ?? null).toBeNull();
+      doc = applyOps(doc, r.ops)[0];
+    }
+    const usb = analyse(doc).loads.find((l) => l.partId === 'usb');
+    expect(usb?.reachable).toBe(true);
+    expect(usb?.currentA).toBe(1.5);
   });
 });
 
