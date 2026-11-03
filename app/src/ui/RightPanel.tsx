@@ -71,6 +71,21 @@ export function Inspector() {
           )}
         </div>
         <TextField label="Label" value={pp.label} onCommit={(label) => setPartFields(id, { label }, 'Rename')} testId="insp-label" />
+        {(part.category === 'fuse' || part.category === 'breaker') && (
+          <NumberField
+            label={part.category === 'fuse' ? 'Fuse rating' : 'Breaker rating'}
+            value={part.ratingA ?? null}
+            unit="A"
+            parse={(s) => (s.trim() !== '' && Number(s) > 0 ? Number(s) : null)}
+            onCommit={(v) => setPartFields(id, { params: { ...pp.params, ratingA: v } }, `Set ${part.category} rating`)}
+            testId="insp-rating"
+          />
+        )}
+        {(part.category === 'fuse' || part.category === 'breaker') && part.ratingA == null && (
+          <p className="note warn" data-testid="insp-rating-unset">
+            <Icon name="warn" size={14} /> Rating not set. Wires after it are not checked against it.
+          </p>
+        )}
         <div className="field-row">
           <LengthField label="X" mm={g.transform.x} units={units} onCommit={(x) => setPartPosition(id, x, g.transform.y)} disabled={pp.locked} testId="insp-x" />
           <LengthField label="Y" mm={g.transform.y} units={units} onCommit={(y) => setPartPosition(id, g.transform.x, y)} disabled={pp.locked} testId="insp-y" />
@@ -143,7 +158,9 @@ export function Inspector() {
             <p className="note warn">
               <Icon name="warn" size={14} /> Generic defaults, not datasheet values. Check each against your instrument before cutting.
             </p>
-            {Object.entries(def.params).map(([key, prm]) =>
+            {Object.entries(def.params)
+              .filter(([key]) => key !== 'ratingA')
+              .map(([key, prm]) =>
               prm.unit === 'mm' ? (
                 <LengthField
                   key={key}

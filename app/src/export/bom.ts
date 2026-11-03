@@ -82,7 +82,7 @@ export function bomCsv(doc: Project): string {
       p.category,
       r.labels.join('; '),
       Object.entries(r.params)
-        .map(([k, v]) => `${p.params?.[k]?.label ?? k} ${v}${p.params?.[k]?.unit && p.params[k]!.unit !== 'count' ? ` ${p.params[k]!.unit}` : ''}`)
+        .map(([k, v]) => k === 'ratingA' && !p.params?.[k] ? `Rating ${v} A` : `${p.params?.[k]?.label ?? k} ${v}${p.params?.[k]?.unit && p.params[k]!.unit !== 'count' ? ` ${p.params[k]!.unit}` : ''}`)
         .join('; '),
       p.datasheet ?? '',
       '',
