@@ -4,7 +4,7 @@
   "maker": "Generic",
   "model": "FLARM display",
   "category": "flarm",
-  "description": "Small rectangular FLARM display: power and a serial port from the FLARM unit.",
+  "description": "Small rectangular FLARM display: one RJ12 socket carrying power and serial data from the FLARM unit. Pin numbering varies by maker; check the display manual.",
   "generator": "generic.flarm-display",
   "params": {
     "cutoutW": {
@@ -52,16 +52,16 @@
   },
   "connectors": [
     {
-      "id": "PWR",
-      "type": "power",
-      "x": -12,
+      "id": "RJ12",
+      "type": "RJ12",
+      "x": 0,
       "y": 0,
       "face": "rear",
       "clearance": null,
       "pins": [
         {
           "number": "+",
-          "function": "supply +",
+          "function": "supply + (from the FLARM unit)",
           "signal": "power",
           "direction": "in"
         },
@@ -69,17 +69,7 @@
           "number": "GND",
           "function": "ground",
           "signal": "ground"
-        }
-      ]
-    },
-    {
-      "id": "DATA",
-      "type": "data",
-      "x": 12,
-      "y": 0,
-      "face": "rear",
-      "clearance": null,
-      "pins": [
+        },
         {
           "number": "TX",
           "function": "serial TX",
@@ -91,11 +81,6 @@
           "function": "serial RX",
           "signal": "serial",
           "direction": "in"
-        },
-        {
-          "number": "GND",
-          "function": "signal ground",
-          "signal": "ground"
         }
       ]
     }

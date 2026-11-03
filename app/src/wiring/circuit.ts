@@ -61,8 +61,12 @@ export interface Analysis {
   results: CheckResult[];
 }
 
-/** `bus`: the conductor inside a bus bar, which returns run through as well as feeds. */
-type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean; bus?: boolean };
+/**
+ * `bus`: the conductor inside a bus bar, which returns run through as well as feeds.
+ * `through`: inside a device that powers another from one of its ports (a FLARM feeding its
+ * display), from the device's supply to its power output and between its grounds.
+ */
+type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean; bus?: boolean; through?: boolean };
 
 const isProtector = (p: CataloguePart) => p.category === 'fuse' || p.category === 'breaker';
 const isSwitch = (p: CataloguePart) => p.category === 'switch';
@@ -129,6 +133,21 @@ function compute(doc: Project): Analysis {
         });
       }
     }
+    if (!isProtector(part) && !isSwitch(part) && part.category !== 'power') {
+      // A device with a power output passes its own supply on, so whatever it feeds draws
+      // through the device's supply wires and returns through its grounds.
+      const pins = part.connectors.flatMap((c) => c.pins.map((p) => ({ p, k: `${id}/${c.id}/${p.number}` })));
+      const outs = pins.filter(({ p }) => p.signal === 'power' && p.direction === 'out');
+      if (outs.length) {
+        const ins = pins.filter(({ p }) => p.signal === 'power' && p.direction !== 'out');
+        for (const i of ins) for (const o of outs) link(i.k, { to: o.k, pass: true, through: true });
+        const gnds = pins.filter(({ p }) => p.signal === 'ground');
+        for (const g of gnds.slice(1)) {
+          link(gnds[0]!.k, { to: g.k, pass: true, through: true });
+          link(g.k, { to: gnds[0]!.k, pass: true, through: true });
+        }
+      }
+    }
     if (part.category === 'power' && part.capacityAh != null) {
       hasBattery = true;
       capacityAh += part.capacityAh;
@@ -151,8 +170,8 @@ function compute(doc: Project): Analysis {
     return parent;
   };
   const feedTree = bfs(sources, () => true);
-  // Returns run along wires and through bus bars, never back through a switch or fuse.
-  const groundTree = bfs(sinks, (e) => !!e.wire || !!e.bus);
+  // Returns run along wires, bus bars and a feeding device's grounds, never back through a switch or fuse.
+  const groundTree = bfs(sinks, (e) => !!e.wire || !!e.bus || !!e.through);
   const walk = (tree: ReturnType<typeof bfs>, k: string) => {
     const wires: string[] = [];
     const devices: Protector[] = [];
