@@ -100,17 +100,16 @@ export function buildPik20d(): Project {
     [pin('f3', 'T', 'LINE'), pin('f4', 'T', 'LINE')],
     [pin('f1', 'T', 'LOAD'), pin('xcv', 'PWR', '+')],
     [pin('f2', 'T', 'LOAD'), pin('flarm', 'PWR', '+')],
-    [pin('f2', 'T', 'LOAD'), pin('fdisp', 'PWR', '+')],
+    [pin('flarm', 'P1', '+'), pin('fdisp', 'RJ12', '+')],
     [pin('f3', 'T', 'LOAD'), pin('xctn', 'PWR', '+')],
     [pin('f4', 'T', 'LOAD'), pin('radio', 'PWR', '+')],
     // Grounds back to the battery.
     [pin('xcv', 'PWR', 'GND'), pin('bat', 'T', '-')],
     [pin('flarm', 'PWR', 'GND'), pin('bat', 'T', '-')],
-    [pin('fdisp', 'PWR', 'GND'), pin('bat', 'T', '-')],
     [pin('xctn', 'PWR', 'GND'), pin('bat', 'T', '-')],
     [pin('radio', 'PWR', 'GND'), pin('bat', 'T', '-')],
-    // Data: FLARM port 1 to its display, port 2 to the XCVario, which feeds the XCTouchNav.
-    ...serial('flarm', 'P1', 'fdisp', 'DATA'),
+    // Data: FLARM port 1 to its display (which it also powers), port 2 to the XCVario, which feeds the XCTouchNav.
+    ...serial('flarm', 'P1', 'fdisp', 'RJ12'),
     ...serial('flarm', 'P2', 'xcv', 'S1'),
     ...serial('xcv', 'S2', 'xctn', 'DATA'),
     // Audio, PTT and antennas.

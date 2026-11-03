@@ -85,6 +85,21 @@ describe('electrical checks', () => {
     expect(a.loads.every((l) => l.devices.length === 2 && l.dropV < 0.5)).toBe(true);
   });
 
+  it('feeds a display through the FLARM port that powers it', () => {
+    const pik = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+    const a = analyse(pik);
+    const disp = a.loads.find((l) => l.partId === 'fdisp')!;
+    expect(disp).toMatchObject({ reachable: true, grounded: true });
+    const flarmFeed = pik.wires.find((w) => keyOf(w.to) === 'flarm/PWR/+')!;
+    const dispFeed = pik.wires.find((w) => keyOf(w.from) === 'flarm/P1/+')!;
+    // The display draws through the FLARM's own supply wire and fuse, and returns through its data-port ground.
+    expect(disp.feed).toEqual(expect.arrayContaining([flarmFeed.id, dispFeed.id]));
+    expect(disp.devices.map((d) => d.partId)).toContain('f2');
+    expect(disp.ret.length).toBeGreaterThan(1);
+    expect(a.wires.get(flarmFeed.id)!.currentA).toBeCloseTo(a.loads.find((l) => l.partId === 'flarm')!.currentA! + disp.currentA!, 6);
+    expect(a.results.filter((r) => r.ids.includes('fdisp') && r.severity === 'error')).toEqual([]);
+  });
+
   it('flags a power path with no fuse', () => {
     // Bypass F1: the vario fed straight from the bus.
     const w = sample.wires.find((x) => keyOf(x.to) === 'vario/PWR/+')!;
