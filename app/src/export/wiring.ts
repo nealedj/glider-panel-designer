@@ -70,7 +70,7 @@ export function wireRows(doc: Project): (string | number | null)[][] {
       len ? (len.estimated ? 'straight-line estimate' : 'route') + (len.missingOffPanel ? '; off-panel run not set' : '') : '',
       route?.label ?? '',
       c && !c.isTube ? Math.round(c.currentA * 1000) / 1000 : '',
-      c?.protector ? `${doc.parts.find((p) => p.id === c.protector!.partId)?.label || c.protector.partId} ${c.protector.ratingA} A ${c.protector.kind}` : '',
+      c?.protector ? `${doc.parts.find((p) => p.id === c.protector!.partId)?.label || c.protector.partId} ${c.protector.ratingA == null ? `${c.protector.kind}, rating not set` : `${c.protector.ratingA} A ${c.protector.kind}`}` : '',
     ];
   });
   return rows.sort((x, y) => String(x[0]).localeCompare(String(y[0]), 'en', { numeric: true }));

@@ -264,7 +264,7 @@ export type PartRef = z.infer<typeof PartRef>;
 export const PlacedPart = z.object({
   id: z.string(),
   part: PartRef,
-  /** Overrides for a parametric part's params. */
+  /** Overrides for a parametric part's params; for any fuse or breaker, `ratingA` is its rating. */
   params: z.record(z.string(), z.number()).optional(),
   x: z.number(),
   y: z.number(),

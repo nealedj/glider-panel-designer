@@ -109,6 +109,26 @@ describe('electrical checks', () => {
     expect(keys(heavy)).toContain('derate:f4');
   });
 
+  it('takes the rating set on a placed catalogue fuse, and flags one with none', () => {
+    // A maker's fuse holder: same pins as the generic one, but not parametric and no rating of its own.
+    const generic = projectGeometry(sample).get('f4')!.part;
+    const { generator: _g, params: _p, ...rest } = generic;
+    const maker = { ...rest, id: 'test.fuse-holder', version: 1, maker: 'Test', ratingA: null };
+    const swap = (params?: Record<string, number>) => ({
+      ...sample,
+      customParts: [...sample.customParts, maker],
+      parts: sample.parts.map((p) => (p.id === 'f4' ? { ...p, part: { id: maker.id, version: 1 }, params } : p)),
+    });
+    const w = sample.wires.find((x) => keyOf(x.to) === 'radio/PWR/+')!;
+    const unset = swap();
+    expect(projectGeometry(unset).get('f4')!.part.ratingA).toBeNull();
+    expect(keys(unset)).toContain('rating:f4');
+    expect(analyse(unset).wires.get(w.id)!.protector).toMatchObject({ partId: 'f4', ratingA: null });
+    const set = swap({ ratingA: 15 });
+    expect(keys(set)).not.toContain('rating:f4');
+    expect(analyse(set).wires.get(w.id)!.auto!.awg).toBe('14');
+  });
+
   it('flags voltage drop over the limit on a long thin run', () => {
     // Automatic sizing would grow the wires to fit; with sizes fixed at AWG 22 the drop shows.
     const d = { ...sample, settings: { ...sample.settings, voltageDropLimitV: 0.1 }, wires: sample.wires.map((w) => (w.sizeAuto ? { ...w, sizeAuto: false, sizeMm2: 0.383 } : w)) };

@@ -12,16 +12,41 @@ const genericCache = new Map<string, CataloguePart>();
 export function resolvePart(pp: PlacedPart, project: Pick<Project, 'customParts'>): CataloguePart | undefined {
   const base = findPart(pp.part, project.customParts);
   if (!base) return undefined;
-  if (base.rear.box) return fitBox(base, pp.boxDepth ?? 2);
-  if (!base.generator || !pp.params || !Object.keys(pp.params).length) return base;
+  if (base.rear.box) return withRating(fitBox(base, pp.boxDepth ?? 2), pp);
+  if (!base.generator || !pp.params || !Object.keys(pp.params).length) return withRating(base, pp);
   const def = GENERIC_BY_ID.get(base.generator);
-  if (!def) return base;
+  if (!def) return withRating(base, pp);
   const key = `${base.generator}:${JSON.stringify(pp.params)}`;
   let built = genericCache.get(key);
   if (!built) {
     built = buildGeneric(def, pp.params);
     genericCache.set(key, built);
   }
+  return built;
+}
+
+const isProtector = (p: Pick<CataloguePart, 'category'>) => p.category === 'fuse' || p.category === 'breaker';
+
+/**
+ * The rating of a placed fuse or breaker, A, or null if not set. It is chosen per placed part
+ * (the same holder or breaker body comes in many ratings) and stored in `params.ratingA`, which
+ * a generic part also feeds to its generator.
+ */
+export function placedRating(pp: PlacedPart, part: Pick<CataloguePart, 'ratingA'>): number | null {
+  const own = pp.params?.ratingA;
+  return own != null && own > 0 ? own : (part.ratingA ?? null);
+}
+
+const ratingCache = new WeakMap<CataloguePart, Map<number, CataloguePart>>();
+
+/** A catalogue fuse or breaker with the placed part's own rating applied. */
+function withRating(part: CataloguePart, pp: PlacedPart): CataloguePart {
+  const own = pp.params?.ratingA;
+  if (!isProtector(part) || part.generator || own == null || !(own > 0) || own === part.ratingA) return part;
+  let byRating = ratingCache.get(part);
+  if (!byRating) ratingCache.set(part, (byRating = new Map()));
+  let built = byRating.get(own);
+  if (!built) byRating.set(own, (built = { ...part, ratingA: own }));
   return built;
 }
 

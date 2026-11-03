@@ -137,7 +137,7 @@ test('the PIK-20D example from scratch through the interface: template, parts, r
     await setField(page, 'insp-x', String(want.x));
     await setField(page, 'insp-y', String(want.y));
     await setField(page, 'insp-label', want.label);
-    if (want.params?.ratingA) await setField(page, 'param-ratingA', String(want.params.ratingA));
+    if (want.params?.ratingA) await setField(page, 'insp-rating', String(want.params.ratingA));
     placed.set(fid, p.id);
   }
 
