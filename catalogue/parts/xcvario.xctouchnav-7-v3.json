@@ -24,7 +24,64 @@
     "depth": null,
     "bracketPoints": []
   },
-  "connectors": [],
+  "connectors": [
+    {
+      "id": "serial-ttys3-ttys4-ttys5-ttys7-rj45-igc",
+      "type": "RJ45",
+      "x": 0,
+      "y": 0,
+      "face": "rear",
+      "clearance": null,
+      "pins": [
+        {
+          "number": "1",
+          "function": "GND",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "2",
+          "function": "GND",
+          "signal": "ground",
+          "direction": "passive"
+        },
+        {
+          "number": "3",
+          "function": "RS232 TTL TX (remote gadget receives)",
+          "signal": "serial",
+          "direction": "out"
+        },
+        {
+          "number": "4",
+          "function": "RS232 TTL RX (remote gadget sends)",
+          "signal": "serial",
+          "direction": "in"
+        },
+        {
+          "number": "5",
+          "function": "NC (not connected)",
+          "signal": "other"
+        },
+        {
+          "number": "6",
+          "function": "NC (not connected)",
+          "signal": "other"
+        },
+        {
+          "number": "7",
+          "function": "+12V out to external device, 500 mA max (e.g. Classic Flarm)",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "8",
+          "function": "+12V out to external device, 500 mA max (e.g. Classic Flarm)",
+          "signal": "power",
+          "direction": "out"
+        }
+      ]
+    }
+  ],
   "ports": [],
   "power": {
     "currentA": 0.39,
@@ -62,6 +119,12 @@
       "snippet": "XCTouchNav Android Navigator Family User Manual, 80mm 5.7 Inch V2 7 Inch V3, Manual edition 1.20",
       "status": "verified",
       "note": "Page 1. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "connectors.serial-ttys3-ttys4-ttys5-ttys7-rj45-igc": {
+      "url": "https://xcvario.com/wp-content/uploads/2026/06/Handbuch-E-XCT-123.pdf",
+      "snippet": "8.8/9.8 'RJ45 connector's ttyS3, ttyS4, etc': 'The interface uses an RJ45 socket'; table 'Pin # RJ45 FCC | identifier | direction | Connection XCVario or Remote Device': 1 GND (GND); 2 GND; 3 RS232 TTL TX (out arrow) Serial RX, remote gadget receives; 4 RS232 TTL RX (in arrow) Serial TX, remote gadget sends; 5 NC; 6 NC; 7 +12V 500mA max Power external device e.g.; 8 +12V Classic Flarm. 'NC: Not connected'. Figure 'Abbildung 1: ttyS3 Pinout' (viewed from the rear), 'Pin 1 is located on the left side of the connector.' NB the table caption reads 'Interface ttyS3 and ttyS5 on XCTouchNav-80'; the section heading is generic. Ed. 1.20 p19 rear photo of XCTN7V3 shows four RJ45 sockets labelled ttyS5 (XCVario), ttyS3 (Int. GPS), ttyS4, ttyS7 (Flarm Radio); p25 KRT2 wiring uses Pin 3 TX, Pin 4 RX, Pin 1 GND on ttyS5, ttyS7 or ttyS9.",
+      "status": "verified",
+      "note": "Page 23. Reviewed by an AI subagent against the cached maker document, not by a person."
     }
   },
   "review": "verified",
