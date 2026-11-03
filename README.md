@@ -33,6 +33,7 @@ npm run dev        # http://localhost:5173
 npm test           # unit tests
 npm run e2e        # browser tests (first: npx playwright install chromium)
 npm run gen        # regenerate schemas/ and generic catalogue parts
+npm run showcase   # record the 60 s showcase video (needs ffmpeg) to test-results/showcase/
 ```
 
 The first visit shows a welcome and a three-step first-panel walkthrough; `?` lists every

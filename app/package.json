@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "gen": "tsx scripts/generate.ts",
     "gen:wiring-sample": "GEN=wiring-sample vitest run tests/gen",
-    "gen:pik20d": "GEN=pik20d vitest run tests/gen"
+    "gen:pik20d": "GEN=pik20d vitest run tests/gen",
+    "showcase": "tsx scripts/record-showcase.ts"
   },
   "dependencies": {
     "react": "^19.3.0",
