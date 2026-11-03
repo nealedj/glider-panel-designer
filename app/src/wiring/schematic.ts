@@ -2,15 +2,21 @@
  * Schematic auto-layout: a block diagram built from the nets, so it reads without tidying.
  * See ADR 0012.
  *
- * - Blocks go in columns by role, left to right in the direction power flows: battery,
- *   switches, fuses and breakers, powered parts, pneumatic instruments and tees, then the
- *   other off-panel parts. Within a column, blocks are ordered to follow their neighbours
- *   (barycentre sweeps), which removes most crossings.
+ * - Blocks go in columns left to right in the direction power flows: each part's column is
+ *   its distance from the battery along power wires, so a breaker-then-switch chain reads
+ *   the same way as a switch-then-fuse one, and a bus sits between what feeds it and what
+ *   it feeds. A part joined only by ground wires (a ground bus) goes one column right of
+ *   what it collects from. Unwired parts, pneumatic instruments and tees, then the other
+ *   off-panel parts follow. With no battery wired, columns fall back to roles: battery,
+ *   switches, fuses and breakers, powered parts. Within a column, blocks are ordered to
+ *   follow their neighbours (barycentre sweeps), which removes most crossings.
  * - Each terminal sits on the side of its block that faces what it connects to.
  * - Wires between neighbouring columns are drawn as orthogonal lines, each with its own
  *   vertical track in the channel between the columns, so no two lines overlap.
  * - Wires that would cross other columns get a net label at each end instead of a line.
- * - Ground connections get a ground symbol instead of a line.
+ * - A ground wire straight to the battery negative gets a ground symbol at each end instead
+ *   of a line. Other ground wires (to a ground bus or splice) are drawn like any other wire,
+ *   so the return path through the bus shows.
  * - A block the user has moved keeps its position; everything else is laid out around it.
  *
  * Schematic units are drawing units with y down.
@@ -92,8 +98,10 @@ export interface Schematic {
   height: number;
 }
 
+const isSource = (p: CataloguePart) => p.category === 'power' && p.capacityAh != null;
+
 function roleColumn(p: CataloguePart): number {
-  if (p.category === 'power') return 0;
+  if (isSource(p)) return 0;
   if (p.category === 'switch' && !p.offPanel) return 1;
   if (p.category === 'fuse' || p.category === 'breaker') return 2;
   if (p.offPanel) return 5;
@@ -103,7 +111,7 @@ function roleColumn(p: CataloguePart): number {
 }
 
 function symbolOf(p: CataloguePart): Symbol {
-  if (p.category === 'power' && p.capacityAh != null) return 'battery';
+  if (isSource(p)) return 'battery';
   if (p.category === 'switch') return 'switch';
   if (p.category === 'fuse') return 'fuse';
   if (p.category === 'breaker') return 'breaker';
@@ -118,14 +126,18 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
   const netOfKey = new Map<string, Net>();
   for (const n of doc.nets) for (const m of n.members) netOfKey.set(keyOf(m), n);
   const wires = doc.wires.filter((w) => !hide.has(netOfKey.get(keyOf(w.from))?.type ?? 'other'));
+  // A ground wire straight to a battery negative is drawn as a ground symbol at each end; any
+  // other ground wire (to a ground bus or splice) is drawn, so the return path shows.
+  const sourceIds = new Set(doc.parts.filter((pp) => { const g = geometry.get(pp.id); return g && isSource(g.part); }).map((pp) => pp.id));
+  const groundSymbol = (w: (typeof doc.wires)[number]) => netOfKey.get(keyOf(w.from))?.type === 'ground' && (sourceIds.has(w.from.part) || sourceIds.has(w.to.part));
 
   // ---- which parts appear: anything with terminals
   const parts = doc.parts.filter((pp) => {
     const g = geometry.get(pp.id);
     return g && (g.part.connectors.length || g.part.ports.length);
   });
-  const col = new Map<string, number>();
-  for (const pp of parts) col.set(pp.id, roleColumn(geometry.get(pp.id)!.part));
+  const col = flowColumns(doc, parts, geometry, netOfKey);
+  const NCOL = Math.max(...col.values(), 0) + 1;
 
   // ---- neighbours, for ordering
   const neigh = new Map<string, string[]>();
@@ -136,7 +148,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
     neigh.set(a, [...(neigh.get(a) ?? []), b]);
     neigh.set(b, [...(neigh.get(b) ?? []), a]);
   }
-  const columns: string[][] = [[], [], [], [], [], []];
+  const columns: string[][] = Array.from({ length: NCOL }, () => []);
   for (const pp of parts) columns[col.get(pp.id)!]!.push(pp.id);
   const index = new Map<string, number>();
   const reindex = () => columns.forEach((c) => c.forEach((id, i) => index.set(id, i)));
@@ -145,8 +157,11 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
     const ns = (neigh.get(id) ?? []).filter((n) => col.get(n) !== col.get(id));
     return ns.length ? ns.reduce((s, n) => s + index.get(n)! / Math.max(1, columns[col.get(n)!]!.length), 0) / ns.length : index.get(id)! / Math.max(1, columns[col.get(id)!]!.length);
   };
+  const inner = Array.from({ length: NCOL }, (_, i) => i);
+  const forward = [...inner.slice(1), 0];
+  const backward = [...inner.slice(0, -1).reverse(), NCOL - 1];
   for (let sweep = 0; sweep < 6; sweep++) {
-    const order = sweep % 2 === 0 ? [1, 2, 3, 4, 5, 0] : [4, 3, 2, 1, 0, 5];
+    const order = sweep % 2 === 0 ? forward : backward;
     for (const c of order) {
       const keyed = columns[c]!.map((id) => [id, bary(id)] as const);
       keyed.sort((a, b) => a[1] - b[1]);
@@ -211,7 +226,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
   };
   for (const w of wires) {
     const net = netOfKey.get(keyOf(w.from));
-    if (net?.type === 'ground') continue;
+    if (groundSymbol(w)) continue;
     const ta = terms.get(keyOf(w.from));
     const tb = terms.get(keyOf(w.to));
     const ca = col.get(w.from.part);
@@ -228,7 +243,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
       m.set(c, Math.max(m.get(c) ?? 0, room));
     }
   }
-  const colX: number[] = new Array(6).fill(40);
+  const colX: number[] = new Array(NCOL).fill(40);
   let x = 40;
   occCols.forEach((c, i) => {
     const prev = occCols[i - 1];
@@ -241,7 +256,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
   // ---- blocks
   const blocks: SchemBlock[] = [];
   const byPart = new Map(doc.parts.map((p) => [p.id, p]));
-  for (let c = 0; c < 6; c++) {
+  for (let c = 0; c < NCOL; c++) {
     let y = 40;
     for (const id of columns[c]!) {
       const pp = byPart.get(id)!;
@@ -300,7 +315,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
   };
   const nextOccupied = (c: number) => {
     let n = c + 1;
-    while (n < 6 && !occupied[n]) n++;
+    while (n < NCOL && !occupied[n]) n++;
     return n;
   };
   // Tracks per channel, assigned so that vertical runs never overlap.
@@ -327,7 +342,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
     if (!a || !b) continue;
     const net = netOfKey.get(keyOf(w.from));
     const type = net?.type ?? 'other';
-    if (type === 'ground') {
+    if (groundSymbol(w)) {
       for (const e of [a, b]) {
         // The battery's own negative terminal is the ground symbol's reference; draw one at each end.
         if (groundDone.has(e.pin.key)) continue;
@@ -367,7 +382,7 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
       const hi = Math.max(pa.y, pb.y);
       const left = pa.side === 'left';
       const n = nextOccupied(ca);
-      const [x0, x1] = left ? channelLeftOf(ca) : n < 6 ? channelLeftOf(n) : [colX[ca]! + BLOCK_W + 12, colX[ca]! + BLOCK_W + CHANNEL_MIN];
+      const [x0, x1] = left ? channelLeftOf(ca) : n < NCOL ? channelLeftOf(n) : [colX[ca]! + BLOCK_W + 12, colX[ca]! + BLOCK_W + CHANNEL_MIN];
       const tx = track(`L${left ? ca : n}`, x0, x1, lo, hi);
       points = [{ x: pa.x, y: pa.y }, { x: tx, y: pa.y }, { x: tx, y: pb.y }, { x: pb.x, y: pb.y }];
       out.push({ wireId: w.id, startKey: pa.key, endKey: pb.key, netType: type, colour: w.colour, points });
@@ -387,3 +402,77 @@ export function layoutSchematic(doc: Project, geometry: Map<string, PartGeometry
   return { blocks, wires: out, labels, grounds, width, height };
 }
 
+
+/**
+ * Column of each part: 0 for the battery, then one more per part along power wires (the
+ * shortest path, so each part sits one column right of whatever first reaches it; inputs
+ * jumpered together, as on a fuse bus, share a column). A
+ * part joined only by ground wires goes one column right of the furthest part it connects
+ * to. Parts reached neither way take the load column (unwired switches and breakers keep
+ * their role columns), then pneumatic parts, then the other off-panel parts. With nothing
+ * wired from a battery, every part takes its role column.
+ */
+function flowColumns(doc: Project, parts: Project['parts'], geometry: Map<string, PartGeometry>, netOfKey: Map<string, Net>): Map<string, number> {
+  const ids = new Set(parts.map((pp) => pp.id));
+  const partOf = (id: string) => geometry.get(id)!.part;
+  const pinDir = (t: Project['wires'][number]['from']) => {
+    if (!('pin' in t)) return undefined;
+    return partOf(t.part).connectors.find((c) => c.id === t.connector)?.pins.find((p) => p.number === t.pin)?.direction;
+  };
+  // Links between parts along wires of one net type, with a step cost: 1 normally, 0 for a
+  // jumper from one fuse or breaker input to another (a fuse bus), so they share a column.
+  const adj = (type: Net['type']) => {
+    const m = new Map<string, { to: string; cost: number }[]>();
+    for (const w of doc.wires) {
+      const a = w.from.part;
+      const b = w.to.part;
+      if (a === b || !ids.has(a) || !ids.has(b) || netOfKey.get(keyOf(w.from))?.type !== type) continue;
+      const protector = (id: string) => ['fuse', 'breaker'].includes(partOf(id).category);
+      const cost = protector(a) && protector(b) && pinDir(w.from) === 'in' && pinDir(w.to) === 'in' ? 0 : 1;
+      m.set(a, [...(m.get(a) ?? []), { to: b, cost }]);
+      m.set(b, [...(m.get(b) ?? []), { to: a, cost }]);
+    }
+    return m;
+  };
+  const rank = new Map<string, number>();
+  const power = adj('power');
+  for (const pp of parts) if (isSource(partOf(pp.id))) rank.set(pp.id, 0);
+  // Shortest distance from a battery (few parts, so plain relaxation is enough).
+  for (let changed = true; changed; ) {
+    changed = false;
+    for (const [id, r] of [...rank]) {
+      for (const { to, cost } of power.get(id) ?? []) {
+        if ((rank.get(to) ?? Infinity) <= r + cost) continue;
+        rank.set(to, r + cost);
+        changed = true;
+      }
+    }
+  }
+  const out = new Map<string, number>();
+  if (rank.size <= [...rank.values()].filter((r) => r === 0).length) {
+    for (const pp of parts) out.set(pp.id, roleColumn(partOf(pp.id)));
+    return out;
+  }
+  const loadCol = Math.max(1, ...[...rank].filter(([id]) => partOf(id).power && !isInline(partOf(id))).map(([, r]) => r));
+  // Ground-only parts (a ground bus): one column right of the furthest part they collect from.
+  const ground = adj('ground');
+  for (const pp of parts) {
+    if (rank.has(pp.id)) continue;
+    const ns = (ground.get(pp.id) ?? []).map((n) => n.to).filter((n) => rank.has(n));
+    if (ns.length) rank.set(pp.id, Math.max(...ns.map((n) => rank.get(n)!)) + 1);
+  }
+  const last = Math.max(loadCol, ...rank.values());
+  for (const pp of parts) {
+    const p = partOf(pp.id);
+    let c = rank.get(pp.id);
+    if (c === undefined) {
+      const role = roleColumn(p);
+      c = role === 5 ? last + 2 : role === 4 ? last + 1 : role === 1 || role === 2 ? role : loadCol;
+    }
+    out.set(pp.id, c);
+  }
+  return out;
+}
+
+/** Parts power passes through rather than into. */
+const isInline = (p: CataloguePart) => p.category === 'fuse' || p.category === 'breaker' || p.category === 'switch';

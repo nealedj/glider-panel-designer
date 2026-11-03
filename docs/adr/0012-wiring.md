@@ -60,14 +60,14 @@ for:
   conductor plus 0.25 mm of insulation each side; each tube's is its bore plus 2 mm. A bundle
   that passes through a part's body in plan, within the part's depth band, is a rear warning.
 - **Schematic** (`wiring/schematic.ts`):
-  - **Columns** by role, in the direction power flows: battery; switches; fuses and breakers;
+  - **Columns** by role, in the direction power flows (amended 2026-11-03: by wiring order): battery; switches; fuses and breakers;
     powered parts; pneumatic instruments and tees; other off-panel parts.
   - **Order within columns:** barycentre sweeps.
   - **Pins** sit on the side facing what they connect to.
   - **Lines:** wires between neighbouring occupied columns are orthogonal lines, each with its
     own vertical track in the channel; channels are as wide as their track count needs.
   - **Net labels** replace lines for wires that would cross other columns.
-  - **Grounds** are ground symbols.
+  - **Grounds** are ground symbols (amended 2026-11-03: only wires straight to the battery).
   - **Moved blocks** keep the user's position (saved on the placed part, apart from the
     physical one).
 - **Outputs:**
@@ -95,3 +95,20 @@ for:
 - **Conservative ampacity.** Table 11-9 rates wires in large bundles at altitude, so sizing
   errs large. Paragraph 11-69's corrections for single wires and other conditions are parked.
 - **Auto-route is parked.** The brief marks it optional.
+
+## Amendment 2026-11-03: schematic columns follow the wiring
+
+Fixed role columns assumed switch, then fuse or breaker, then load. A panel wired battery,
+master, main breaker, + bus, branch breakers, switches, loads put every switch-to-load wire
+two columns apart, so it showed only as net labels; and drawing every ground as a symbol
+hid a ground bus, making each instrument look grounded on its own.
+
+- **Columns** are each part's shortest distance from the battery along power wires. Fuse or
+  breaker inputs jumpered together (a fuse bus) share a column. A part joined only by ground
+  wires (a ground bus) goes one column right of the furthest part it collects from. Unreached
+  parts take the load column, unwired switches and breakers their role column, then
+  pneumatic, then other off-panel parts. With no battery wired, the role columns still apply.
+- **Grounds:** only a ground wire straight to a battery negative is drawn as ground symbols.
+  Other ground wires are drawn as wires, so the return through a bus or splice shows.
+- A part in the `power` category without a battery capacity (a USB socket) is a load, not a
+  source, in the circuit analysis and the schematic.
