@@ -1,6 +1,8 @@
 /**
- * Builds fixtures/projects/pik20d.json: the reference PIK-20D re-panel (M7), on the cardboard
- * mock-up template, through the same ops the editor uses. Run with `npm run gen:pik20d`.
+ * Builds fixtures/projects/pik20d-m7.json: the reference PIK-20D re-panel built in M7, on the cardboard
+ * mock-up template, through the same ops the editor uses. Run with `npm run gen:pik20d`. It is a
+ * test fixture: the example the app opens is fixtures/projects/pik20d.json, the maintainer's own
+ * panel, saved from the app.
  *
  * Instruments sit where the mock-up laid them out. Every part is a generic placeholder until
  * the real models are reviewed into the catalogue; where a placeholder is sized from the
@@ -152,7 +154,7 @@ export function buildPik20d(): Project {
 }
 
 export function writePik20d() {
-  const out = join(root, 'fixtures', 'projects', 'pik20d.json');
+  const out = join(root, 'fixtures', 'projects', 'pik20d-m7.json');
   writeFileSync(out, JSON.stringify(buildPik20d(), null, 2) + '\n');
   return out;
 }

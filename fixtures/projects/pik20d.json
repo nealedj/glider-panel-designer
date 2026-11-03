@@ -1,0 +1,1503 @@
+{
+  "schemaVersion": 1,
+  "id": "pik20d",
+  "name": "PIK-20D T-panel",
+  "gliderType": "PIK-20D",
+  "registration": "",
+  "author": "",
+  "revision": 0,
+  "created": "2026-10-14T00:00:00.000Z",
+  "modified": "2026-11-03T21:46:38.161Z",
+  "template": {
+    "ref": {
+      "id": "pik20d.t-panel-mockup",
+      "version": 1
+    }
+  },
+  "parts": [
+    {
+      "id": "fdisp",
+      "part": {
+        "id": "generic.flarm-display",
+        "version": 1
+      },
+      "params": {
+        "cutoutW": 47,
+        "cutoutH": 14
+      },
+      "x": -1,
+      "y": 315,
+      "rotation": 0,
+      "label": "FLARM display",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "compass",
+      "part": {
+        "id": "generic.round-57",
+        "version": 1
+      },
+      "params": {
+        "depth": 50
+      },
+      "x": -92.08,
+      "y": 193.85,
+      "rotation": 0,
+      "label": "Compass",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "ms",
+      "part": {
+        "id": "generic.toggle-switch",
+        "version": 1
+      },
+      "x": -55,
+      "y": 61,
+      "rotation": 0,
+      "label": "Master",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "bat",
+      "part": {
+        "id": "generic.battery",
+        "version": 1
+      },
+      "x": -51.83,
+      "y": 35,
+      "rotation": 0,
+      "label": "Battery",
+      "mountedTo": null,
+      "depthOffset": 130,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvy8l5o018t",
+      "part": {
+        "id": "xcvario.xcvario.80-mm",
+        "version": 1
+      },
+      "x": 103.74,
+      "y": 279.479561,
+      "rotation": 0,
+      "label": "XCVario",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvya27tf1cx",
+      "part": {
+        "id": "tq.krt2",
+        "version": 1
+      },
+      "x": -0.58,
+      "y": 110.979561,
+      "rotation": 0,
+      "label": "Radio",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvybzcb61xy",
+      "part": {
+        "id": "lxnav.adi.80-mm",
+        "version": 1
+      },
+      "x": -101.68,
+      "y": 279.029561,
+      "rotation": 0,
+      "label": "ADI2",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvycpncf19l",
+      "part": {
+        "id": "lx-navigation.flarm-red-box",
+        "version": 1
+      },
+      "x": 0.08,
+      "y": 158.35,
+      "rotation": 0,
+      "label": "",
+      "mountedTo": null,
+      "depthOffset": 40,
+      "locked": false,
+      "offPanelRunMm": null,
+      "boxDepth": 0
+    },
+    {
+      "id": "pmvzrd8pm180",
+      "part": {
+        "id": "xcvario.xctouchnav-5-7",
+        "version": 1
+      },
+      "x": 1.08,
+      "y": 225.479561,
+      "rotation": 90,
+      "label": "XCTouchNav 5.7",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzrg76z2hi",
+      "part": {
+        "id": "generic.placard",
+        "version": 1
+      },
+      "x": 103.74,
+      "y": 219.479561,
+      "rotation": 0,
+      "label": "Registration",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzrxl081e3",
+      "part": {
+        "id": "generic.toggle-switch-mini",
+        "version": 1
+      },
+      "x": -44.74,
+      "y": 139.729561,
+      "rotation": 0,
+      "label": "Radio",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzrxx1l2la",
+      "part": {
+        "id": "generic.toggle-switch-mini",
+        "version": 1
+      },
+      "x": -61.58,
+      "y": 139.729561,
+      "rotation": 0,
+      "label": "FLARM",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzry4zs3qj",
+      "part": {
+        "id": "generic.toggle-switch-mini",
+        "version": 1
+      },
+      "x": 44.34,
+      "y": 139.729561,
+      "rotation": 0,
+      "label": "XCTouchNav",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzry6d543a",
+      "part": {
+        "id": "generic.toggle-switch-mini",
+        "version": 1
+      },
+      "x": 61.18,
+      "y": 139.729561,
+      "rotation": 0,
+      "label": "XCVario",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzs8ll418",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": -175,
+      "y": 191.979561,
+      "rotation": 0,
+      "label": "Radio",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null,
+      "params": {
+        "ratingA": 2
+      }
+    },
+    {
+      "id": "pmvzscfei2d1",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": -175,
+      "y": 216.479561,
+      "rotation": 0,
+      "label": "FLARM",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmvzscug238a",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": -35.34,
+      "y": 59.620439,
+      "rotation": 0,
+      "label": "MAIN",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null,
+      "params": {
+        "ratingA": 6.5
+      }
+    },
+    {
+      "id": "pmvzsecx74lq",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": 175,
+      "y": 190.979561,
+      "rotation": 0,
+      "label": "ADI2 / XCVario",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null,
+      "params": {
+        "ratingA": 1
+      }
+    },
+    {
+      "id": "pmvzsei4b5e",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": -15.25,
+      "y": 59.620439,
+      "rotation": 0,
+      "label": "XCTouchNav",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmw15xbrj7ni",
+      "part": {
+        "id": "generic.usb-socket",
+        "version": 1
+      },
+      "x": 141,
+      "y": 202.479561,
+      "rotation": 0,
+      "label": "USB",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    },
+    {
+      "id": "pmw16dixd169f",
+      "part": {
+        "id": "generic.breaker",
+        "version": 1
+      },
+      "x": 175,
+      "y": 213.479561,
+      "rotation": 0,
+      "label": "USB",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null,
+      "params": {
+        "ratingA": 2
+      }
+    },
+    {
+      "id": "pmw16ga7019ey",
+      "part": {
+        "id": "wago.221-420",
+        "version": 1
+      },
+      "x": -52.64,
+      "y": 104.9,
+      "rotation": 90,
+      "label": "",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null,
+      "boxDepth": 2
+    },
+    {
+      "id": "pmw17bxuw38f",
+      "part": {
+        "id": "wago.221-420",
+        "version": 1
+      },
+      "x": 52.24,
+      "y": 104.9,
+      "rotation": 90,
+      "label": "",
+      "mountedTo": null,
+      "depthOffset": 0,
+      "locked": false,
+      "offPanelRunMm": null
+    }
+  ],
+  "customParts": [],
+  "keepOuts": [],
+  "guides": [],
+  "texts": [],
+  "dimensions": [],
+  "nets": [
+    {
+      "id": "nmw163xiueo",
+      "name": "PWR 1",
+      "type": "power",
+      "members": [
+        {
+          "part": "bat",
+          "connector": "T",
+          "pin": "+"
+        },
+        {
+          "part": "ms",
+          "connector": "T",
+          "pin": "2"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw1640jbg6",
+      "name": "PWR 2",
+      "type": "power",
+      "members": [
+        {
+          "part": "ms",
+          "connector": "T",
+          "pin": "1"
+        },
+        {
+          "part": "pmvzscug238a",
+          "connector": "T",
+          "pin": "LINE"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw1648rkini",
+      "name": "PWR 3",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzscug238a",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "10"
+        },
+        {
+          "part": "pmw16dixd169f",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "1"
+        },
+        {
+          "part": "pmvzsei4b5e",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "2"
+        },
+        {
+          "part": "pmvzsecx74lq",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "3"
+        },
+        {
+          "part": "pmvzs8ll418",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "4"
+        },
+        {
+          "part": "pmvzscfei2d1",
+          "connector": "T",
+          "pin": "LINE"
+        },
+        {
+          "part": "pmw16ga7019ey",
+          "connector": "clamping-units",
+          "pin": "5"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw1650mnorc",
+      "name": "PWR 4",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzsei4b5e",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "pmvzry4zs3qj",
+          "connector": "T",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw1654zjqra",
+      "name": "PWR 5",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzsecx74lq",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "pmvzry6d543a",
+          "connector": "T",
+          "pin": "1"
+        },
+        {
+          "part": "pmvybzcb61xy",
+          "connector": "power-rj12",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw1658qnsou",
+      "name": "PWR 6",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzs8ll418",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "pmvzrxl081e3",
+          "connector": "T",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw165axbu41",
+      "name": "PWR 7",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzscfei2d1",
+          "connector": "T",
+          "pin": "LOAD"
+        },
+        {
+          "part": "pmvzrxx1l2la",
+          "connector": "T",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw165xnkwlx",
+      "name": "GND",
+      "type": "ground",
+      "members": [
+        {
+          "part": "bat",
+          "connector": "T",
+          "pin": "-"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "1"
+        },
+        {
+          "part": "pmvy8l5o018t",
+          "connector": "s1-rj45",
+          "pin": "7"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "6"
+        },
+        {
+          "part": "pmvybzcb61xy",
+          "connector": "power-rj12",
+          "pin": "3"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "7"
+        },
+        {
+          "part": "pmvycpncf19l",
+          "connector": "data-interface-rj12",
+          "pin": "1"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "8"
+        },
+        {
+          "part": "pmvya27tf1cx",
+          "connector": "st1-d-sub-15",
+          "pin": "1"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "10"
+        },
+        {
+          "part": "pmw15xbrj7ni",
+          "connector": "PWR",
+          "pin": "GND"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "5"
+        },
+        {
+          "part": "pmvzrd8pm180",
+          "connector": "serial-ttys3-ttys7-ttys9-rj45-igc",
+          "pin": "6"
+        },
+        {
+          "part": "pmw17bxuw38f",
+          "connector": "clamping-units",
+          "pin": "9"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw166ve112ct",
+      "name": "PWR 8",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzry6d543a",
+          "connector": "T",
+          "pin": "2"
+        },
+        {
+          "part": "pmvy8l5o018t",
+          "connector": "s1-rj45",
+          "pin": "1"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw16o0041p63",
+      "name": "PWR 11",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzrxx1l2la",
+          "connector": "T",
+          "pin": "2"
+        },
+        {
+          "part": "pmvycpncf19l",
+          "connector": "data-interface-rj12",
+          "pin": "6"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw16ofol1rsq",
+      "name": "PWR 12",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzrxl081e3",
+          "connector": "T",
+          "pin": "2"
+        },
+        {
+          "part": "pmvya27tf1cx",
+          "connector": "st1-d-sub-15",
+          "pin": "8"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw17boko267",
+      "name": "PWR 13",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmvzry4zs3qj",
+          "connector": "T",
+          "pin": "2"
+        },
+        {
+          "part": "pmvzrd8pm180",
+          "connector": "serial-ttys3-ttys7-ttys9-rj45-igc",
+          "pin": "7"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw17gcfgd1a",
+      "name": "PWR 14",
+      "type": "power",
+      "members": [
+        {
+          "part": "pmw15xbrj7ni",
+          "connector": "PWR",
+          "pin": "+"
+        },
+        {
+          "part": "pmw16dixd169f",
+          "connector": "T",
+          "pin": "LOAD"
+        }
+      ],
+      "protection": null
+    }
+  ],
+  "wires": [
+    {
+      "id": "wmw163xiudfj",
+      "net": "nmw163xiueo",
+      "from": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "+"
+      },
+      "to": {
+        "part": "ms",
+        "connector": "T",
+        "pin": "2"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W001",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw1640jbfve",
+      "net": "nmw1640jbg6",
+      "from": {
+        "part": "ms",
+        "connector": "T",
+        "pin": "1"
+      },
+      "to": {
+        "part": "pmvzscug238a",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W002",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw1650mnn68",
+      "net": "nmw1650mnorc",
+      "from": {
+        "part": "pmvzsei4b5e",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmvzry4zs3qj",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W008",
+      "route": null,
+      "via": [
+        {
+          "x": 78.74,
+          "y": 85,
+          "z": 35
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw1654zjp1u",
+      "net": "nmw1654zjqra",
+      "from": {
+        "part": "pmvzsecx74lq",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmvzry6d543a",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W009",
+      "route": null,
+      "via": [
+        {
+          "x": 95,
+          "y": 154.98,
+          "z": 35
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw1658qnrl4",
+      "net": "nmw1658qnsou",
+      "from": {
+        "part": "pmvzs8ll418",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmvzrxl081e3",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W010",
+      "route": null,
+      "via": [
+        {
+          "x": -110,
+          "y": 163.35,
+          "z": 35
+        },
+        {
+          "x": -85,
+          "y": 134.98,
+          "z": 27.5
+        },
+        {
+          "x": -70,
+          "y": 125,
+          "z": 23.75
+        },
+        {
+          "x": -56.83,
+          "y": 125,
+          "z": 21.88
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw165axbt67",
+      "net": "nmw165axbu41",
+      "from": {
+        "part": "pmvzscfei2d1",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmvzrxx1l2la",
+        "connector": "T",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W011",
+      "route": null,
+      "via": [
+        {
+          "x": -150,
+          "y": 182.98,
+          "z": 42.5
+        },
+        {
+          "x": -101.68,
+          "y": 154.98,
+          "z": 35
+        },
+        {
+          "x": -85,
+          "y": 139.73,
+          "z": 27.5
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw166ve111ur",
+      "net": "nmw166ve112ct",
+      "from": {
+        "part": "pmvzry6d543a",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "pmvy8l5o018t",
+        "connector": "s1-rj45",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W013",
+      "route": null,
+      "via": [
+        {
+          "x": 52.24,
+          "y": 154.98,
+          "z": 27.5
+        },
+        {
+          "x": 56.43,
+          "y": 279.48,
+          "z": 31.25
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16hyji1f9k",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmvzscug238a",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "10"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W019",
+      "route": null,
+      "via": [
+        {
+          "x": -70,
+          "y": 104.9,
+          "z": 34.15
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16istq1hn6",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmw16dixd169f",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W020",
+      "route": null,
+      "via": [
+        {
+          "x": 159.5,
+          "y": 190.98,
+          "z": 42.08
+        },
+        {
+          "x": -23.25,
+          "y": 208.48,
+          "z": 34.15
+        },
+        {
+          "x": -29.33,
+          "y": 182.98,
+          "z": 26.23
+        },
+        {
+          "x": -26.42,
+          "y": 154.98,
+          "z": 22.27
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16ivbq1iv0",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmvzsei4b5e",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "2"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W021",
+      "route": null,
+      "via": [
+        {
+          "x": -29.33,
+          "y": 70,
+          "z": 34.15
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16ixqu1jw3",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmvzsecx74lq",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "3"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W022",
+      "route": null,
+      "via": [
+        {
+          "x": -29.33,
+          "y": 205.48,
+          "z": 34.15
+        },
+        {
+          "x": -26.42,
+          "y": 158.35,
+          "z": 26.23
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16izp21k6e",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmvzs8ll418",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "4"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W023",
+      "route": null,
+      "via": [
+        {
+          "x": -105,
+          "y": 158.35,
+          "z": 34.15
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16j1lr1ly",
+      "net": "nmw1648rkini",
+      "from": {
+        "part": "pmvzscfei2d1",
+        "connector": "T",
+        "pin": "LINE"
+      },
+      "to": {
+        "part": "pmw16ga7019ey",
+        "connector": "clamping-units",
+        "pin": "5"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W024",
+      "route": null,
+      "via": [
+        {
+          "x": -150,
+          "y": 182.98,
+          "z": 42.08
+        },
+        {
+          "x": -66.33,
+          "y": 130,
+          "z": 34.15
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16o0041oi6",
+      "net": "nmw16o0041p63",
+      "from": {
+        "part": "pmvzrxx1l2la",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "pmvycpncf19l",
+        "connector": "data-interface-rj12",
+        "pin": "6"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W026",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw16ofol1qge",
+      "net": "nmw16ofol1rsq",
+      "from": {
+        "part": "pmvzrxl081e3",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "pmvya27tf1cx",
+        "connector": "st1-d-sub-15",
+        "pin": "8"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W027",
+      "route": null,
+      "via": [
+        {
+          "x": -39.99,
+          "y": 115,
+          "z": 83
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw173mm61zbm",
+      "net": "nmw1654zjqra",
+      "from": {
+        "part": "pmvzsecx74lq",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "to": {
+        "part": "pmvybzcb61xy",
+        "connector": "power-rj12",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W034",
+      "route": null,
+      "via": [
+        {
+          "x": 65.93,
+          "y": 198.98,
+          "z": 48.64
+        },
+        {
+          "x": -15.25,
+          "y": 205.48,
+          "z": 47.28
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17bokn1mz",
+      "net": "nmw17boko267",
+      "from": {
+        "part": "pmvzry4zs3qj",
+        "connector": "T",
+        "pin": "2"
+      },
+      "to": {
+        "part": "pmvzrd8pm180",
+        "connector": "serial-ttys3-ttys7-ttys9-rj45-igc",
+        "pin": "7"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W035",
+      "route": null,
+      "via": [
+        {
+          "x": 60.14,
+          "y": 182.98,
+          "z": 15
+        },
+        {
+          "x": 53.08,
+          "y": 225.48,
+          "z": 10
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17czm14jr",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "bat",
+        "connector": "T",
+        "pin": "-"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "1"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W036",
+      "route": null,
+      "via": [
+        {
+          "x": 70,
+          "y": 40,
+          "z": 74.15
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17dg616dl",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmvy8l5o018t",
+        "connector": "s1-rj45",
+        "pin": "7"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "6"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W037",
+      "route": null,
+      "via": [
+        {
+          "x": 56.43,
+          "y": 279.48,
+          "z": 33.96
+        },
+        {
+          "x": 52.24,
+          "y": 163.35,
+          "z": 32.92
+        },
+        {
+          "x": 44.34,
+          "y": 154.98,
+          "z": 30.83
+        },
+        {
+          "x": 29.41,
+          "y": 134.98,
+          "z": 26.65
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17dpaa8s4",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmvybzcb61xy",
+        "connector": "power-rj12",
+        "pin": "3"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "7"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W038",
+      "route": null,
+      "via": [
+        {
+          "x": -13.58,
+          "y": 205.48,
+          "z": 31.42
+        },
+        {
+          "x": 20,
+          "y": 202.48,
+          "z": 24.86
+        },
+        {
+          "x": 53.08,
+          "y": 199.98,
+          "z": 21.58
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17dydtawt",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmvycpncf19l",
+        "connector": "data-interface-rj12",
+        "pin": "1"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "8"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W039",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17e661bvl",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmvya27tf1cx",
+        "connector": "st1-d-sub-15",
+        "pin": "1"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "10"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W040",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17gcfgc57",
+      "net": "nmw17gcfgd1a",
+      "from": {
+        "part": "pmw15xbrj7ni",
+        "connector": "PWR",
+        "pin": "+"
+      },
+      "to": {
+        "part": "pmw16dixd169f",
+        "connector": "T",
+        "pin": "LOAD"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "red",
+      "label": "W041",
+      "route": null,
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17gga4eiv",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmw15xbrj7ni",
+        "connector": "PWR",
+        "pin": "GND"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "5"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W042",
+      "route": null,
+      "via": [
+        {
+          "x": 100,
+          "y": 193.85,
+          "z": 29.33
+        },
+        {
+          "x": 53.08,
+          "y": 202.48,
+          "z": 25.65
+        }
+      ],
+      "sizeAuto": true
+    },
+    {
+      "id": "wmw17gwx1flf",
+      "net": "nmw165xnkwlx",
+      "from": {
+        "part": "pmvzrd8pm180",
+        "connector": "serial-ttys3-ttys7-ttys9-rj45-igc",
+        "pin": "6"
+      },
+      "to": {
+        "part": "pmw17bxuw38f",
+        "connector": "clamping-units",
+        "pin": "9"
+      },
+      "sizeMm2": null,
+      "tubeBoreMm": null,
+      "colour": "black",
+      "label": "W043",
+      "route": null,
+      "via": [
+        {
+          "x": 53.08,
+          "y": 225.48,
+          "z": 2.29
+        },
+        {
+          "x": 60.14,
+          "y": 170,
+          "z": 4.58
+        },
+        {
+          "x": 31.41,
+          "y": 144.48,
+          "z": 9.15
+        },
+        {
+          "x": 36.41,
+          "y": 120,
+          "z": 13.73
+        }
+      ],
+      "sizeAuto": true
+    }
+  ],
+  "routes": [],
+  "settings": {
+    "units": "metric",
+    "gridMm": 5,
+    "endAllowanceMm": 50,
+    "minLigamentMm": 5,
+    "minEdgeDistanceMm": 8,
+    "minBendDistanceMm": 10,
+    "compassMinDistanceMm": null,
+    "systemVoltage": 12,
+    "voltageDropLimitV": 0.5,
+    "wireTempRatingC": 105,
+    "protectorDerating": 0.8,
+    "minWireAwg": 22,
+    "labelWidthMm": 40,
+    "labelHeightMm": 12
+  }
+}

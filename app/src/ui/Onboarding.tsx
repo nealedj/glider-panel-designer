@@ -52,7 +52,7 @@ export function Welcome() {
             </button>
             <button className="welcome-choice" onClick={() => choose('file.sample-pik20d')}>
               <strong>Open the PIK-20D example</strong>
-              <span>A PIK-20D re-panel with rear layout, wiring and tubing.</span>
+              <span>A PIK-20D T-panel with rear layout, breakers, switches and wiring.</span>
             </button>
           </div>
           <p className="muted small">

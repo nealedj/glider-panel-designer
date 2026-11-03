@@ -86,7 +86,7 @@ describe('electrical checks', () => {
   });
 
   it('feeds a display through the FLARM port that powers it', () => {
-    const pik = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+    const pik = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d-m7.json'), 'utf8')));
     const a = analyse(pik);
     const disp = a.loads.find((l) => l.partId === 'fdisp')!;
     expect(disp).toMatchObject({ reachable: true, grounded: true });
@@ -281,7 +281,7 @@ describe('a powered part in the power category', () => {
   });
 });
 
-const pik20d = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+const pik20d = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d-m7.json'), 'utf8')));
 
 describe.each([
   ['the wiring sample', sample],

@@ -36,11 +36,15 @@ function colours(page: Page) {
   });
 }
 
-test('3D view: draws the PIK-20D example, turns, and selects in step with the inspector', async ({ page }) => {
+test('3D view: draws the PIK-20D M7 project, turns, and selects in step with the inspector', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
-  await runCommand(page, 'open PIK-20D example');
+  // The M7 build, with its ASI and looms, from its file.
+  await page.getByRole('menubar').getByRole('button', { name: 'File' }).click();
+  const chooser = page.waitForEvent('filechooser');
+  await page.getByRole('menuitem', { name: /Open project file/ }).click();
+  await (await chooser).setFiles('../fixtures/projects/pik20d-m7.json');
   await expect.poll(() => page.evaluate(() => (window as unknown as Gpd).gpd.docs.doc.parts.length)).toBeGreaterThan(10);
 
   await page.getByRole('button', { name: '3D', exact: true }).click();
