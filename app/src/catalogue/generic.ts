@@ -428,7 +428,7 @@ export const GENERIC_DEFS: GenericDef[] = [
     id: 'generic.flarm-display',
     model: 'FLARM display',
     category: 'flarm',
-    description: 'Small rectangular FLARM display: power and a serial port from the FLARM unit.',
+    description: 'Small rectangular FLARM display: one RJ12 socket carrying power and serial data from the FLARM unit. Pin numbering varies by maker; check the display manual.',
     params: {
       cutoutW: p('Cutout width', 45),
       cutoutH: p('Cutout height', 16),
@@ -446,7 +446,14 @@ export const GENERIC_DEFS: GenericDef[] = [
         protrusion: v(x, 'protrusion'),
       },
       rear: { body: { kind: 'rect', cx: 0, cy: 0, w: v(x, 'cutoutW'), h: v(x, 'cutoutH'), r: 0 }, depth: v(x, 'depth'), bracketPoints: [] },
-      connectors: [powerConn(-12, 0), dataConn('DATA', 12, 0)],
+      connectors: [
+        conn('RJ12', 'RJ12', 0, 0, [
+          pin('+', 'supply + (from the FLARM unit)', 'power', 'in'),
+          pin('GND', 'ground', 'ground'),
+          pin('TX', 'serial TX', 'serial', 'out'),
+          pin('RX', 'serial RX', 'serial', 'in'),
+        ]),
+      ],
       power: { currentA: v(x, 'currentA'), voltage: null },
     }),
   },
@@ -454,12 +461,20 @@ export const GENERIC_DEFS: GenericDef[] = [
     id: 'generic.flarm-unit',
     model: 'FLARM unit (behind panel)',
     category: 'flarm',
-    description: 'Collision-warning unit mounted behind the panel: power, two serial ports and an antenna.',
+    description: 'Collision-warning unit mounted behind the panel: power, an RJ12 display port that also powers the display, a second serial port and an antenna.',
     params: { w: p('Width', 85), h: p('Height', 60), depth: p('Depth', 30), currentA: currentParam(0.15) },
     build: (x) => ({
       front: { cutouts: [], bezel: null, screwHoles: [], protrusion: 0 },
       rear: { body: { kind: 'rect', cx: 0, cy: 0, w: v(x, 'w'), h: v(x, 'h'), r: 2 }, depth: v(x, 'depth'), bracketPoints: [] },
-      connectors: [powerConn(-25, -15), dataConn('P1', 0, -15), dataConn('P2', 25, -15), conn('ANT', 'SMA', 0, 15, [pin('RF', 'FLARM antenna', 'rf', 'bidi')])],
+      connectors: [
+        powerConn(-25, -15),
+        conn('P1', 'RJ12', 0, -15, [
+          pin('+', 'supply + out to the display', 'power', 'out'),
+          pin('GND', 'ground', 'ground'),
+          pin('TX', 'serial TX', 'serial', 'out'),
+          pin('RX', 'serial RX', 'serial', 'in'),
+        ]),
+        dataConn('P2', 25, -15), conn('ANT', 'SMA', 0, 15, [pin('RF', 'FLARM antenna', 'rf', 'bidi')])],
       power: { currentA: v(x, 'currentA'), voltage: null },
     }),
   },

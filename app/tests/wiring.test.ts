@@ -85,6 +85,21 @@ describe('electrical checks', () => {
     expect(a.loads.every((l) => l.devices.length === 2 && l.dropV < 0.5)).toBe(true);
   });
 
+  it('feeds a display through the FLARM port that powers it', () => {
+    const pik = Project.parse(JSON.parse(readFileSync(join(root, 'fixtures', 'projects', 'pik20d.json'), 'utf8')));
+    const a = analyse(pik);
+    const disp = a.loads.find((l) => l.partId === 'fdisp')!;
+    expect(disp).toMatchObject({ reachable: true, grounded: true });
+    const flarmFeed = pik.wires.find((w) => keyOf(w.to) === 'flarm/PWR/+')!;
+    const dispFeed = pik.wires.find((w) => keyOf(w.from) === 'flarm/P1/+')!;
+    // The display draws through the FLARM's own supply wire and fuse, and returns through its data-port ground.
+    expect(disp.feed).toEqual(expect.arrayContaining([flarmFeed.id, dispFeed.id]));
+    expect(disp.devices.map((d) => d.partId)).toContain('f2');
+    expect(disp.ret.length).toBeGreaterThan(1);
+    expect(a.wires.get(flarmFeed.id)!.currentA).toBeCloseTo(a.loads.find((l) => l.partId === 'flarm')!.currentA! + disp.currentA!, 6);
+    expect(a.results.filter((r) => r.ids.includes('fdisp') && r.severity === 'error')).toEqual([]);
+  });
+
   it('flags a power path with no fuse', () => {
     // Bypass F1: the vario fed straight from the bus.
     const w = sample.wires.find((x) => keyOf(x.to) === 'vario/PWR/+')!;
@@ -107,6 +122,26 @@ describe('electrical checks', () => {
     expect(keys(fixed)).toContain(`protect:${w.id}`);
     const heavy = { ...sample, parts: sample.parts.map((p) => (p.id === 'radio' ? { ...p, params: { currentA: 4.5 } } : p)) };
     expect(keys(heavy)).toContain('derate:f4');
+  });
+
+  it('takes the rating set on a placed catalogue fuse, and flags one with none', () => {
+    // A maker's fuse holder: same pins as the generic one, but not parametric and no rating of its own.
+    const generic = projectGeometry(sample).get('f4')!.part;
+    const { generator: _g, params: _p, ...rest } = generic;
+    const maker = { ...rest, id: 'test.fuse-holder', version: 1, maker: 'Test', ratingA: null };
+    const swap = (params?: Record<string, number>) => ({
+      ...sample,
+      customParts: [...sample.customParts, maker],
+      parts: sample.parts.map((p) => (p.id === 'f4' ? { ...p, part: { id: maker.id, version: 1 }, params } : p)),
+    });
+    const w = sample.wires.find((x) => keyOf(x.to) === 'radio/PWR/+')!;
+    const unset = swap();
+    expect(projectGeometry(unset).get('f4')!.part.ratingA).toBeNull();
+    expect(keys(unset)).toContain('rating:f4');
+    expect(analyse(unset).wires.get(w.id)!.protector).toMatchObject({ partId: 'f4', ratingA: null });
+    const set = swap({ ratingA: 15 });
+    expect(keys(set)).not.toContain('rating:f4');
+    expect(analyse(set).wires.get(w.id)!.auto!.awg).toBe('14');
   });
 
   it('flags voltage drop over the limit on a long thin run', () => {

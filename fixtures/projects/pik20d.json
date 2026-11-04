@@ -446,7 +446,7 @@
   "dimensions": [],
   "nets": [
     {
-      "id": "nmv8izji82w0",
+      "id": "nmw17o1zi2wk",
       "name": "PWR 1",
       "type": "power",
       "members": [
@@ -464,7 +464,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izji84xg",
+      "id": "nmw17o1zi4u3",
       "name": "PWR 2",
       "type": "power",
       "members": [
@@ -482,7 +482,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izji96fz",
+      "id": "nmw17o1zj6m9",
       "name": "PWR 3",
       "type": "power",
       "members": [
@@ -515,7 +515,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjiabuf",
+      "id": "nmw17o1zjbew",
       "name": "PWR 4",
       "type": "power",
       "members": [
@@ -533,7 +533,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjiadzf",
+      "id": "nmw17o1zjdwm",
       "name": "PWR 5",
       "type": "power",
       "members": [
@@ -546,18 +546,31 @@
           "part": "flarm",
           "connector": "PWR",
           "pin": "+"
+        }
+      ],
+      "protection": null
+    },
+    {
+      "id": "nmw17o1zkfuw",
+      "name": "PWR 6",
+      "type": "power",
+      "members": [
+        {
+          "part": "flarm",
+          "connector": "P1",
+          "pin": "+"
         },
         {
           "part": "fdisp",
-          "connector": "PWR",
+          "connector": "RJ12",
           "pin": "+"
         }
       ],
       "protection": null
     },
     {
-      "id": "nmv8izjibgnv",
-      "name": "PWR 6",
+      "id": "nmw17o1zkhq1",
+      "name": "PWR 7",
       "type": "power",
       "members": [
         {
@@ -574,8 +587,8 @@
       "protection": null
     },
     {
-      "id": "nmv8izjibinf",
-      "name": "PWR 7",
+      "id": "nmw17o1zkjia",
+      "name": "PWR 8",
       "type": "power",
       "members": [
         {
@@ -592,7 +605,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjickq0",
+      "id": "nmw17o1zllz3",
       "name": "GND",
       "type": "ground",
       "members": [
@@ -608,11 +621,6 @@
         },
         {
           "part": "flarm",
-          "connector": "PWR",
-          "pin": "GND"
-        },
-        {
-          "part": "fdisp",
           "connector": "PWR",
           "pin": "GND"
         },
@@ -635,7 +643,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjieq8j",
+      "id": "nmw17o1zoqfi",
       "name": "DATA 1",
       "type": "data",
       "members": [
@@ -646,20 +654,20 @@
         },
         {
           "part": "fdisp",
-          "connector": "DATA",
+          "connector": "RJ12",
           "pin": "RX"
         }
       ],
       "protection": null
     },
     {
-      "id": "nmv8izjies7e",
+      "id": "nmw17o1zoshj",
       "name": "DATA 2",
       "type": "data",
       "members": [
         {
           "part": "fdisp",
-          "connector": "DATA",
+          "connector": "RJ12",
           "pin": "TX"
         },
         {
@@ -671,7 +679,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjifu49",
+      "id": "nmw17o1zou6f",
       "name": "GND 2",
       "type": "ground",
       "members": [
@@ -682,14 +690,14 @@
         },
         {
           "part": "fdisp",
-          "connector": "DATA",
+          "connector": "RJ12",
           "pin": "GND"
         }
       ],
       "protection": null
     },
     {
-      "id": "nmv8izjifwr8",
+      "id": "nmw17o1zpwdi",
       "name": "DATA 3",
       "type": "data",
       "members": [
@@ -707,7 +715,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjigy2l",
+      "id": "nmw17o1zpyvp",
       "name": "DATA 4",
       "type": "data",
       "members": [
@@ -725,7 +733,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjig1071",
+      "id": "nmw17o1zp10os",
       "name": "GND 3",
       "type": "ground",
       "members": [
@@ -743,7 +751,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjih123e",
+      "id": "nmw17o1zp12a1",
       "name": "DATA 5",
       "type": "data",
       "members": [
@@ -761,7 +769,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjih149v",
+      "id": "nmw17o1zq145b",
       "name": "DATA 6",
       "type": "data",
       "members": [
@@ -779,7 +787,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjii16nr",
+      "id": "nmw17o1zq165k",
       "name": "GND 4",
       "type": "ground",
       "members": [
@@ -797,7 +805,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjii18ge",
+      "id": "nmw17o1zq18k1",
       "name": "AUD 1",
       "type": "audio",
       "members": [
@@ -815,7 +823,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjij1ayb",
+      "id": "nmw17o1zq1auy",
       "name": "AUD 2",
       "type": "audio",
       "members": [
@@ -833,7 +841,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjij1cc6",
+      "id": "nmw17o1zr1cco",
       "name": "SW 1",
       "type": "switch",
       "members": [
@@ -851,7 +859,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjil1fxr",
+      "id": "nmw17o1zs1fz7",
       "name": "RF 1",
       "type": "rf",
       "members": [
@@ -869,7 +877,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjil1hwg",
+      "id": "nmw17o1zs1hae",
       "name": "RF 2",
       "type": "rf",
       "members": [
@@ -887,7 +895,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjim1jem",
+      "id": "nmw17o1zs1j69",
       "name": "PITOT",
       "type": "pitot",
       "members": [
@@ -919,7 +927,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjip1nc5",
+      "id": "nmw17o1zv1nhe",
       "name": "STATIC",
       "type": "static",
       "members": [
@@ -967,7 +975,7 @@
       "protection": null
     },
     {
-      "id": "nmv8izjiq1tex",
+      "id": "nmw17o1zz1t40",
       "name": "TE",
       "type": "te",
       "members": [
@@ -985,8 +993,8 @@
   ],
   "wires": [
     {
-      "id": "wmv8izji71cc",
-      "net": "nmv8izji82w0",
+      "id": "wmw17o1zi1uh",
+      "net": "nmw17o1zi2wk",
       "from": {
         "part": "bat",
         "connector": "T",
@@ -1001,12 +1009,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W001",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izji83sx",
-      "net": "nmv8izji84xg",
+      "id": "wmw17o1zi37l",
+      "net": "nmw17o1zi4u3",
       "from": {
         "part": "f0",
         "connector": "T",
@@ -1021,12 +1029,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W002",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izji95fi",
-      "net": "nmv8izji96fz",
+      "id": "wmw17o1zi5hj",
+      "net": "nmw17o1zj6m9",
       "from": {
         "part": "ms",
         "connector": "T",
@@ -1041,12 +1049,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W003",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izji97o5",
-      "net": "nmv8izji96fz",
+      "id": "wmw17o1zj72e",
+      "net": "nmw17o1zj6m9",
       "from": {
         "part": "f1",
         "connector": "T",
@@ -1061,12 +1069,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W004",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izji98a2",
-      "net": "nmv8izji96fz",
+      "id": "wmw17o1zj8m",
+      "net": "nmw17o1zj6m9",
       "from": {
         "part": "f2",
         "connector": "T",
@@ -1081,12 +1089,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W005",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjia962",
-      "net": "nmv8izji96fz",
+      "id": "wmw17o1zj9f2",
+      "net": "nmw17o1zj6m9",
       "from": {
         "part": "f3",
         "connector": "T",
@@ -1101,12 +1109,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W006",
-      "route": "rmv8izjiq1ur3",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjiaaih",
-      "net": "nmv8izjiabuf",
+      "id": "wmw17o1zjaoo",
+      "net": "nmw17o1zjbew",
       "from": {
         "part": "f1",
         "connector": "T",
@@ -1121,12 +1129,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W007",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjiacc8",
-      "net": "nmv8izjiadzf",
+      "id": "wmw17o1zjcf3",
+      "net": "nmw17o1zjdwm",
       "from": {
         "part": "f2",
         "connector": "T",
@@ -1141,32 +1149,32 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W008",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjibev1",
-      "net": "nmv8izjiadzf",
+      "id": "wmw17o1zkec7",
+      "net": "nmw17o1zkfuw",
       "from": {
-        "part": "f2",
-        "connector": "T",
-        "pin": "LOAD"
+        "part": "flarm",
+        "connector": "P1",
+        "pin": "+"
       },
       "to": {
         "part": "fdisp",
-        "connector": "PWR",
+        "connector": "RJ12",
         "pin": "+"
       },
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W009",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjibf9i",
-      "net": "nmv8izjibgnv",
+      "id": "wmw17o1zkgnf",
+      "net": "nmw17o1zkhq1",
       "from": {
         "part": "f3",
         "connector": "T",
@@ -1181,12 +1189,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W010",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjibhtx",
-      "net": "nmv8izjibinf",
+      "id": "wmw17o1zkiit",
+      "net": "nmw17o1zkjia",
       "from": {
         "part": "f4",
         "connector": "T",
@@ -1201,12 +1209,12 @@
       "tubeBoreMm": null,
       "colour": "red",
       "label": "W011",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjicj2i",
-      "net": "nmv8izjickq0",
+      "id": "wmw17o1zkkqf",
+      "net": "nmw17o1zllz3",
       "from": {
         "part": "xcv",
         "connector": "PWR",
@@ -1221,12 +1229,12 @@
       "tubeBoreMm": null,
       "colour": "black",
       "label": "W012",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjicli6",
-      "net": "nmv8izjickq0",
+      "id": "wmw17o1zlmyx",
+      "net": "nmw17o1zllz3",
       "from": {
         "part": "flarm",
         "connector": "PWR",
@@ -1241,32 +1249,12 @@
       "tubeBoreMm": null,
       "colour": "black",
       "label": "W013",
-      "route": "rmv8izjiq1vno",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjicmp6",
-      "net": "nmv8izjickq0",
-      "from": {
-        "part": "fdisp",
-        "connector": "PWR",
-        "pin": "GND"
-      },
-      "to": {
-        "part": "bat",
-        "connector": "T",
-        "pin": "-"
-      },
-      "sizeMm2": null,
-      "tubeBoreMm": null,
-      "colour": "black",
-      "label": "W014",
-      "route": "rmv8izjiq1vno",
-      "sizeAuto": true
-    },
-    {
-      "id": "wmv8izjidn3s",
-      "net": "nmv8izjickq0",
+      "id": "wmw17o1zlnyq",
+      "net": "nmw17o1zllz3",
       "from": {
         "part": "xctn",
         "connector": "PWR",
@@ -1280,13 +1268,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W015",
-      "route": "rmv8izjiq1vno",
+      "label": "W014",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjidocn",
-      "net": "nmv8izjickq0",
+      "id": "wmw17o1zoohu",
+      "net": "nmw17o1zllz3",
       "from": {
         "part": "radio",
         "connector": "PWR",
@@ -1300,13 +1288,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W016",
-      "route": "rmv8izjiq1vno",
+      "label": "W015",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjiepce",
-      "net": "nmv8izjieq8j",
+      "id": "wmw17o1zop8z",
+      "net": "nmw17o1zoqfi",
       "from": {
         "part": "flarm",
         "connector": "P1",
@@ -1314,22 +1302,22 @@
       },
       "to": {
         "part": "fdisp",
-        "connector": "DATA",
+        "connector": "RJ12",
         "pin": "RX"
       },
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "blue",
-      "label": "W017",
-      "route": "rmv8izjiq1vno",
+      "label": "W016",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjierig",
-      "net": "nmv8izjies7e",
+      "id": "wmw17o1zorb8",
+      "net": "nmw17o1zoshj",
       "from": {
         "part": "fdisp",
-        "connector": "DATA",
+        "connector": "RJ12",
         "pin": "TX"
       },
       "to": {
@@ -1340,13 +1328,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "white",
-      "label": "W018",
-      "route": "rmv8izjiq1vno",
+      "label": "W017",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjiet3m",
-      "net": "nmv8izjifu49",
+      "id": "wmw17o1zotne",
+      "net": "nmw17o1zou6f",
       "from": {
         "part": "flarm",
         "connector": "P1",
@@ -1354,19 +1342,19 @@
       },
       "to": {
         "part": "fdisp",
-        "connector": "DATA",
+        "connector": "RJ12",
         "pin": "GND"
       },
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W019",
-      "route": "rmv8izjiq1vno",
+      "label": "W018",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjifvw6",
-      "net": "nmv8izjifwr8",
+      "id": "wmw17o1zpvul",
+      "net": "nmw17o1zpwdi",
       "from": {
         "part": "flarm",
         "connector": "P2",
@@ -1380,13 +1368,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "orange",
-      "label": "W020",
-      "route": "rmv8izjiq1vno",
+      "label": "W019",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjifxzf",
-      "net": "nmv8izjigy2l",
+      "id": "wmw17o1zpxr9",
+      "net": "nmw17o1zpyvp",
       "from": {
         "part": "xcv",
         "connector": "S1",
@@ -1400,13 +1388,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "violet",
-      "label": "W021",
-      "route": "rmv8izjiq1vno",
+      "label": "W020",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjigzty",
-      "net": "nmv8izjig1071",
+      "id": "wmw17o1zpzjh",
+      "net": "nmw17o1zp10os",
       "from": {
         "part": "flarm",
         "connector": "P2",
@@ -1420,13 +1408,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W022",
-      "route": "rmv8izjiq1vno",
+      "label": "W021",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjig11pb",
-      "net": "nmv8izjih123e",
+      "id": "wmw17o1zp1115",
+      "net": "nmw17o1zp12a1",
       "from": {
         "part": "xcv",
         "connector": "S2",
@@ -1440,13 +1428,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "grey",
-      "label": "W023",
-      "route": "rmv8izjiq1vno",
+      "label": "W022",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjih1350",
-      "net": "nmv8izjih149v",
+      "id": "wmw17o1zp13bc",
+      "net": "nmw17o1zq145b",
       "from": {
         "part": "xctn",
         "connector": "DATA",
@@ -1460,13 +1448,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "yellow",
-      "label": "W024",
-      "route": "rmv8izjiq1vno",
+      "label": "W023",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjih15gh",
-      "net": "nmv8izjii16nr",
+      "id": "wmw17o1zq151y",
+      "net": "nmw17o1zq165k",
       "from": {
         "part": "xcv",
         "connector": "S2",
@@ -1480,13 +1468,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W025",
-      "route": "rmv8izjiq1vno",
+      "label": "W024",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjii17bd",
-      "net": "nmv8izjii18ge",
+      "id": "wmw17o1zq17zl",
+      "net": "nmw17o1zq18k1",
       "from": {
         "part": "radio",
         "connector": "AUD",
@@ -1500,13 +1488,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "shielded pair",
-      "label": "W026",
-      "route": "rmv8izjiq1vno",
+      "label": "W025",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjij197e",
-      "net": "nmv8izjij1ayb",
+      "id": "wmw17o1zq19zg",
+      "net": "nmw17o1zq1auy",
       "from": {
         "part": "radio",
         "connector": "AUD",
@@ -1520,13 +1508,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "shielded pair",
-      "label": "W027",
-      "route": "rmv8izjiq1vno",
+      "label": "W026",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjij1bki",
-      "net": "nmv8izjij1cc6",
+      "id": "wmw17o1zr1be9",
+      "net": "nmw17o1zr1cco",
       "from": {
         "part": "radio",
         "connector": "AUD",
@@ -1540,13 +1528,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "white",
-      "label": "W028",
-      "route": "rmv8izjiq1vno",
+      "label": "W027",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjik1dw9",
-      "net": "nmv8izjickq0",
+      "id": "wmw17o1zr1di7",
+      "net": "nmw17o1zllz3",
       "from": {
         "part": "ptt",
         "connector": "T",
@@ -1560,13 +1548,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "black",
-      "label": "W029",
-      "route": "rmv8izjiq1ur3",
+      "label": "W028",
+      "route": "rmw17o1zz1unn",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjik1e6n",
-      "net": "nmv8izjil1fxr",
+      "id": "wmw17o1zr1euq",
+      "net": "nmw17o1zs1fz7",
       "from": {
         "part": "radio",
         "connector": "ANT",
@@ -1580,13 +1568,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "coax",
-      "label": "W030",
-      "route": "rmv8izjiq1vno",
+      "label": "W029",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjil1gnn",
-      "net": "nmv8izjil1hwg",
+      "id": "wmw17o1zs1g5g",
+      "net": "nmw17o1zs1hae",
       "from": {
         "part": "flarm",
         "connector": "ANT",
@@ -1600,13 +1588,13 @@
       "sizeMm2": null,
       "tubeBoreMm": null,
       "colour": "coax",
-      "label": "W031",
-      "route": "rmv8izjiq1vno",
+      "label": "W030",
+      "route": "rmw17o1zz1vbu",
       "sizeAuto": true
     },
     {
-      "id": "wmv8izjim1iap",
-      "net": "nmv8izjim1jem",
+      "id": "wmw17o1zs1iby",
+      "net": "nmw17o1zs1j69",
       "from": {
         "part": "pitot",
         "port": "P"
@@ -1623,8 +1611,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjim1kvv",
-      "net": "nmv8izjim1jem",
+      "id": "wmw17o1zt1kmr",
+      "net": "nmw17o1zs1j69",
       "from": {
         "part": "tee1",
         "port": "B"
@@ -1641,8 +1629,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjio1lqv",
-      "net": "nmv8izjim1jem",
+      "id": "wmw17o1zt1lx5",
+      "net": "nmw17o1zs1j69",
       "from": {
         "part": "tee1",
         "port": "C"
@@ -1659,8 +1647,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjio1mgu",
-      "net": "nmv8izjip1nc5",
+      "id": "wmw17o1zu1mff",
+      "net": "nmw17o1zv1nhe",
       "from": {
         "part": "static",
         "port": "S"
@@ -1677,8 +1665,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjip1o2y",
-      "net": "nmv8izjip1nc5",
+      "id": "wmw17o1zv1oq3",
+      "net": "nmw17o1zv1nhe",
       "from": {
         "part": "tee2",
         "port": "B"
@@ -1695,8 +1683,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjip1pnm",
-      "net": "nmv8izjip1nc5",
+      "id": "wmw17o1zw1pcx",
+      "net": "nmw17o1zv1nhe",
       "from": {
         "part": "tee2",
         "port": "C"
@@ -1713,8 +1701,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjip1qkr",
-      "net": "nmv8izjip1nc5",
+      "id": "wmw17o1zw1qoj",
+      "net": "nmw17o1zv1nhe",
       "from": {
         "part": "tee3",
         "port": "B"
@@ -1731,8 +1719,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjiq1rwz",
-      "net": "nmv8izjip1nc5",
+      "id": "wmw17o1zx1rao",
+      "net": "nmw17o1zv1nhe",
       "from": {
         "part": "tee3",
         "port": "C"
@@ -1749,8 +1737,8 @@
       "sizeAuto": false
     },
     {
-      "id": "wmv8izjiq1ssa",
-      "net": "nmv8izjiq1tex",
+      "id": "wmw17o1zy1syy",
+      "net": "nmw17o1zz1t40",
       "from": {
         "part": "te",
         "port": "TE"
@@ -1769,7 +1757,7 @@
   ],
   "routes": [
     {
-      "id": "rmv8izjiq1ur3",
+      "id": "rmw17o1zz1unn",
       "label": "Stem loom",
       "points": [
         {
@@ -1786,7 +1774,7 @@
       "ties": []
     },
     {
-      "id": "rmv8izjiq1vno",
+      "id": "rmw17o1zz1vbu",
       "label": "Top loom",
       "points": [
         {

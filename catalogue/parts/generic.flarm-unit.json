@@ -4,7 +4,7 @@
   "maker": "Generic",
   "model": "FLARM unit (behind panel)",
   "category": "flarm",
-  "description": "Collision-warning unit mounted behind the panel: power, two serial ports and an antenna.",
+  "description": "Collision-warning unit mounted behind the panel: power, an RJ12 display port that also powers the display, a second serial port and an antenna.",
   "generator": "generic.flarm-unit",
   "params": {
     "w": {
@@ -56,12 +56,23 @@
     },
     {
       "id": "P1",
-      "type": "data",
+      "type": "RJ12",
       "x": 0,
       "y": -15,
       "face": "rear",
       "clearance": null,
       "pins": [
+        {
+          "number": "+",
+          "function": "supply + out to the display",
+          "signal": "power",
+          "direction": "out"
+        },
+        {
+          "number": "GND",
+          "function": "ground",
+          "signal": "ground"
+        },
         {
           "number": "TX",
           "function": "serial TX",
@@ -73,11 +84,6 @@
           "function": "serial RX",
           "signal": "serial",
           "direction": "in"
-        },
-        {
-          "number": "GND",
-          "function": "signal ground",
-          "signal": "ground"
         }
       ]
     },

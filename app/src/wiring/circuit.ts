@@ -21,7 +21,8 @@ import { keyOf, partLabel, terminals, type TerminalInfo } from './terminals';
 export interface Protector {
   partId: string;
   kind: 'fuse' | 'breaker';
-  ratingA: number;
+  /** Null when the placed part has no rating set. */
+  ratingA: number | null;
 }
 
 export interface WireCalc {
@@ -60,8 +61,12 @@ export interface Analysis {
   results: CheckResult[];
 }
 
-/** `bus`: the conductor inside a bus bar, which returns run through as well as feeds. */
-type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean; bus?: boolean };
+/**
+ * `bus`: the conductor inside a bus bar, which returns run through as well as feeds.
+ * `through`: inside a device that powers another from one of its ports (a FLARM feeding its
+ * display), from the device's supply to its power output and between its grounds.
+ */
+type Edge = { to: string; wire?: string; device?: Protector; pass?: boolean; bus?: boolean; through?: boolean };
 
 const isProtector = (p: CataloguePart) => p.category === 'fuse' || p.category === 'breaker';
 const isSwitch = (p: CataloguePart) => p.category === 'switch';
@@ -114,7 +119,7 @@ function compute(doc: Project): Analysis {
     for (const c of part.connectors) {
       const keys = c.pins.map((p) => `${id}/${c.id}/${p.number}`);
       if (isProtector(part) && c.pins.length === 2) {
-        const dev: Protector = { partId: id, kind: part.category === 'fuse' ? 'fuse' : 'breaker', ratingA: part.ratingA ?? 0 };
+        const dev: Protector = { partId: id, kind: part.category === 'fuse' ? 'fuse' : 'breaker', ratingA: part.ratingA ?? null };
         link(keys[0]!, { to: keys[1]!, device: dev });
         link(keys[1]!, { to: keys[0]!, device: dev });
       } else if (isSwitch(part) && c.pins.length === 2 && c.pins.every((p) => p.signal === 'switch')) {
@@ -126,6 +131,21 @@ function compute(doc: Project): Analysis {
           if (p.signal === 'power' && p.direction === 'out') sources.push(keys[i]!);
           if (p.signal === 'ground') sinks.push(keys[i]!);
         });
+      }
+    }
+    if (!isProtector(part) && !isSwitch(part) && part.category !== 'power') {
+      // A device with a power output passes its own supply on, so whatever it feeds draws
+      // through the device's supply wires and returns through its grounds.
+      const pins = part.connectors.flatMap((c) => c.pins.map((p) => ({ p, k: `${id}/${c.id}/${p.number}` })));
+      const outs = pins.filter(({ p }) => p.signal === 'power' && p.direction === 'out');
+      if (outs.length) {
+        const ins = pins.filter(({ p }) => p.signal === 'power' && p.direction !== 'out');
+        for (const i of ins) for (const o of outs) link(i.k, { to: o.k, pass: true, through: true });
+        const gnds = pins.filter(({ p }) => p.signal === 'ground');
+        for (const g of gnds.slice(1)) {
+          link(gnds[0]!.k, { to: g.k, pass: true, through: true });
+          link(g.k, { to: gnds[0]!.k, pass: true, through: true });
+        }
       }
     }
     if (part.category === 'power' && part.capacityAh != null) {
@@ -150,8 +170,8 @@ function compute(doc: Project): Analysis {
     return parent;
   };
   const feedTree = bfs(sources, () => true);
-  // Returns run along wires and through bus bars, never back through a switch or fuse.
-  const groundTree = bfs(sinks, (e) => !!e.wire || !!e.bus);
+  // Returns run along wires, bus bars and a feeding device's grounds, never back through a switch or fuse.
+  const groundTree = bfs(sinks, (e) => !!e.wire || !!e.bus || !!e.through);
   const walk = (tree: ReturnType<typeof bfs>, k: string) => {
     const wires: string[] = [];
     const devices: Protector[] = [];
@@ -229,7 +249,7 @@ function compute(doc: Project): Analysis {
           if (step.device) dev = step.device;
         }
       } else dev = l.devices[l.devices.length - 1] ?? null;
-      if (dev && (!best || dev.ratingA > best.ratingA)) best = dev;
+      if (dev && (!best || (dev.ratingA ?? 0) > (best.ratingA ?? 0))) best = dev;
     }
     return best;
   };
@@ -250,7 +270,7 @@ function compute(doc: Project): Analysis {
       const L = len?.mm ?? 0;
       const loop = Math.max(L, ...(wireLoads.get(w.id) ?? []).map(loopLen));
       const budget = loop > 0 ? doc.settings.voltageDropLimitV * (L / loop) : doc.settings.voltageDropLimitV;
-      auto = chooseSize({ currentA: I, lengthMm: L, dropBudgetV: budget, protector: prot }, doc.settings);
+      auto = chooseSize({ currentA: I, lengthMm: L, dropBudgetV: budget, protector: prot?.ratingA != null ? { kind: prot.kind, ratingA: prot.ratingA } : null }, doc.settings);
       size = auto.mm2;
     }
     const amp = size ? ampacity(size, doc.settings.wireTempRatingC) : 0;
@@ -265,7 +285,7 @@ function compute(doc: Project): Analysis {
     const label = c.wire.label || c.wire.id;
     if (c.sizeMm2 && c.currentA > c.ampacityA + 1e-9)
       results.push(err(`ampacity:${c.wire.id}`, 'electrical', `${label}: ${c.currentA.toFixed(2)} A is over the ${c.ampacityA} A rating of ${sizeLabel(c.sizeMm2)}`, [c.wire.id]));
-    if (c.sizeMm2 && c.protector && c.protector.ratingA > maxProtector(c.sizeMm2, c.protector.kind))
+    if (c.sizeMm2 && c.protector?.ratingA != null && c.protector.ratingA > maxProtector(c.sizeMm2, c.protector.kind))
       results.push(
         err(
           `protect:${c.wire.id}`,
@@ -280,6 +300,9 @@ function compute(doc: Project): Analysis {
     if (!c.protector && !bothOff && c.currentA > 0 && (wireLoads.get(c.wire.id) ?? []).some((l) => l.feed.includes(c.wire.id)))
       results.push(warn(`unprotected:${c.wire.id}`, 'electrical', `${label}: runs from the battery with no fuse or breaker before it; a fault on it would not be cleared`, [c.wire.id]));
   }
+  for (const [id, g] of geometry)
+    if (isProtector(g.part) && g.part.ratingA == null)
+      results.push(warn(`rating:${id}`, 'electrical', `${name(id)}: ${g.part.category} rating not set; wires after it are not checked against it`, [id]));
   for (const d of devices.values()) {
     if (d.ratingA && d.loadA > doc.settings.protectorDerating * d.ratingA)
       results.push(warn(`derate:${d.partId}`, 'electrical', `${name(d.partId)}: ${d.loadA.toFixed(2)} A load is over ${Math.round(doc.settings.protectorDerating * 100)} % of its ${d.ratingA} A rating`, [d.partId]));

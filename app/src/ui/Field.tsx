@@ -67,7 +67,8 @@ export function LengthField({ label, mm, units, onCommit, disabled, testId }: Le
 
 interface NumberProps {
   label: string;
-  value: number;
+  /** Null shows an empty field. */
+  value: number | null;
   unit: string;
   onCommit: (v: number) => void;
   parse?: (s: string) => number | null;
@@ -76,7 +77,7 @@ interface NumberProps {
 }
 
 export function NumberField({ label, value, unit, onCommit, parse, disabled, testId }: NumberProps) {
-  const shown = String(Math.round(value * 1000) / 1000);
+  const shown = value === null ? '' : String(Math.round(value * 1000) / 1000);
   const [text, setText] = useState(shown);
   const [error, setError] = useState(false);
   useEffect(() => {

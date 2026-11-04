@@ -97,7 +97,7 @@ export function WireInspector({ doc, w }: { doc: Project; w: Wire }) {
               <dt>Drop</dt>
               <dd>{c ? `${c.dropV.toFixed(3)} V` : '—'}</dd>
               <dt>Protected by</dt>
-              <dd>{c?.protector ? `${doc.parts.find((p) => p.id === c.protector!.partId)?.label || c.protector.partId} (${c.protector.ratingA} A ${c.protector.kind})` : 'nothing upstream'}</dd>
+              <dd>{c?.protector ? `${doc.parts.find((p) => p.id === c.protector!.partId)?.label || c.protector.partId} (${c.protector.ratingA == null ? `${c.protector.kind}, rating not set` : `${c.protector.ratingA} A ${c.protector.kind}`})` : 'nothing upstream'}</dd>
             </>
           )}
         </dl>
