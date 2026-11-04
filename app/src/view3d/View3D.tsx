@@ -15,6 +15,7 @@ import { useDoc } from '../store/app';
 import { ui, useUi } from '../store/ui';
 import type { Vec3 } from '../wiring/terminals';
 import { setCameraHandler, type CameraPreset } from './camera';
+import { faceLabels, LINE_HEIGHT, type FaceLabel, type Measure } from './labels';
 import { buildModel3d, type Model3D, type Path3, type Solid } from './model3d';
 
 const C = {
@@ -88,16 +89,59 @@ function solidColour(s: Solid): THREE.Color {
   return C.near.clone().lerp(C.far, s.shade);
 }
 
+/** Canvas pixels per em of label text. */
+const LABEL_PX = 64;
+
+/** A label as a textured plane just off its face, readable from the side the face looks to. */
+function labelMesh(l: FaceLabel, font: string): THREE.Mesh | null {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+  const css = `500 ${LABEL_PX}px ${font}`;
+  ctx.font = css;
+  const w = Math.ceil(Math.max(...l.lines.map((t) => ctx.measureText(t).width))) + 8;
+  const h = Math.ceil(l.lines.length * LINE_HEIGHT * LABEL_PX);
+  canvas.width = w;
+  canvas.height = h;
+  ctx.font = css;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  // Dark text on light faces, light on dark ones.
+  const c = solidColour(l.solid);
+  ctx.fillStyle = 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b > 0.3 ? '#1b1f24' : '#f4f5f6';
+  l.lines.forEach((t, i) => ctx.fillText(t, w / 2, (i + 0.5) * LINE_HEIGHT * LABEL_PX));
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  const k = l.size / LABEL_PX;
+  const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, toneMapped: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(w * k, h * k), mat);
+  const off = 0.05;
+  if (l.facing === 'front') mesh.position.set(l.x, l.y, -l.z + off);
+  else {
+    mesh.position.set(l.x, l.y, -l.z - off);
+    mesh.rotation.y = Math.PI;
+  }
+  mesh.raycast = () => {};
+  return mesh;
+}
+
 interface Built {
   group: THREE.Group;
   pickables: Pickable[];
   panel: THREE.Mesh | null;
   wires: THREE.Group;
   looms: THREE.Group;
+  labels: THREE.Group;
 }
 
-function buildScene(m: Model3D, opts: { seeThrough: boolean }): Built {
+function buildScene(m: Model3D, labelled: FaceLabel[], opts: { seeThrough: boolean; font: string }): Built {
   const group = new THREE.Group();
+  const labels = new THREE.Group();
+  for (const l of labelled) {
+    const mesh = labelMesh(l, opts.font);
+    if (mesh) labels.add(mesh);
+  }
   const wires = new THREE.Group();
   const looms = new THREE.Group();
   const pickables: Pickable[] = [];
@@ -138,8 +182,8 @@ function buildScene(m: Model3D, opts: { seeThrough: boolean }): Built {
   };
   addPaths(m.wires, wires, (p) => new THREE.MeshStandardMaterial({ color: new THREE.Color(p.colour), roughness: 0.6 }), 6);
   addPaths(m.looms, looms, () => new THREE.MeshStandardMaterial({ color: C.loom, roughness: 0.9, transparent: true, opacity: 0.35, depthWrite: false }), 16);
-  group.add(wires, looms);
-  return { group, pickables, panel, wires, looms };
+  group.add(wires, looms, labels);
+  return { group, pickables, panel, wires, looms, labels };
 }
 
 function disposeGroup(g: THREE.Object3D) {
@@ -147,7 +191,10 @@ function disposeGroup(g: THREE.Object3D) {
     const obj = o as THREE.Mesh;
     obj.geometry?.dispose();
     const mats = Array.isArray(obj.material) ? obj.material : obj.material ? [obj.material] : [];
-    mats.forEach((m) => m.dispose());
+    mats.forEach((m) => {
+      (m as THREE.MeshBasicMaterial).map?.dispose();
+      m.dispose();
+    });
   });
 }
 
@@ -163,10 +210,19 @@ export default function View3D() {
   const [seeThrough, setSeeThrough] = useState(false);
   const [showWires, setShowWires] = useState(true);
   const [showLooms, setShowLooms] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const [hover, setHover] = useState<{ id: string; x: number; y: number } | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
   const [notesOpen, setNotesOpen] = useState(false);
   const model = useMemo(() => buildModel3d(doc), [doc]);
+  const font = useMemo(() => cssVar('--font', 'Helvetica, Arial, sans-serif'), []);
+  const labelled = useMemo(() => {
+    const ctx = document.createElement('canvas').getContext('2d');
+    if (!ctx) return [];
+    ctx.font = `500 100px ${font}`;
+    const measure: Measure = (t) => ctx.measureText(t).width / 100;
+    return faceLabels(model, measure);
+  }, [model, font]);
 
   // The renderer, camera and controls live for the life of the view; the scene contents are
   // rebuilt when the document changes.
@@ -267,6 +323,7 @@ export default function View3D() {
           const b = renderer.domElement.getBoundingClientRect();
           return { x: b.left + ((v.x + 1) / 2) * b.width, y: b.top + ((1 - v.y) / 2) * b.height };
         },
+        labels: () => r.current?.built?.labels.children.length ?? 0,
         counts: () => ({ solids: modelRef.current.solids.length, wires: modelRef.current.wires.length, looms: modelRef.current.looms.length }),
       };
 
@@ -290,10 +347,10 @@ export default function View3D() {
       c.scene.remove(c.built.group);
       disposeGroup(c.built.group);
     }
-    c.built = buildScene(model, { seeThrough });
+    c.built = buildScene(model, labelled, { seeThrough, font });
     c.scene.add(c.built.group);
     c.render();
-  }, [model, seeThrough]);
+  }, [model, labelled, seeThrough, font]);
 
   // A different project (opened, or a new one) is framed afresh; edits keep the camera.
   const framedDoc = useRef(doc.id);
@@ -308,8 +365,9 @@ export default function View3D() {
     if (!c?.built) return;
     c.built.wires.visible = showWires;
     c.built.looms.visible = showLooms;
+    c.built.labels.visible = showLabels;
     c.render();
-  }, [showWires, showLooms, model, seeThrough]);
+  }, [showWires, showLooms, showLabels, labelled, seeThrough]);
 
   // Selection and hover highlight, without a rebuild.
   useEffect(() => {
@@ -407,6 +465,10 @@ export default function View3D() {
         <label className="chip-check">
           <input type="checkbox" checked={showLooms} onChange={() => setShowLooms(!showLooms)} />
           Looms
+        </label>
+        <label className="chip-check">
+          <input type="checkbox" checked={showLabels} onChange={() => setShowLabels(!showLabels)} data-testid="view3d-labels" />
+          Labels
         </label>
       </div>
       {hover && hoverLabel && (
