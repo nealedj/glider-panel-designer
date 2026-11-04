@@ -187,6 +187,42 @@ export const GENERIC_DEFS: GenericDef[] = [
     }),
   },
   {
+    id: 'generic.toggle-switch-mini',
+    model: 'Miniature toggle switch',
+    category: 'switch',
+    description: 'Small bushing-mounted toggle switch, for a row of circuit switches beside the master.',
+    params: {
+      holeD: p('Hole diameter', 6.5),
+      nutD: p('Nut / bezel diameter', 9.5),
+      bodyW: p('Body width', 8),
+      bodyH: p('Body height', 13),
+      depth: p('Body depth', 20),
+      protrusion: p('Lever protrusion', 18, 'mm', 0),
+    },
+    build: (x) => ({
+      front: { cutouts: [circle(v(x, 'holeD'))], bezel: circle(v(x, 'nutD')), screwHoles: [], protrusion: v(x, 'protrusion') },
+      rear: { body: { kind: 'rect', cx: 0, cy: 0, w: v(x, 'bodyW'), h: v(x, 'bodyH'), r: 0 }, depth: v(x, 'depth'), bracketPoints: [] },
+      connectors: [
+        {
+          id: 'T',
+          type: 'solder tag',
+          x: 0,
+          y: 0,
+          face: 'rear',
+          clearance: null,
+          pins: [
+            { number: '1', function: 'common', signal: 'switch', direction: 'passive' },
+            { number: '2', function: 'on', signal: 'switch', direction: 'passive' },
+          ],
+        },
+      ],
+    }),
+    notes: {
+      'front.bezel':
+        'Generic placeholder, sized so the switches sit at the roughly 12 mm spacing seen in a photo of a PIK-20D stem (scaled from the 139 mm stem width; about ±2 mm). Check against the real part before cutting.',
+    },
+  },
+  {
     id: 'generic.breaker',
     model: 'Push-pull circuit breaker',
     category: 'breaker',
