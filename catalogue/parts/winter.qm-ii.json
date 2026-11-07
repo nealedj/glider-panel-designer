@@ -1,0 +1,90 @@
+{
+  "id": "winter.qm-ii",
+  "version": 1,
+  "maker": "Winter",
+  "model": "QM II",
+  "category": "instrument",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "rect",
+        "cx": 0,
+        "cy": 0,
+        "w": 50,
+        "h": 34,
+        "r": 0
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 65,
+      "h": 36,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -28,
+        "y": 0,
+        "d": 4.5
+      },
+      {
+        "x": 28,
+        "y": 0,
+        "d": 4.5
+      }
+    ],
+    "protrusion": 1
+  },
+  "rear": {
+    "body": null,
+    "depth": 13.5,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM II (Gr. II, Art. 1120) p.34, panel cut-out view: rectangle 50 x 34, square corners",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM II p.34, front view: flange 65 x 36 (corners rounded, radius not dimensioned; rect r 0 is the bounding envelope). Text p.34: 'Abmessung: 65 x 36 mm'",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM II (Gr. II, Art. 1120) p.34, panel cut-out view: two holes, centres 56 apart on the horizontal centre line of the 50 x 34 cut-out, hole size 4,5 (no square-of-four pattern)",
+      "status": "verified",
+      "note": "Page 34. Read by an AI reviewer subagent from the cached maker document, not by a person; the build cannot express a two-hole pattern, so the maintainer session added the holes to the part file on 2026-11-07."
+    },
+    "front.protrusion": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM II p.34, side view: front flange thickness 1 (dimension '1' beside '13,5'); nothing else drawn in front of the flange",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM II p.34, side view: body 13,5 from the rear face of the 1 mm front flange to the back of the body (text says 'Tiefe: 13 mm'; drawing preferred)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Winter catalogue PDF p.34 'Querneigungsmesser (Libelle mit Kugel) QM I / QM II / QM III', with dimensioned drawings (Art.-Nr. 1110 / 1120 / 1115)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

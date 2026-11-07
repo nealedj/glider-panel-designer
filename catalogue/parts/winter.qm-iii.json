@@ -1,0 +1,105 @@
+{
+  "id": "winter.qm-iii",
+  "version": 1,
+  "maker": "Winter",
+  "model": "QM III",
+  "category": "instrument",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "circle",
+        "cx": 0,
+        "cy": 0,
+        "d": 57
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 60,
+      "h": 60,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": -23.69,
+        "y": -23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": -23.69,
+        "d": 4.5
+      }
+    ],
+    "protrusion": null
+  },
+  "rear": {
+    "body": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 60,
+      "h": 60,
+      "r": 0
+    },
+    "depth": 40.5,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM III (Gr. III, Art. 1115) p.34, panel cut-out view: Ø57",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM III p.34, front view: flange 60 x 60 (corners chamfered, not radiused; rect is the bounding envelope)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM III p.34, panel cut-out view: 4 holes Ø4,5 on Ø67 hole circle at 45° (spacing = 67/√2 = 47.38); M4 in front view",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM III p.34, side view: 40,5 from the front face of the square 60 flange (which carries the M4 tapped holes and seats against the panel back; the 2 mm Ø56,6 front ring sits in the Ø57 cut-out) to the back of the housing",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.body": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM III p.34: the square 60 x 60 flange (front view; M4 tapped holes) is behind the panel in the side view, ahead of the housing (housing diameter not dimensioned); the 60 x 60 flange is used as the body envelope, chamfered corners ignored, so it can only overstate the body",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Winter catalogue PDF p.34 'Querneigungsmesser (Libelle mit Kugel) QM I / QM II / QM III', with dimensioned drawings (Art.-Nr. 1110 / 1120 / 1115)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

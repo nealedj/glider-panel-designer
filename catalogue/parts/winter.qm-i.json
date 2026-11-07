@@ -1,0 +1,100 @@
+{
+  "id": "winter.qm-i",
+  "version": 1,
+  "maker": "Winter",
+  "model": "QM I",
+  "category": "instrument",
+  "front": {
+    "cutouts": [
+      {
+        "kind": "rect",
+        "cx": 0,
+        "cy": 0,
+        "w": 50,
+        "h": 34,
+        "r": 0
+      }
+    ],
+    "bezel": {
+      "kind": "rect",
+      "cx": 0,
+      "cy": 0,
+      "w": 60,
+      "h": 60,
+      "r": 0
+    },
+    "screwHoles": [
+      {
+        "x": -23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": 23.69,
+        "d": 4.5
+      },
+      {
+        "x": -23.69,
+        "y": -23.69,
+        "d": 4.5
+      },
+      {
+        "x": 23.69,
+        "y": -23.69,
+        "d": 4.5
+      }
+    ],
+    "protrusion": 1
+  },
+  "rear": {
+    "body": null,
+    "depth": 13.5,
+    "bracketPoints": []
+  },
+  "connectors": [],
+  "ports": [],
+  "power": null,
+  "weightG": null,
+  "datasheet": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+  "sources": {
+    "front.cutout": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM I (Gr. I, Art. 1110) p.34, panel cut-out view: rectangle 50 x 34, square corners",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.bezel": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM I p.34, front view: flange 60 x 60 (corners chamfered, chamfer not dimensioned; rect is the bounding envelope)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.screwHoles": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM I p.34, panel cut-out view: 4 holes Ø4,5 on Ø67 hole circle at 45° (spacing = 67/√2 = 47.38)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "front.protrusion": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM I p.34, side view: front flange thickness 1 (dimension '1' beside '13,5'); nothing else drawn in front of the flange",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "rear.depth": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Drawing QM I p.34, side view: body 13,5 from the rear face of the 1 mm front flange to the back of the body",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    },
+    "datasheet": {
+      "url": "https://www.winter-instruments.de/_files/ugd/067599_7f7268e685dd4329a64048ff0a09951c.pdf",
+      "snippet": "Winter catalogue PDF p.34 'Querneigungsmesser (Libelle mit Kugel) QM I / QM II / QM III', with dimensioned drawings (Art.-Nr. 1110 / 1120 / 1115)",
+      "status": "verified",
+      "note": "Page 34. Entered by the reviewer from the source document. Reviewed by an AI subagent against the cached maker document, not by a person."
+    }
+  },
+  "review": "verified",
+  "offPanel": false
+}

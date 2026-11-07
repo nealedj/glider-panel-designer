@@ -131,6 +131,24 @@ name = "Winter 4 FGH altimeter"
 category = "instrument"
 
 [[product]]
+maker = "Winter"
+model = "QM I"
+name = "Winter QM I bank indicator 60x60 mm"
+category = "instrument"
+
+[[product]]
+maker = "Winter"
+model = "QM II"
+name = "Winter QM II bank indicator 65x36 mm"
+category = "instrument"
+
+[[product]]
+maker = "Winter"
+model = "QM III"
+name = "Winter QM III bank indicator 57 mm"
+category = "instrument"
+
+[[product]]
 maker = "Air Avionics"
 model = "ACD-57"
 name = "Air Avionics ACD-57 control display and altimeter"
